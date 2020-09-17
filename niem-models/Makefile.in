@@ -18,6 +18,7 @@ MKDIR_P = @MKDIR_P@
 
 # local autoconf things
 
+realpath = @realpath@
 saxon = @saxon@
 schematron_compile = @schematron_compile@
 schematron_execute = @schematron_execute@
@@ -31,6 +32,9 @@ valid_tokens = \
     ${tokens_dir}/rules-for-niem-data-sch-valid/metamodel/metamodel.xml \
     ${tokens_dir}/rules-for-models-sch-valid/metamodel/metamodel.xml \
 
+all_files = \
+    ${tokens_dir}/generate-xsd-for-models \
+
 
 # valid_tokens = ${tokens_dir}/model-rules-sch-valid/metamodel/metamodel.xml
 
@@ -40,7 +44,7 @@ valid_tokens = \
 .DEFAULT_GOAL = all
 
 .PHONY: all #   Build everything
-all:
+all: ${all_files}
 
 .PHONY: valid #   Validate what you can
 valid: ${valid_tokens}
@@ -50,6 +54,16 @@ clean:
 	${RM} ${valid_tokens}
 
 #############################################################################
+
+${tokens_dir}/generate-xsd-for-models: metamodel/metamodel.xml
+	${RM} -r ${srcdir}/schema-for-models/model
+	${saxon} --in=$< \
+	  --xsl=${srcdir}/model-to-xsd/model-to-xsd.xsl \
+	  -- target-dir=${shell realpath ${srcdir}/schema-for-models/model}
+
+# removed: 	  --out=${builddir}/model-to-xsd/report/generate-xsd/metamodel-core/metamodel.xml \
+
+
 
 .PHONY: xsd #   Build XSDs from the metamodel
 update-xsd: ${srcdir}/metamodel-core/metamodel.xml

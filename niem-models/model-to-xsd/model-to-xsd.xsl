@@ -13,9 +13,9 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns="http://www.w3.org/1999/XSL/Transform">
 
-  <import href="../metamodel-core/functions-xml.xsl"/>
-  <import href="../metamodel-core/functions-niem.xsl"/>
-  <import href="../metamodel-core/functions-model.xsl"/>
+  <import href="../common/functions-for-xml-data.xsl"/>
+  <import href="../common/functions-for-niem-data.xsl"/>
+  <import href="../common/functions-for-models.xsl"/>
 
   <param name="target-dir" as="xs:string" select="'tmp.UNSET'"/>
 

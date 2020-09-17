@@ -28,6 +28,9 @@ test "x$dot" = "x" && AC_MSG_ERROR([dot not found])
 AC_PATH_PROG(m4,m4)
 test "x$m4" = "x" && AC_MSG_ERROR([m4 not found])
 
+AC_PATH_PROG(realpath,realpath)
+test "x$realpath" = "x" && AC_MSG_ERROR([realpath not found])
+
 AC_PATH_PROG(saxon,saxon)
 test "x$saxon" = "x" && AC_MSG_ERROR([saxon not found])
 

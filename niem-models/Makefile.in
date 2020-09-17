@@ -30,25 +30,31 @@ xs_validate = @xs_validate@
 tmp_dir = ${builddir}/tmp
 tokens_dir = ${tmp_dir}/tokens
 
-model_xml_files = \
-  ${srcdir}/metamodel/metamodel.xml \
+# metamodel
 
-valid_tokens = \
-    ${model_xml_files:${srcdir}/%=${tokens_dir}/rules-for-niem-data-sch-valid/%} \
-    ${model_xml_files:${srcdir}/%=${tokens_dir}/rules-for-models-sch-valid/%} \
-    ${model_xml_files:${srcdir}/%=${tokens_dir}/xsd-for-models-valid/%} \
+metamodel_file = ${srcdir}/metamodel/metamodel.xml
+metamodel_xsd_target_dir = ${srcdir}/schema-for-models/model
 
+model_xml_files = ${metamodel_file}
+clean_dirs = ${metamodel_xsd_target_dir}
+
+
+valid_tokens = ${model_xml_files:${srcdir}/%=${tokens_dir}/rules-for-niem-data-sch-valid/%} \
+  ${model_xml_files:${srcdir}/%=${tokens_dir}/rules-for-models-sch-valid/%} \
+  ${model_xml_files:${srcdir}/%=${tokens_dir}/xsd-for-models-valid/%}
 all_files = ${model_xml_files:${srcdir}/%=${tokens_dir}/model-to-xsd/%}
-
-clean_dirs = ${srcdir}/schema-for-models/model
 
 # claim example #############################################################
 
-claim_example_model_file = ${srcdir}/examples/claim/claim-extensions-model.xml
-claim_example_xsd_target_dir = ${srcdir}/examples/claim/xsd/claim
+claim_example_dir = ${srcdir}/examples/claim
+claim_example_model_file = ${claim_example_dir}/claim-extensions-model.xml
+claim_example_xsd_target_dir = ${claim_example_dir}/xsd/claim
+claim_instance_files = ${claim_example_dir}/claim-instance.xml
 
 model_xml_files += ${claim_example_model_file}
 clean_dirs += ${claim_example_xsd_target_dir}
+valid_tokens = ${claim_instance_files:${srcdir}/%=${tokens_dir}/xsd-for-claim-example/%}
+
 
 #############################################################################
 
@@ -78,26 +84,19 @@ ${claim_example_model_file:${srcdir}/%=${tokens_dir}/model-to-xsd/%}: ${claim_ex
 	  -- target-dir=${shell ${realpath} ${claim_example_xsd_target_dir}}
 	${MKDIR_P} ${dir $@} && touch $@
 
-#############################################################################
-
-${tokens_dir}/model-to-xsd/metamodel/metamodel.xml: ${srcdir}/metamodel/metamodel.xml
-	${RM} -r ${srcdir}/schema-for-models/model
-	${MKDIR_P} ${srcdir}/schema-for-models/model
-	${saxon} --in=$< \
-	  --xsl=${srcdir}/model-to-xsd/model-to-xsd.xsl \
-	  -- target-dir=${shell ${realpath} ${srcdir}/schema-for-models/model}
+${tokens_dir}/xsd-for-claim-example/%: ${srcdir}/%
+	${xs_validate} --catalog=${claim_example_dir}/xsd/xml-catalog.xml $<
 	${MKDIR_P} ${dir $@} && touch $@
 
-.PHONY: xsd #   Build XSDs from the metamodel
-update-xsd: ${srcdir}/metamodel-core/metamodel.xml
-	${saxon} \
-	  -i ${srcdir}/metamodel-core/metamodel.xml \
-	  -x ${srcdir}/model-to-xsd/generate-xsd.xsl \
-	  -o ${builddir}/model-to-xsd/report/generate-xsd/metamodel-core/metamodel.xml \
-	  -- target-dir=${abs_builddir}/xsd
-	${RM} -r ${srcdir}/metamodel-core/xsd/metamodel
-	${MKDIR_P} ${srcdir}/metamodel-core/xsd/metamodel
-	tar -C ${builddir}/xsd -c . | tar -C ${srcdir}/metamodel-core/xsd/metamodel -xv
+#############################################################################
+
+${metamodel_file:${srcdir}/%=${tokens_dir}/model-to-xsd/%}: ${metamodel_file}
+	${RM} -r ${metamodel_xsd_target_dir}
+	${MKDIR_P} ${metamodel_xsd_target_dir}
+	${saxon} --in=$< \
+	  --xsl=${srcdir}/model-to-xsd/model-to-xsd.xsl \
+	  -- target-dir=${shell ${realpath} ${metamodel_xsd_target_dir}}
+	${MKDIR_P} ${dir $@} && touch $@
 
 #############################################################################
 # Schematron validation rules
@@ -112,12 +111,12 @@ ${tokens_dir}/rules-for-models-sch-valid/%: % ${srcdir}/schema-for-models/rules-
 	${schematron_execute} --xslt-file=${srcdir}/schema-for-models/rules-for-models.sch.xsl $<
 	${MKDIR_P} ${dir $@} && touch $@
 
-
 %.sch.xsl: %.sch
 	${RM} $@
 	${schematron_compile} --output-file=$@ $<
 	chmod 444 $@
 
+# xsd validation #################################################################
 
 ${tokens_dir}/xsd-for-models-valid/%.xml: %.xml ${tokens_dir}/generate-xsd-for-models
 	${xs_validate} --catalog=${srcdir}/schema-for-models/xml-catalog.xml $<

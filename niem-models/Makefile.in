@@ -27,7 +27,11 @@ schematron_execute = @schematron_execute@
 
 tmp_dir = ${builddir}/tmp
 tokens_dir = ${tmp_dir}/tokens
-valid_tokens = ${tokens_dir}/rules-for-niem-data-sch-valid/metamodel/metamodel.xml
+valid_tokens = \
+    ${tokens_dir}/rules-for-niem-data-sch-valid/metamodel/metamodel.xml \
+    ${tokens_dir}/rules-for-models-sch-valid/metamodel/metamodel.xml \
+
+
 # valid_tokens = ${tokens_dir}/model-rules-sch-valid/metamodel/metamodel.xml
 
 #############################################################################
@@ -59,12 +63,17 @@ update-xsd: ${srcdir}/metamodel-core/metamodel.xml
 	tar -C ${builddir}/xsd -c . | tar -C ${srcdir}/metamodel-core/xsd/metamodel -xv
 
 #############################################################################
+# Schematron validation rules
 
-# model-rules-sch-valid : validate a model against the Schematron rules for models
 
 # rules-for-niem-data-sch-valid : validate a model against the Schematron rules for NIEM data
 ${tokens_dir}/rules-for-niem-data-sch-valid/%: % ${srcdir}/common/rules-for-niem-data.sch.xsl
 	${schematron_execute} --xslt-file=${srcdir}/common/rules-for-niem-data.sch.xsl $<
+	${MKDIR_P} ${dir $@} && touch $@
+
+# rules-for-models-sch-valid : Validate a model against the Schematron rules for models
+${tokens_dir}/rules-for-models-sch-valid/%: % ${srcdir}/schema-for-models/rules-for-models.sch.xsl
+	${schematron_execute} --xslt-file=${srcdir}/schema-for-models/rules-for-models.sch.xsl $<
 	${MKDIR_P} ${dir $@} && touch $@
 
 %.sch.xsl: %.sch

@@ -32,21 +32,23 @@ tokens_dir = ${tmp_dir}/tokens
 
 model_xml_files = \
   ${srcdir}/metamodel/metamodel.xml \
-  ${srcdir}/examples/claim/claim-extensions-model.xml \
 
 valid_tokens = \
     ${model_xml_files:${srcdir}/%=${tokens_dir}/rules-for-niem-data-sch-valid/%} \
     ${model_xml_files:${srcdir}/%=${tokens_dir}/rules-for-models-sch-valid/%} \
     ${model_xml_files:${srcdir}/%=${tokens_dir}/xsd-for-models-valid/%} \
 
-all_files = \
-    ${tokens_dir}/generate-xsd-for-models \
-    ${tokens_dir}/generate-xsd-for-claim \
+all_files = ${model_xml_files:${srcdir}/%=${tokens_dir}/model-to-xsd/%}
 
 clean_dirs = ${srcdir}/schema-for-models/model
 
+# claim example #############################################################
 
-# valid_tokens = ${tokens_dir}/model-rules-sch-valid/metamodel/metamodel.xml
+claim_example_model_file = ${srcdir}/examples/claim/claim-extensions-model.xml
+claim_example_xsd_target_dir = ${srcdir}/examples/claim/xsd/claim
+
+model_xml_files += ${claim_example_model_file}
+clean_dirs += ${claim_example_xsd_target_dir}
 
 #############################################################################
 
@@ -66,21 +68,24 @@ clean:
 	${RM} -r ${clean_dirs}
 
 #############################################################################
+# claim example
 
-${tokens_dir}/generate-xsd-for-models: metamodel/metamodel.xml
+${claim_example_model_file:${srcdir}/%=${tokens_dir}/model-to-xsd/%}: ${claim_example_model_file}
+	${RM} -r ${claim_example_xsd_target_dir}
+	${MKDIR_P} ${claim_example_xsd_target_dir}
+	${saxon} --in=$< \
+	  --xsl=${srcdir}/model-to-xsd/model-to-xsd.xsl \
+	  -- target-dir=${shell ${realpath} ${claim_example_xsd_target_dir}}
+	${MKDIR_P} ${dir $@} && touch $@
+
+#############################################################################
+
+${tokens_dir}/model-to-xsd/metamodel/metamodel.xml: ${srcdir}/metamodel/metamodel.xml
 	${RM} -r ${srcdir}/schema-for-models/model
 	${MKDIR_P} ${srcdir}/schema-for-models/model
 	${saxon} --in=$< \
 	  --xsl=${srcdir}/model-to-xsd/model-to-xsd.xsl \
 	  -- target-dir=${shell ${realpath} ${srcdir}/schema-for-models/model}
-	${MKDIR_P} ${dir $@} && touch $@
-
-${tokens_dir}/generate-xsd-for-claim: examples/claim/claim-extensions-model.xml
-	${RM} -r ${srcdir}/examples/claim/xsd/claim
-	${MKDIR_P} ${srcdir}/examples/claim/xsd/claim
-	${saxon} --in=$< \
-	  --xsl=${srcdir}/model-to-xsd/model-to-xsd.xsl \
-	  -- target-dir=${shell ${realpath} ${srcdir}/examples/claim/xsd/claim}
 	${MKDIR_P} ${dir $@} && touch $@
 
 .PHONY: xsd #   Build XSDs from the metamodel
@@ -97,7 +102,6 @@ update-xsd: ${srcdir}/metamodel-core/metamodel.xml
 #############################################################################
 # Schematron validation rules
 
-
 # rules-for-niem-data-sch-valid : validate a model against the Schematron rules for NIEM data
 ${tokens_dir}/rules-for-niem-data-sch-valid/%: % ${srcdir}/common/rules-for-niem-data.sch.xsl
 	${schematron_execute} --xslt-file=${srcdir}/common/rules-for-niem-data.sch.xsl $<
@@ -107,7 +111,6 @@ ${tokens_dir}/rules-for-niem-data-sch-valid/%: % ${srcdir}/common/rules-for-niem
 ${tokens_dir}/rules-for-models-sch-valid/%: % ${srcdir}/schema-for-models/rules-for-models.sch.xsl
 	${schematron_execute} --xslt-file=${srcdir}/schema-for-models/rules-for-models.sch.xsl $<
 	${MKDIR_P} ${dir $@} && touch $@
-
 
 
 %.sch.xsl: %.sch

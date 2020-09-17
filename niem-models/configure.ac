@@ -8,6 +8,14 @@ AC_PROG_INSTALL
 AC_PROG_MKDIR_P
 AC_PROG_SED
 
+default_doc_name=`basename $PWD`
+default_docs_dir="\${top_srcdir}/../docs/${default_doc_name}"
+if test "x$docs_dir" = "x"
+then docs_dir=$default_docs_dir
+     echo "Variable docs_dir not set. Using default (docs_dir=$docs_dir)"
+fi
+AC_SUBST([docs_dir],[$docs_dir])
+
 # AC_PATH_PROG(var,prog)
 # test "x$var" = "x" && AC_MSG_ERROR([var not found])
 
@@ -47,5 +55,6 @@ AC_PATH_PROG(xs_validate,xs-validate)
 test "x$xs_validate" = "x" && AC_MSG_ERROR([xs_validate not found])
 
 AC_CONFIG_FILES([Makefile], [chmod 444 Makefile])
+AC_CONFIG_FILES([docs-source/Makefile], [chmod 444 docs-source/Makefile])
 AC_SUBST([config_files],$ac_config_files)
 AC_OUTPUT

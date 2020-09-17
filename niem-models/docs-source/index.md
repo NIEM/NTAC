@@ -6,7 +6,6 @@ title: A Metamodel for NIEM
 
 See git repository at <{{site.github.repository_url}}>. Report issues at <https://github.com/NIEM/NIEM-Metamodel/issues>
 
-
 # Introduction
 
 The [National Information Exchange Model (NIEM)](https://niem.gov) is a standards-based approach for building interoperable information exchanges, focused on the development and reuse of a set of common data definitions. These data definitions are provided as XML Schema, suitable for use as a basis for building schemas for XML messages for interchange between systems. 
@@ -175,5 +174,3 @@ with new code.
 - Add min / max occurs restrictiosn
     - 0-1 for attributes
     - min <= max
-
-

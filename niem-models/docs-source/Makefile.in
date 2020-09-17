@@ -14,68 +14,41 @@ srcdir = @srcdir@
 top_srcdir = @top_srcdir@
 builddir = @builddir@
 
-m4 = @m4@
 MKDIR_P = @MKDIR_P@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
+SED = @SED
 
+docs_dir = @docs_dir@
 dot = @dot@
 
-common_files = \
-  metamodel-tools.png \
-  metamodel-workflow.png \
-  metamodel-core.png \
-
 all_files = \
-  root-readme.md \
-  docs-index.md \
-  ${common_files:%=${builddir}/%} \
-
-install_files = \
-  ${top_srcdir}/README.md \
-  ${top_srcdir}/docs/index.md \
-  ${common_files:%=${top_srcdir}/docs/%} \
-
+  ${docs_dir}/metamodel-tools.png \
+  ${docs_dir}/metamodel-workflow.png \
+  ${docs_dir}/metamodel-core.png \
+  ${docs_dir}/index.md
 
 #############################################################################
 #HELP:Default target is "all". Targets include:
 .DEFAULT_GOAL = all
 
-.PHONY: all #   Build everything
+.PHONY: all #   Build everything into docs directory (default @docs_dir@)
 all: ${all_files}
 
 .PHONY: clean #   Clean build products
 clean:
 	${RM} ${all_files}
 
-.PHONY: install #   Install built docs files into the docs directory
-install: ${install_files}
-
-.PHONY: uninstall #   Remove built docs files from the docs directory
-uninstall::
-	${RM} ${install_files}
-
-#############################################################################
-# install
-
-${top_srcdir}/docs/%.png: ${builddir}/%.png
-	${INSTALL_DATA} $< $@
-
-${top_srcdir}/docs/index.md: ${builddir}/docs-index.md
-	${INSTALL_DATA} $< $@
-
-${top_srcdir}/README.md: ${builddir}/root-readme.md
-	${INSTALL_DATA} $< $@
-
 #############################################################################
 # all
 
-${builddir}/%.png: ${srcdir}/%.dot
+${docs_dir}/%.png: ${srcdir}/%.dot
 	${MKDIR_P} ${dir $@}
 	${dot} -Tpng -o$@ $<
 
-${builddir}/%.md: ${srcdir}/%.md.m4
-	${m4} -P --include=${srcdir} $< > $@
+${docs_dir}/%.md: ${srcdir}/%.md
+	${MKDIR_P} ${dir $@}
+	${INSTALL_DATA} $< $@
 
 #############################################################################
 # make help: this must be the last target

@@ -1,0 +1,40 @@
+digraph G {
+  layout = dot;
+  edge [fontname = "Helvetica", fontsize = 10, dir = forward];
+  node [fontname = "Helvetica", fontsize = 10, width = 0, height = 0, label="\N\l"];
+  rankdir = LR;
+
+  node [shape=box, style=rounded];
+
+{ rank = same; message; model; metamodel; }
+{ rank = same; schema; metaschema; }
+
+
+  message [label="Message\n(XML)"];
+
+
+  schema [label="Schema for Messages\n(XSD)"];
+
+  schema -> message [label="validates"];
+
+  model [label="Model for Messages\n(XML)"];
+  model -> schema [label="translates to"];
+  model -> message [label="defines"];
+  
+
+//  trans [label="Model-to-XSD transformer\n(XSLT)"];
+//  model -> trans -> schema;
+
+  metaschema [label="Schema for Models\n(XSD)"];
+  metaschema -> model [label="validates"];
+
+  metamodel [label="Model for Models\nMetamodel\n(XML)"];
+  metamodel -> model [label="defines"];
+
+//  trans2 [label="Model-to-XSD transformer\n(XSLT)"];
+  metamodel -> metaschema [label="translates to"];
+
+  metaschema -> metamodel [label="validates"];
+  
+
+}

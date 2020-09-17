@@ -1,0 +1,66 @@
+#############################################################################
+# Don't touch these...
+#############################################################################
+
+this_makefile := ${lastword ${MAKEFILE_LIST}}
+SHELL = @bash@ -o pipefail -o errexit -o nounset
+.SECONDARY:
+
+#############################################################################
+
+builddir = @builddir@
+abs_builddir = @abs_builddir@
+srcdir = @srcdir@
+
+saxon = @saxon@
+SED = @SED@
+MKDIR_P = @MKDIR_P@
+
+#############################################################################
+
+.DEFAULT_GOAL = all
+
+.PHONY: all #   Build everything
+all:
+
+.PHONY: valid #   Validate what you can
+valid:
+	${MAKE} -C ${builddir}/metamodel-core ${MAKE_FLAGS} valid
+
+.PHONY: clean #   Remove build products
+clean:
+	${RM} -r xsd
+	${MAKE} -C ${builddir}/docs-src ${MAKE_FLAGS} clean
+	${MAKE} -C ${builddir}/metamodel-core ${MAKE_FLAGS} clean
+
+#############################################################################
+
+.PHONY: xsd #   Build XSDs from the metamodel
+update-xsd: ${srcdir}/metamodel-core/metamodel.xml
+	${saxon} \
+	  -i ${srcdir}/metamodel-core/metamodel.xml \
+	  -x ${srcdir}/model-to-xsd/generate-xsd.xsl \
+	  -o ${builddir}/model-to-xsd/report/generate-xsd/metamodel-core/metamodel.xml \
+	  -- target-dir=${abs_builddir}/xsd
+	${RM} -r ${srcdir}/metamodel-core/xsd/metamodel
+	${MKDIR_P} ${srcdir}/metamodel-core/xsd/metamodel
+	tar -C ${builddir}/xsd -c . | tar -C ${srcdir}/metamodel-core/xsd/metamodel -xv
+
+#############################################################################
+
+.PHONY: update-docs #   Build documentation from the metamodel
+update-docs:
+	${MAKE} -C docs-src
+	${MAKE} -C docs-src uninstall
+	${MAKE} -C docs-src install
+
+#############################################################################
+
+.PHONY: help #   Print this help
+help:
+	@ ${SED} -e '/^\.PHONY:/s/^\.PHONY: *\([^ #]*\) *\#\( *\)\([^ ].*\)/\2\1: \3/p;/^[^#]*#HELP:/s/[^#]*#HELP:\(.*\)/\1/p;d' ${this_makefile}
+
+# don't put anything after this
+
+
+

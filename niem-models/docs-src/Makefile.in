@@ -1,0 +1,87 @@
+#############################################################################
+# Don't touch these...
+#############################################################################
+
+this_makefile := ${lastword ${MAKEFILE_LIST}}
+SHELL = @bash@ -o pipefail -o errexit -o nounset
+.SECONDARY:
+
+#############################################################################
+# things to set / override
+#############################################################################
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+builddir = @builddir@
+
+m4 = @m4@
+MKDIR_P = @MKDIR_P@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+
+dot = @dot@
+
+common_files = \
+  metamodel-tools.png \
+  metamodel-workflow.png \
+  metamodel-core.png \
+
+all_files = \
+  root-readme.md \
+  docs-index.md \
+  ${common_files:%=${builddir}/%} \
+
+install_files = \
+  ${top_srcdir}/README.md \
+  ${top_srcdir}/docs/index.md \
+  ${common_files:%=${top_srcdir}/docs/%} \
+
+
+#############################################################################
+#HELP:Default target is "all". Targets include:
+.DEFAULT_GOAL = all
+
+.PHONY: all #   Build everything
+all: ${all_files}
+
+.PHONY: clean #   Clean build products
+clean:
+	${RM} ${all_files}
+
+.PHONY: install #   Install built docs files into the docs directory
+install: ${install_files}
+
+.PHONY: uninstall #   Remove built docs files from the docs directory
+uninstall::
+	${RM} ${install_files}
+
+#############################################################################
+# install
+
+${top_srcdir}/docs/%.png: ${builddir}/%.png
+	${INSTALL_DATA} $< $@
+
+${top_srcdir}/docs/index.md: ${builddir}/docs-index.md
+	${INSTALL_DATA} $< $@
+
+${top_srcdir}/README.md: ${builddir}/root-readme.md
+	${INSTALL_DATA} $< $@
+
+#############################################################################
+# all
+
+${builddir}/%.png: ${srcdir}/%.dot
+	${MKDIR_P} ${dir $@}
+	${dot} -Tpng -o$@ $<
+
+${builddir}/%.md: ${srcdir}/%.md.m4
+	${m4} -P --include=${srcdir} $< > $@
+
+#############################################################################
+# make help: this must be the last target
+
+.PHONY: help #   Print this help
+help:
+	@ ${SED} -e '/^\.PHONY:/s/^\.PHONY: *\([^ #]*\) *\#\( *\)\([^ ].*\)/\2\1: \3/p;/^[^#]*#HELP:/s/[^#]*#HELP:\(.*\)/\1/p;d' ${this_makefile}
+
+# don't put anything after this

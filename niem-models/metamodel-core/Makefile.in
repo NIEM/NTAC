@@ -1,0 +1,98 @@
+#############################################################################
+# Don't touch these...
+#############################################################################
+
+this_makefile := ${lastword ${MAKEFILE_LIST}}
+SHELL = @bash@ -o pipefail -o errexit -o nounset
+.SECONDARY:
+
+#############################################################################
+
+top_builddir = @top_builddir@
+builddir = @builddir@
+
+top_srcdir = @top_srcdir@
+srcdir = @srcdir@
+
+SED = @SED@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+xmllint = @xmllint@
+MKDIR_P = @MKDIR_P@
+xs_validate = @xs_validate@
+schematron_execute = @schematron_execute@
+schematron_compile = @schematron_compile@
+
+this_module = metamodel-core
+tokens_dir = ${builddir}/tokens
+reports_dir = ${builddir}/reports
+
+valid_files = \
+  ${tokens_dir}/valid-xml/metamodel.xml \
+  ${tokens_dir}/valid-xsd/metamodel.xml \
+  ${tokens_dir}/valid-rules-niem/metamodel.xml \
+  ${tokens_dir}/valid-rules-model/metamodel.xml \
+
+.DEFAULT_GOAL = all
+
+.PHONY: all #   Build everything
+all: ${all_files}
+
+.PHONY: valid #   Validate what you can
+valid: ${valid_files}
+
+# xml via xmllint check
+${tokens_dir}/valid-xml/%: ${srcdir}/%
+	${MKDIR_P} ${dir ${reports_dir}/valid-xml/$*}
+	${xmllint} --noout $< 2>&1 | tee ${reports_dir}/valid-xml/$*
+	${MKDIR_P} ${dir $@}
+	touch $@
+
+# XSD validation
+${tokens_dir}/valid-xsd/%: ${srcdir}/%
+	${MKDIR_P} ${dir ${reports_dir}/valid-xsd/$*}
+	${xs_validate} -c ${srcdir}/xsd/xml-catalog.xml $< 2>&1 | tee ${reports_dir}/valid-xsd/$*
+	${MKDIR_P} ${dir $@}
+	touch $@
+
+# Schematron validation
+${tokens_dir}/valid-rules-niem/%: ${srcdir}/% ${builddir}/rules-niem.sch.xsl ${builddir}/functions-niem.xsl ${builddir}/functions-xml.xsl
+	${MKDIR_P} ${dir ${reports_dir}/valid-rules-niem/$*}
+	${schematron_execute} --xslt-file=${builddir}/rules-niem.sch.xsl $< 2>&1 | tee ${reports_dir}/valid-rules-niem/$*
+	${MKDIR_P} ${dir $@}
+	touch $@
+
+# Schematron validation
+${tokens_dir}/valid-rules-model/%: ${srcdir}/% ${builddir}/rules-model.sch.xsl ${builddir}/functions-model.xsl ${builddir}/functions-niem.xsl ${builddir}/functions-xml.xsl
+	${MKDIR_P} ${dir ${reports_dir}/valid-rules-model/$*}
+	${schematron_execute} --xslt-file=${builddir}/rules-model.sch.xsl $< 2>&1 | tee ${reports_dir}/valid-rules-model/$*
+	${MKDIR_P} ${dir $@}
+	touch $@
+
+${builddir}/%.sch.xsl: ${srcdir}/%.sch
+	@ ${MKDIR_P} ${dir $@}
+	@ ${MKDIR_P} ${dir ${reports_dir}/$*.sch.xsl}
+	${schematron_compile} --output-file=$@ $< 2>&1 | tee ${reports_dir}/$*.sch.xsl
+
+${builddir}/functions-model.xsl: ${srcdir}/functions-model.xsl
+	${INSTALL_DATA} $< $@
+
+${builddir}/functions-niem.xsl: ${srcdir}/functions-niem.xsl
+	${INSTALL_DATA} $< $@
+
+${builddir}/functions-xml.xsl: ${srcdir}/functions-xml.xsl
+	${INSTALL_DATA} $< $@
+
+
+.PHONY: clean
+clean:
+	${RM} -rf ${builddir}/reports ${builddir}/tokens
+	${RM} ${builddir}/functions-model.xsl ${builddir}/functions-niem.xsl ${builddir}/functions-xml.xsl
+	${RM} ${builddir}/rules-model.sch.xsl ${builddir}/rules-niem.sch.xsl
+
+.PHONY: help #   Print this help
+help:
+	@ ${SED} -e '/^\.PHONY:/s/^\.PHONY: *\([^ #]*\) *\#\( *\)\([^ ].*\)/\2\1: \3/p;/^[^#]*#HELP:/s/[^#]*#HELP:\(.*\)/\1/p;d' ${this_makefile}
+
+# don't put anything after this
+

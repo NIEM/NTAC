@@ -1,0 +1,50 @@
+digraph G {
+  layout = dot;
+  edge [fontname = "Helvetica", fontsize = 10, dir = forward];
+  node [fontname = "Helvetica", fontsize = 10, width = 0, height = 0, label="\N\l"];
+  rankdir = TB;
+
+  node [shape=box, style=rounded];
+  
+
+  Class [label="\N\n(namespace, name, definition)\n"];
+  ExtensionOf;
+  
+  Class -> ExtensionOf -> Class;
+  ExtensionOf -> { HasDataProperty HasObjectProperty HasValue };
+
+  { rank = same; HasDataProperty; HasObjectProperty; HasValue; }
+  
+  ObjectProperty [label="\N\n(namespace, name, definition)\n"];
+  ObjectProperty -> Class;
+
+  SubPropertyOf;
+  ObjectProperty -> SubPropertyOf -> ObjectProperty;
+
+  HasValue;
+  HasObjectProperty [label="\N\n(minOccurs, maxOccurs, sequenceID)\n"];
+  HasDataProperty [label="\N\n(minOccurs, maxOccurs)\n"];
+
+  HasValue -> Datatype;
+
+  HasObjectProperty -> ObjectProperty;
+
+  HasDataProperty -> DataProperty;
+
+  // data property ///////////////////////////////////////////////////////
+
+  DataProperty [label="\N\n(namespace, name, definition)\n"];
+  DataProperty -> Datatype;
+
+  Datatype [label="\N\n(namespace, name, definition)\n"];
+  RestrictionOf;
+
+  Datatype -> RestrictionOf -> Datatype;
+  Datatype -> ListOf -> Datatype;
+  Datatype -> UnionOf -> Datatype;
+
+  Facets [label="\N\n(minLength, maxLength, enumeration, etc.)\n"];
+  RestrictionOf -> Facets
+  
+
+}

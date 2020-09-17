@@ -1,0 +1,35 @@
+digraph G {
+  layout = dot;
+  edge [fontname = "Helvetica", fontsize = 10, dir = forward];
+  node [fontname = "Helvetica", fontsize = 10, width = 0, height = 0, label="\N\l"];
+  rankdir = LR;
+
+  node [shape=box, style=rounded];
+
+  { rank = same;
+  message_xml [label="Message\n(XML data)"];
+  message_json [label="Message\n(JSON)"];
+  message_json_ld [label="JSON-LD data"];
+  message_rdf_xml [label="RDF/XML data"];
+  }
+  
+  { rank = same;
+  schema_xsd [label="XML Schema for Messages"];
+  schema_json [label="JSON Schema for Messages"];
+  schema_rdf [label="RDF Schema"];
+  uml_model [label="UML model\n(XMI)"];
+  api_spec [label="API Specification\n(OpenAPI)"];
+  docs [label="Other documentation"];
+  }
+  
+  schema_xsd -> message_xml [label="validates"];
+  schema_json -> message_json [label="validates"];
+  schema_rdf -> { message_json_ld message_rdf_xml } [label="defines"];
+
+  model [label="Model for Messages\n"];
+  model -> { schema_xsd schema_json schema_rdf uml_model api_spec docs }  [label="translates to"];
+
+  metamodel [label="Model for Models\n(Metamodel)"];
+  metamodel -> model [label="defines"];
+
+}

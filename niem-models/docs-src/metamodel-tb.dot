@@ -1,0 +1,72 @@
+digraph G {
+  edge [fontname = "Helvetica", fontsize = 10, dir = forward];
+  node [fontname = "Helvetica", fontsize = 10, width = 0, height = 0, label="\N\l"];
+  rankdir = TB;
+
+  node [shape=Mrecord];
+  
+  { rank = same;
+    Model;
+    Class;
+    Namespace;
+    }
+
+  Class [rank = 1];
+
+  // model ///////////////////////////////////////////////////////////////////
+
+  Model [label="\N\l- Namespace\l- ObjectProperty\l- Class\l- DataProperty\l- Datatype\l"];
+
+  // namespace ///////////////////////////////////////////////////////
+
+  Namespace [label="\N\l- NamespaceURI\l- NamespacePrefixName\l- DefinitionText\l"];
+
+  //  Model -> Namespace [style = invis];
+
+  // object property ///////////////////////////////////////////////////////
+
+  ObjectProperty [label="\N\l- Name\l- Namespace\l- DefinitionText\l"];
+  ObjectProperty -> Class;
+  // ObjectProperty -> SubPropertyOf [dir=both];
+  ObjectProperty -> SubPropertyOf -> ObjectProperty;
+
+  // class ///////////////////////////////////////////////////////
+
+  Class [label="\N\l- Name\l- Namespace\l- DefinitionText\l- AbstractIndicator\l- ContentStyleCode"];
+  // Class -> ExtensionOf [dir=both];
+  Class -> ExtensionOf -> Class;
+  ExtensionOf [label="\N\l"];
+  ExtensionOf -> { HasDataProperty HasObjectProperty };
+  ExtensionOf -> HasValue;
+  
+  HasValue [label="\N\l"];
+  HasValue -> Datatype;
+
+  HasObjectProperty [label="\N\l- @sequenceID\l- @minOccursQuantity\l- @maxOccursQuantity\l"];
+  HasObjectProperty -> ObjectProperty;
+
+  HasDataProperty [label="\N\l- @minOccursQuantity\l- @maxOccursQuantity\l"];
+  HasDataProperty -> DataProperty;
+
+  // data property ///////////////////////////////////////////////////////
+
+  DataProperty [label="\N\l- Name\l- Namespace\l- DefinitionText\l"];
+  DataProperty -> Datatype;
+  
+  // datatype ///////////////////////////////////////////////////////
+
+  Datatype [label="\N\l- Name\l- Namespace\l- DefinitionText\l"];
+  // Datatype -> ListOf [dir=both];
+  Datatype -> ListOf -> Datatype;
+  // Datatype -> UnionOf [dir=both];
+  Datatype -> UnionOf -> Datatype;
+  // Datatype -> RestrictionOf [dir=both];
+  Datatype -> RestrictionOf -> Datatype;
+
+  RestrictionOf -> Facets;
+
+  // facets
+  edge [dir=back, label="subst"];
+  Facets [label="Valid facets:\l- Length\l- MinLength\l- MaxLength\l- Pattern\l- Enumeration\l- WhiteSpace\l- MaxInclusive\l- MaxExclusive\l- MinExclusive\l- MinInclusive\l- TotalDigits\l- FractionDigits\l"];
+  
+}

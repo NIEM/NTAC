@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+previous=/dev/null
+next=$1
+index=1
+
+while ! diff --brief "$previous" "$next"
+do
+    previous=$next
+    next=restacked${index}.xml
+    saxon --in="$previous" --out="$next" --xsl=restack.xsl
+    let ++index
+done
+
+echo output as $next
+
+
+
+

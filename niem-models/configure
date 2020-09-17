@@ -588,11 +588,11 @@ PACKAGE_URL='https://github.com/NIEM/NIEM-Metamodel'
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
 config_files
-saxon
-schematron_execute
-schematron_compile
 xs_validate
 xmllint
+schematron_execute
+schematron_compile
+saxon
 m4
 dot
 bash
@@ -1916,7 +1916,14 @@ $as_echo "$ac_cv_path_SED" >&6; }
   rm -f conftest.sed
 
 
+# AC_PATH_PROG(var,prog)
+# test "x$var" = "x" && AC_MSG_ERROR([var not found])
 
+# AC_PATH_PROG(same,same)
+# test "x$same" = "x" && AC_MSG_ERROR([same not found])
+
+# AC_PATH_PROGS(var,prog1 prog2 prog3)
+# test "xvar" = "x" && AC_MSG_ERROR([var not found])
 
 # only put critical programs required to build 'all' here.
 
@@ -1960,7 +1967,8 @@ $as_echo "no" >&6; }
 fi
 
 
-  test "x$bash" = "x" && as_fn_error $? "bash not found" "$LINENO" 5
+test "x$bash" = "x" && as_fn_error $? "bash not found" "$LINENO" 5
+
 # Extract the first word of "dot", so it can be a program name with args.
 set dummy dot; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -2001,7 +2009,8 @@ $as_echo "no" >&6; }
 fi
 
 
-  test "x$dot" = "x" && as_fn_error $? "dot not found" "$LINENO" 5
+test "x$dot" = "x" && as_fn_error $? "dot not found" "$LINENO" 5
+
 # Extract the first word of "m4", so it can be a program name with args.
 set dummy m4; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -2042,186 +2051,7 @@ $as_echo "no" >&6; }
 fi
 
 
-  test "x$m4" = "x" && as_fn_error $? "m4 not found" "$LINENO" 5
-# Extract the first word of "xmllint", so it can be a program name with args.
-set dummy xmllint; ac_word=$2
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-$as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_path_xmllint+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  case $xmllint in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_xmllint="$xmllint" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_xmllint="$as_dir/$ac_word$ac_exec_ext"
-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  ;;
-esac
-fi
-xmllint=$ac_cv_path_xmllint
-if test -n "$xmllint"; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $xmllint" >&5
-$as_echo "$xmllint" >&6; }
-else
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-fi
-
-
-  test "x$xmllint" = "x" && as_fn_error $? "xmllint not found" "$LINENO" 5
-for ac_prog in xs-validate
-do
-  # Extract the first word of "$ac_prog", so it can be a program name with args.
-set dummy $ac_prog; ac_word=$2
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-$as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_path_xs_validate+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  case $xs_validate in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_xs_validate="$xs_validate" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_xs_validate="$as_dir/$ac_word$ac_exec_ext"
-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  ;;
-esac
-fi
-xs_validate=$ac_cv_path_xs_validate
-if test -n "$xs_validate"; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $xs_validate" >&5
-$as_echo "$xs_validate" >&6; }
-else
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-fi
-
-
-  test -n "$xs_validate" && break
-done
-
-  test "x$xs_validate" = "x" && as_fn_error $? "xs_validate not found" "$LINENO" 5
-for ac_prog in schematron-compile
-do
-  # Extract the first word of "$ac_prog", so it can be a program name with args.
-set dummy $ac_prog; ac_word=$2
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-$as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_path_schematron_compile+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  case $schematron_compile in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_schematron_compile="$schematron_compile" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_schematron_compile="$as_dir/$ac_word$ac_exec_ext"
-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  ;;
-esac
-fi
-schematron_compile=$ac_cv_path_schematron_compile
-if test -n "$schematron_compile"; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $schematron_compile" >&5
-$as_echo "$schematron_compile" >&6; }
-else
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-fi
-
-
-  test -n "$schematron_compile" && break
-done
-
-  test "x$schematron_compile" = "x" && as_fn_error $? "schematron_compile not found" "$LINENO" 5
-for ac_prog in schematron-execute
-do
-  # Extract the first word of "$ac_prog", so it can be a program name with args.
-set dummy $ac_prog; ac_word=$2
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-$as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_path_schematron_execute+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  case $schematron_execute in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_schematron_execute="$schematron_execute" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_schematron_execute="$as_dir/$ac_word$ac_exec_ext"
-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  ;;
-esac
-fi
-schematron_execute=$ac_cv_path_schematron_execute
-if test -n "$schematron_execute"; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $schematron_execute" >&5
-$as_echo "$schematron_execute" >&6; }
-else
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-fi
-
-
-  test -n "$schematron_execute" && break
-done
-
-  test "x$schematron_execute" = "x" && as_fn_error $? "schematron_execute not found" "$LINENO" 5
+test "x$m4" = "x" && as_fn_error $? "m4 not found" "$LINENO" 5
 
 # Extract the first word of "saxon", so it can be a program name with args.
 set dummy saxon; ac_word=$2
@@ -2265,13 +2095,175 @@ fi
 
 test "x$saxon" = "x" && as_fn_error $? "saxon not found" "$LINENO" 5
 
-#AC_PATH_PROG([xmllint],[xmllint],[xmllint])
+# Extract the first word of "schematron-compile", so it can be a program name with args.
+set dummy schematron-compile; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_schematron_compile+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $schematron_compile in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_schematron_compile="$schematron_compile" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_schematron_compile="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+schematron_compile=$ac_cv_path_schematron_compile
+if test -n "$schematron_compile"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $schematron_compile" >&5
+$as_echo "$schematron_compile" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test "x$schematron_compile" = "x" && as_fn_error $? "schematron_compile not found" "$LINENO" 5
+
+# Extract the first word of "schematron-execute", so it can be a program name with args.
+set dummy schematron-execute; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_schematron_execute+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $schematron_execute in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_schematron_execute="$schematron_execute" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_schematron_execute="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+schematron_execute=$ac_cv_path_schematron_execute
+if test -n "$schematron_execute"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $schematron_execute" >&5
+$as_echo "$schematron_execute" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test "x$schematron_execute" = "x" && as_fn_error $? "schematron_execute not found" "$LINENO" 5
+
+# Extract the first word of "xmllint", so it can be a program name with args.
+set dummy xmllint; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_xmllint+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $xmllint in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_xmllint="$xmllint" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_xmllint="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+xmllint=$ac_cv_path_xmllint
+if test -n "$xmllint"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $xmllint" >&5
+$as_echo "$xmllint" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test "x$xmllint" = "x" && as_fn_error $? "xmllint not found" "$LINENO" 5
+
+# Extract the first word of "xs-validate", so it can be a program name with args.
+set dummy xs-validate; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_xs_validate+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $xs_validate in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_xs_validate="$xs_validate" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_xs_validate="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+xs_validate=$ac_cv_path_xs_validate
+if test -n "$xs_validate"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $xs_validate" >&5
+$as_echo "$xs_validate" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test "x$xs_validate" = "x" && as_fn_error $? "xs_validate not found" "$LINENO" 5
 
 ac_config_files="$ac_config_files Makefile"
-
-ac_config_files="$ac_config_files docs-src/Makefile"
-
-ac_config_files="$ac_config_files metamodel-core/Makefile"
 
 config_files=$ac_config_files
 
@@ -2984,8 +2976,6 @@ for ac_config_target in $ac_config_targets
 do
   case $ac_config_target in
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
-    "docs-src/Makefile") CONFIG_FILES="$CONFIG_FILES docs-src/Makefile" ;;
-    "metamodel-core/Makefile") CONFIG_FILES="$CONFIG_FILES metamodel-core/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -3413,8 +3403,6 @@ which seems to be undefined.  Please make sure it is defined" >&2;}
 
   case $ac_file$ac_mode in
     "Makefile":F) chmod 444 Makefile ;;
-    "docs-src/Makefile":F) chmod 444 docs-src/Makefile ;;
-    "metamodel-core/Makefile":F) chmod 444 metamodel-core/Makefile ;;
 
   esac
 done # for ac_tag

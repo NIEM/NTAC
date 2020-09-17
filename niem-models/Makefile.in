@@ -7,31 +7,43 @@ SHELL = @bash@ -o pipefail -o errexit -o nounset
 .SECONDARY:
 
 #############################################################################
+# autoconf / configure things
 
+# autoconf standard things
 builddir = @builddir@
-abs_builddir = @abs_builddir@
 srcdir = @srcdir@
 
-saxon = @saxon@
 SED = @SED@
 MKDIR_P = @MKDIR_P@
 
+# local autoconf things
+
+saxon = @saxon@
+schematron_compile = @schematron_compile@
+schematron_execute = @schematron_execute@
+
+#############################################################################
+# local variables
+
+tmp_dir = ${builddir}/tmp
+tokens_dir = ${tmp_dir}/tokens
+valid_tokens = ${tokens_dir}/rules-for-niem-data-sch-valid/metamodel/metamodel.xml
+# valid_tokens = ${tokens_dir}/model-rules-sch-valid/metamodel/metamodel.xml
+
 #############################################################################
 
+#HELP:Default goal is "all"
 .DEFAULT_GOAL = all
 
 .PHONY: all #   Build everything
 all:
 
 .PHONY: valid #   Validate what you can
-valid:
-	${MAKE} -C ${builddir}/metamodel-core ${MAKE_FLAGS} valid
+valid: ${valid_tokens}
 
 .PHONY: clean #   Remove build products
 clean:
-	${RM} -r xsd
-	${MAKE} -C ${builddir}/docs-src ${MAKE_FLAGS} clean
-	${MAKE} -C ${builddir}/metamodel-core ${MAKE_FLAGS} clean
+	${RM} ${valid_tokens}
 
 #############################################################################
 
@@ -45,6 +57,20 @@ update-xsd: ${srcdir}/metamodel-core/metamodel.xml
 	${RM} -r ${srcdir}/metamodel-core/xsd/metamodel
 	${MKDIR_P} ${srcdir}/metamodel-core/xsd/metamodel
 	tar -C ${builddir}/xsd -c . | tar -C ${srcdir}/metamodel-core/xsd/metamodel -xv
+
+#############################################################################
+
+# model-rules-sch-valid : validate a model against the Schematron rules for models
+
+# rules-for-niem-data-sch-valid : validate a model against the Schematron rules for NIEM data
+${tokens_dir}/rules-for-niem-data-sch-valid/%: % ${srcdir}/common/rules-for-niem-data.sch.xsl
+	${schematron_execute} --xslt-file=${srcdir}/common/rules-for-niem-data.sch.xsl $<
+	${MKDIR_P} ${dir $@} && touch $@
+
+%.sch.xsl: %.sch
+	${RM} $@
+	${schematron_compile} --output-file=$@ $<
+	chmod 444 $@
 
 #############################################################################
 

@@ -5,8 +5,8 @@
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns="http://purl.oclc.org/dsdl/schematron">
 
-  <xsl:include href="functions-xml.xsl"/>
-  <xsl:include href="functions-niem.xsl"/>
+  <xsl:include href="functions-for-xml-data.xsl"/>
+  <xsl:include href="functions-for-niem-data.xsl"/>
   
   <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
   <ns prefix="xsl" uri="http://www.w3.org/1999/XSL/Transform"/>

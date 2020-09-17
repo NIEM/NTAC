@@ -197,8 +197,10 @@
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
-   <xsl:include xmlns="http://purl.oclc.org/dsdl/schematron" href="functions-xml.xsl"/>
-   <xsl:include xmlns="http://purl.oclc.org/dsdl/schematron" href="functions-niem.xsl"/>
+   <xsl:include xmlns="http://purl.oclc.org/dsdl/schematron"
+                href="functions-for-xml-data.xsl"/>
+   <xsl:include xmlns="http://purl.oclc.org/dsdl/schematron"
+                href="functions-for-niem-data.xsl"/>
 
    <!--PATTERN -->
 
@@ -245,20 +247,6 @@
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
                <svrl:text>@structures:ref must resolve to an ID within the document.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-      <xsl:choose>
-         <xsl:when test="xs:boolean(@xsi:nil)=true()"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="xs:boolean(@xsi:nil)=true()">
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>An element with @structures:ref must have xsi:nil=true.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>

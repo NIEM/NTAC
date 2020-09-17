@@ -8,33 +8,41 @@ AC_PROG_INSTALL
 AC_PROG_MKDIR_P
 AC_PROG_SED
 
-dnl check_prog( $command-name )
-dnl   e.g., check_prog(bash) will set @bash@
-AC_DEFUN([check_prog],[AC_PATH_PROG($1,$1)
-  test "x$[]$1" = "x" && AC_MSG_ERROR([$1 not found])])dnl
+# AC_PATH_PROG(var,prog)
+# test "x$var" = "x" && AC_MSG_ERROR([var not found])
 
-dnl check_prog_options( $command-short-name, $command-name-options ... )
-dnl   e.g., check_prog_options(cat, gcat cat) will set @cat@
-AC_DEFUN([check_prog_options],[AC_PATH_PROGS($1,$2)
-  test "x$[]$1" = "x" && AC_MSG_ERROR([$1 not found])])dnl
+# AC_PATH_PROG(same,same)
+# test "x$same" = "x" && AC_MSG_ERROR([same not found])
+
+# AC_PATH_PROGS(var,prog1 prog2 prog3)
+# test "xvar" = "x" && AC_MSG_ERROR([var not found])
 
 # only put critical programs required to build 'all' here.
 
-check_prog(bash)
-check_prog(dot)
-check_prog(m4)
-check_prog(xmllint)
-check_prog_options(xs_validate,xs-validate)
-check_prog_options(schematron_compile,schematron-compile)
-check_prog_options(schematron_execute,schematron-execute)
+AC_PATH_PROG(bash,bash)
+test "x$bash" = "x" && AC_MSG_ERROR([bash not found])
+
+AC_PATH_PROG(dot,dot)
+test "x$dot" = "x" && AC_MSG_ERROR([dot not found])
+
+AC_PATH_PROG(m4,m4)
+test "x$m4" = "x" && AC_MSG_ERROR([m4 not found])
 
 AC_PATH_PROG(saxon,saxon)
 test "x$saxon" = "x" && AC_MSG_ERROR([saxon not found])
 
-#AC_PATH_PROG([xmllint],[xmllint],[xmllint])
+AC_PATH_PROG(schematron_compile,schematron-compile)
+test "x$schematron_compile" = "x" && AC_MSG_ERROR([schematron_compile not found])
+
+AC_PATH_PROG(schematron_execute,schematron-execute)
+test "x$schematron_execute" = "x" && AC_MSG_ERROR([schematron_execute not found])
+
+AC_PATH_PROG(xmllint,xmllint)
+test "x$xmllint" = "x" && AC_MSG_ERROR([xmllint not found])
+
+AC_PATH_PROG(xs_validate,xs-validate)
+test "x$xs_validate" = "x" && AC_MSG_ERROR([xs_validate not found])
 
 AC_CONFIG_FILES([Makefile], [chmod 444 Makefile])
-AC_CONFIG_FILES([docs-src/Makefile], [chmod 444 docs-src/Makefile])
-AC_CONFIG_FILES([metamodel-core/Makefile], [chmod 444 metamodel-core/Makefile])
 AC_SUBST([config_files],$ac_config_files)
 AC_OUTPUT

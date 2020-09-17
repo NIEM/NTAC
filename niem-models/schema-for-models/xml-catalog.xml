@@ -2,5 +2,5 @@
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
   <uri name="http://www.w3.org/XML/1998/namespace" uri="xml.xsd"/>
   <nextCatalog catalog="niem/xml-catalog.xml"/>
-  <nextCatalog catalog="metamodel/xml-catalog.xml"/>
+  <nextCatalog catalog="model/xml-catalog.xml"/>
 </catalog>

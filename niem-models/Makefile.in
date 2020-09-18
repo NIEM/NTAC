@@ -125,11 +125,10 @@ ${tokens_dir}/xsd-for-models-valid/%.xml: %.xml ${tokens_dir}/generate-xsd-for-m
 
 #############################################################################
 
-.PHONY: update-docs #   Build documentation from the metamodel
-update-docs:
-	${MAKE} -C docs-src
-	${MAKE} -C docs-src uninstall
-	${MAKE} -C docs-src install
+.PHONY: docs #   Clean & rebuild github.io documentation (from docs-source)
+docs:
+	${MAKE} -C docs-source clean
+	${MAKE} -C docs-source
 
 #############################################################################
 

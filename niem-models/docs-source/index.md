@@ -2,9 +2,13 @@
 title: A Metamodel for NIEM
 ---
 
-{% capture code_root %}{{site.github.repository_url}}/blob/master{% endcapture %}
+# {{page.title}}
 
-See git repository at <{{site.github.repository_url}}>. Report issues at <https://github.com/NIEM/NIEM-Metamodel/issues>
+
+<!-- defines {{code_root}} -->
+{% capture code_root %}{{site.github.repository_url}}/blob/main/niem-models{% endcapture %}
+
+See the Git repository at <{{site.github.repository_url}}>. Report issues at <{{site.github.issues_url}}>.
 
 # Introduction
 
@@ -24,8 +28,8 @@ NIEM's current effort is on developing the model to define data defintions for X
 
 This repository holds a true *metamodel*, in that the metamodel defines itself. 
 
-- The core of the metamodel is a model for models, represented as the XML file [metamodel.xml]({{code_root}}/metamodel.xml). 
-- The XSLT transformation [generate-xsd.xsl]({{code_root}}/generate-xsd.xsl) translates the metamodel XML file into XML Schema [generated/xsd/mm.xsd]({{code_root}}/generated/xsd/mm.xsd).
+- The core of the metamodel is a model for models, represented as the XML file [metamodel.xml]({{code_root}}/metamodel/metamodel.xml). 
+- The XSLT transformation [model-to-xsd.xsl]({{code_root}}/model-to-xsd/model-to-xsd.xsl) translates the metamodel XML file into XML Schema [mm.xsd]({{code_root}}/schema-for-models/model/mm.xsd).
 - The metamodel is valid against the schema generated from itself, and so is defined by iteslf.
 - The translation from the *Model for Models* to the *Schema for Models* is the same translation as the one from *Model for Messages* to the *Schema for Messages*.
 

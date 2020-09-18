@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Name xmlns="http://example.org/names">
+  <ObjectClass>
+    <QualifierTerm>alcohol</QualifierTerm>
+    <QualifierTerm>use</QualifierTerm>
+    <RootTerm>assessment</RootTerm>
+  </ObjectClass>
+  <Property>
+    <QualifierTerm>alcohol</QualifierTerm>
+    <QualifierTerm>abuse</QualifierTerm>
+    <QualifierTerm>maximum</QualifierTerm>
+    <QualifierTerm>duration</QualifierTerm>
+    <RootTerm>abstained</RootTerm>
+  </Property>
+  <RepresentationName>numeric</RepresentationName>
+</Name>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Name xmlns="http://example.org/names">
+  <ObjectClassName>contact information</ObjectClassName>
+  <PropertyName>availability</PropertyName>
+  <Representation>
+    <RootTerm>code</RootTerm>
+    <RootTerm>simple type</RootTerm>
+  </Representation>
+</Name>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Name xmlns="http://example.org/names">
+  <ObjectClassName>person</ObjectClassName>
+  <PropertyName>hair color</PropertyName>
+  <RepresentationName>code</RepresentationName>
+</Name>

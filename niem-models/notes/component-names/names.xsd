@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<schema
+  targetNamespace="http://example.org/names"
+  xmlns:n="http://example.org/names"
+  xmlns="http://www.w3.org/2001/XMLSchema">
+
+  <element name="Name">
+    <complexType>
+      <sequence>
+        <element ref="n:ObjectClassAbstract"/>
+        <element ref="n:PropertyAbstract"/>
+        <element ref="n:RepresentationAbstract"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="ObjectClassAbstract" abstract="true"/>
+  <element name="ObjectClass" substitutionGroup="n:ObjectClassAbstract" type="n:CompositeTermType"/>
+  <element name="ObjectClassName" substitutionGroup="n:ObjectClassAbstract" type="string"/>
+
+  <element name="PropertyAbstract" abstract="true"/>
+  <element name="Property" substitutionGroup="n:PropertyAbstract" type="n:CompositeTermType"/>
+  <element name="PropertyName" substitutionGroup="n:PropertyAbstract" type="string"/>
+
+  <element name="RepresentationAbstract" abstract="true"/>
+  <element name="Representation" substitutionGroup="n:RepresentationAbstract" type="n:CompositeTermType"/>
+  <element name="RepresentationName" substitutionGroup="n:RepresentationAbstract" type="string"/>
+
+  <complexType name="CompositeTermType">
+    <sequence>
+      <element ref="n:QualifierTerm" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="n:RootTerm" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="QualifierTerm" type="string"/>
+  <element name="RootTerm" type="string"/>
+
+</schema>

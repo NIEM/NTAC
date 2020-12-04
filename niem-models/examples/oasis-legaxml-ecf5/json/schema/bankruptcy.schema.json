@@ -1,0 +1,48 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/bankruptcy"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"bankruptcy" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/bankruptcy#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"bankruptcy:CaseAugmentation": {
+"$ref": "#/definitions/bankruptcy:CaseAugmentationType","description": "Additional information specific to bankruptcy cases."
+}
+,
+"bankruptcy:CaseAugmentationType": {
+"additionalProperties" : true,"properties": {
+
+},"type": "object"
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

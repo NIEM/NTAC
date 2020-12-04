@@ -1,0 +1,188 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/citation"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"citation" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/citation#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"ecf" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/ecf#"
+,
+
+"j" : "http://release.niem.gov/niem/domains/jxdm/6.1/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"citation:CaseAugmentation": {
+"$ref": "#/definitions/citation:CaseAugmentationType","description": "A charge issued by a law enforcement officer for a violation requiring the person charged to plead guilty to the charge or to appear in court to contest the charge.  A citation is issued in lieu of an arrest and booking.  Violations are a subset of charges for which a law enforcement officer is authorized to issue a citation in lieu of arrest and booking.  Examples:  traffic ticket, parking ticket or ticket issued for some other ordinance violation such as barking dog or illegal dumping."
+}
+,
+"citation:CaseAugmentationType": {
+"additionalProperties" : false,"properties": {
+"citation:ParkingViolation": {
+"description": "Information about a parking violation.","$ref": "#/definitions/citation:ParkingViolation"
+},"j:Citation": {
+"description": "An official summons to appear in court or pay a fine given to a subject from a peace official due to a subjects violation or infraction of a law.","$ref": "./niem/j.schema.json#/definitions/j:Citation"
+},"j:CourtAppearance": {
+"description": "An appearance required of a party in a court of law on a certain date.","$ref": "./niem/j.schema.json#/definitions/j:CourtAppearance"
+},"j:DrivingIncident": {
+"description": "An incident involving a vehicle.","$ref": "./niem/j.schema.json#/definitions/j:DrivingIncident"
+},"j:IncidentViolatedStatuteAssociation": {
+"description": "An association providing details about a statute, rule, or ordinance that was violated in an incident.","oneOf": [{
+"$ref": "./niem/j.schema.json#/definitions/j:IncidentViolatedStatuteAssociation"
+},
+{
+"items": {
+"$ref": "./niem/j.schema.json#/definitions/j:IncidentViolatedStatuteAssociation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:Vehicle": {
+"description": "A conveyance designed to carry an operator, passengers and/or cargo, over land.","$ref": "./niem/nc.schema.json#/definitions/nc:Vehicle"
+}
+},"required" : ["j:Citation"],"type": "object"
+}
+,
+"citation:DrivingIncidentAugmentation": {
+"$ref": "#/definitions/citation:DrivingIncidentAugmentationType","description": "The incident from which a traffic ticket arose."
+}
+,
+"citation:DrivingIncidentAugmentationType": {
+"additionalProperties" : false,"properties": {
+"citation:RedLightCameraIndicator": {
+"description": "An indicator that a automated camera was used to detect traffic signal violations.","$ref": "#/definitions/citation:RedLightCameraIndicator"
+},"j:ItemTotalDamageValue": {
+"description": "A monetary value or worth of damage that occurred to a property item.","$ref": "./niem/j.schema.json#/definitions/j:ItemTotalDamageValue"
+}
+},"type": "object"
+}
+,
+"citation:ParkingFacility": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:FacilityType","description": "The name of a parking facility/lot."
+}
+,
+"citation:ParkingMeterSpaceNumber": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:decimal","description": "An identifier for a parking space or meter."
+}
+,
+"citation:ParkingViolation": {
+"$ref": "#/definitions/citation:ParkingViolationType","description": "Information about a parking violation."
+}
+,
+"citation:ParkingViolationType": {
+"additionalProperties" : false,"description": "Information about a parking violation.","properties": {
+"citation:ParkingFacility": {
+"description": "The name of a parking facility/lot.","$ref": "#/definitions/citation:ParkingFacility"
+},"citation:ParkingMeterSpaceNumber": {
+"description": "An identifier for a parking space or meter.","$ref": "#/definitions/citation:ParkingMeterSpaceNumber"
+},"j:IncidentAugmentation": {
+"description": "Additional information about an incident.","oneOf": [{
+"$ref": "./niem/j.schema.json#/definitions/j:IncidentAugmentation"
+},
+{
+"items": {
+"$ref": "./niem/j.schema.json#/definitions/j:IncidentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"juvenile:IncidentAugmentation": {
+"description": "The statutory or ordinance section, the violation of which would constitute a crime if committed by an adult. May include a probation violation.","oneOf": [{
+"$ref": "./juvenile.schema.json#/definitions/juvenile:IncidentAugmentation"
+},
+{
+"items": {
+"$ref": "./juvenile.schema.json#/definitions/juvenile:IncidentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./niem/nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./niem/nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./niem/nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./niem/nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./niem/nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./niem/nc.schema.json#/definitions/nc:CaseDisposition"
+},"nc:IncidentLocation": {
+"description": "A location where an incident occurred.","$ref": "./niem/nc.schema.json#/definitions/nc:IncidentLocation"
+}
+},"type": "object"
+}
+,
+"citation:RedLightCameraIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "An indicator that a automated camera was used to detect traffic signal violations."
+}
+,
+"citation:SubjectAugmentation": {
+"$ref": "#/definitions/citation:SubjectAugmentationType","description": "A person named in a citation alleged to have violated a statute or ordinance."
+}
+,
+"citation:SubjectAugmentationType": {
+"additionalProperties" : false,"properties": {
+"j:DriverLicense": {
+"description": "A license issued to a person granting driving privileges.","$ref": "./niem/j.schema.json#/definitions/j:DriverLicense"
+},"j:PersonBloodAlcoholContentNumberText": {
+"description": "A blood-alcohol percentage reading from a Blood Alcohol Test (BAC Test).","$ref": "./niem/j.schema.json#/definitions/j:PersonBloodAlcoholContentNumberText"
+}
+},"type": "object"
+}
+,
+"citation:VehicleAugmentation": {
+"$ref": "#/definitions/citation:VehicleAugmentationType","description": "Information describing a motor vehicle."
+}
+,
+"citation:VehicleAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:VehicleOperatorInsuranceCoverage": {
+"description": "Information concerning whether a driver of a motor vehicle possesses proof of insurance coverage required by law.","$ref": "./ecf.schema.json#/definitions/ecf:VehicleOperatorInsuranceCoverage"
+},"j:ConveyanceRegistration": {
+"description": "A registration of a conveyance with an authority.","$ref": "./niem/j.schema.json#/definitions/j:ConveyanceRegistration"
+}
+},"type": "object"
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

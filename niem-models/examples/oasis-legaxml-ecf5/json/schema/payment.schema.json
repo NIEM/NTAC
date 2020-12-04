@@ -1,0 +1,95 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/payment"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"cac" : "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"ecf" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/ecf#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"payment" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/payment#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"payment:CorrectedPaymentIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicates whether the payment has been corrected in the Filing Review MDE"
+}
+,
+"payment:Payer": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:EntityType","description": "Name of the payer of the FilingPayment."
+}
+,
+"payment:PaymentMessage": {
+"$ref": "#/definitions/payment:PaymentMessageType","description": "The payment submitted with a filing.  The payment may consist of a fee for filing of the document(s) submitted, or for a fine or other payment due to the court."
+}
+,
+"payment:PaymentMessageType": {
+"additionalProperties" : false,"description": "The payment submitted with a filing.  The payment may consist of a fee for filing of the document(s) submitted, or for a fine or other payment due to the court.","properties": {
+"cac:Address": {
+"description": "The address of the owner of a financial account.","$ref": ""
+},"cac:AllowanceCharge": {
+"description": "An authorization by the filer allowing the court to take money from the filer, for the purpose of this filing, by a particular means.","oneOf": [{
+"$ref": ""
+},
+{
+"items": {
+"$ref": ""
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"cac:Payment": {
+"description": "A payment.","$ref": ""
+},"cac:PaymentMandate": {
+"description": "The maximum payment associated with a transaction","$ref": ""
+},"ecf:FeeExceptionReasonCode": {
+"description": "A code for the reason why a filer does not have to pay an otherwise applicable payment.  Allowable values set forth in Court Policy. Examples are in forma pauperis status granted or a fee waiver application submitted with the filing..","$ref": "./ecf.schema.json#/definitions/ecf:FeeExceptionReasonCode"
+},"ecf:FeeExceptionSupportingText": {
+"description": "Any text needed to support the exemption assertion (reference to a court order, etc.)","$ref": "./ecf.schema.json#/definitions/ecf:FeeExceptionSupportingText"
+},"payment:CorrectedPaymentIndicator": {
+"description": "Indicates whether the payment has been corrected in the Filing Review MDE","$ref": "#/definitions/payment:CorrectedPaymentIndicator"
+},"payment:Payer": {
+"description": "Name of the payer of the FilingPayment.","$ref": "#/definitions/payment:Payer"
+}
+},"required" : ["cac:Address", "payment:CorrectedPaymentIndicator", "payment:Payer"],"type": "object"
+}
+
+},
+"properties" : {
+"payment:PaymentMessage": {
+"$ref": "#/definitions/payment:PaymentMessageType","description": "The payment submitted with a filing.  The payment may consist of a fee for filing of the document(s) submitted, or for a fine or other payment due to the court."
+}
+
+},
+"required" : [
+]
+}

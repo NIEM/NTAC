@@ -1,0 +1,1762 @@
+{
+"$id" : "http://release.niem.gov/niem/domains/jxdm/6.1/"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"aamva_d20" : "http://release.niem.gov/niem/codes/aamva_d20/4.0/#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"j" : "http://release.niem.gov/niem/domains/jxdm/6.1/#"
+,
+
+"mmucc" : "http://release.niem.gov/niem/codes/mmucc/4.1/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"ncic" : "http://release.niem.gov/niem/codes/fbi_ncic/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"ucr" : "http://release.niem.gov/niem/codes/fbi_ucr/4.1/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"j:AppellateCase": {
+"$ref": "#/definitions/j:AppellateCaseType","description": "A single case heard by the Court of Appeals (Intermediate Court of Appeal) or Supreme Court (The Court of Last Resort). This case does not retry the original case but determines whether the original case was tried properly and the defendant"
+}
+,
+"j:AppellateCaseNotice": {
+"$ref": "#/definitions/j:AppellateCaseNoticeType","description": "A request filed with an appellate court to start an appellate case."
+}
+,
+"j:AppellateCaseNoticeReasonText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A statement explaining the reason for an appeal. "
+}
+,
+"j:AppellateCaseNoticeType": {
+"additionalProperties" : false,"description": "A data type for a request filed with an appellate court to start an appellate case.","properties": {
+"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:AppellateCaseNoticeReasonText": {
+"description": "A statement explaining the reason for an appeal. ","$ref": "#/definitions/j:AppellateCaseNoticeReasonText"
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./nc.schema.json#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["nc:DocumentIdentification"],"type": "object"
+}
+,
+"j:AppellateCaseOriginalCase": {
+"$ref": "./nc.schema.json#/definitions/nc:CaseType","description": "An original case that is being retried in an appellate court."
+}
+,
+"j:AppellateCaseType": {
+"additionalProperties" : false,"description": "A data type for a single case heard by a court to determine if the original case was tried properly and the defendant received a fair trial.","properties": {
+"appellate:CaseAugmentation": {
+"description": "Additional information specific to appellate cases.","oneOf": [{
+"$ref": "../appellate.schema.json#/definitions/appellate:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../appellate.schema.json#/definitions/appellate:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"bankruptcy:CaseAugmentation": {
+"description": "Additional information specific to bankruptcy cases.","oneOf": [{
+"$ref": "../bankruptcy.schema.json#/definitions/bankruptcy:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../bankruptcy.schema.json#/definitions/bankruptcy:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"citation:CaseAugmentation": {
+"description": "A charge issued by a law enforcement officer for a violation requiring the person charged to plead guilty to the charge or to appear in court to contest the charge.  A citation is issued in lieu of an arrest and booking.  Violations are a subset of charges for which a law enforcement officer is authorized to issue a citation in lieu of arrest and booking.  Examples:  traffic ticket, parking ticket or ticket issued for some other ordinance violation such as barking dog or illegal dumping.","oneOf": [{
+"$ref": "../citation.schema.json#/definitions/citation:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../citation.schema.json#/definitions/citation:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"civil:CaseAugmentation": {
+"description": "Information required to initiate a new civil case in a court.  Civil includes conservatorships, guardianships, mental health and probate.","oneOf": [{
+"$ref": "../civil.schema.json#/definitions/civil:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../civil.schema.json#/definitions/civil:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"criminal:CaseAugmentation": {
+"description": "Information required to initiate a new criminal case in a court.  Criminal includes felonies and misdemeanors.","oneOf": [{
+"$ref": "../criminal.schema.json#/definitions/criminal:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../criminal.schema.json#/definitions/criminal:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"domestic:CaseAugmentation": {
+"description": "Information required to initiate a new domestic case in a court.  Domestic includes divorces, legal separations, annulment, child custody and visitation, paternity, child support, and domestic violence cases.","oneOf": [{
+"$ref": "../domestic.schema.json#/definitions/domestic:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../domestic.schema.json#/definitions/domestic:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:CaseAugmentation": {
+"description": "Information about a court case.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:AppellateCaseNotice": {
+"description": "A request filed with an appellate court to start an appellate case.","$ref": "#/definitions/j:AppellateCaseNotice"
+},"j:AppellateCaseOriginalCase": {
+"description": "An original case that is being retried in an appellate court.","oneOf": [{
+"$ref": "#/definitions/j:AppellateCaseOriginalCase"
+},
+{
+"items": {
+"$ref": "#/definitions/j:AppellateCaseOriginalCase"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CaseAugmentation": {
+"description": "Additional information about a case.","oneOf": [{
+"$ref": "#/definitions/j:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "#/definitions/j:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"juvenile:CaseAugmentation": {
+"description": "A delinquency or dependency case.","oneOf": [{
+"$ref": "../juvenile.schema.json#/definitions/juvenile:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../juvenile.schema.json#/definitions/juvenile:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+},"nc:CaseTitleText": {
+"description": "An official name of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseTitleText"
+}
+},"type": "object"
+}
+,
+"j:Arrest": {
+"$ref": "#/definitions/j:ArrestType","description": "An apprehension of a subject by a peace official based on an observed or a reported violation of a law or ordinance, an outstanding arrest warrant, or probable cause information."
+}
+,
+"j:ArrestAgency": {
+"$ref": "./nc.schema.json#/definitions/nc:OrganizationType","description": "An agency which employs the arresting official."
+}
+,
+"j:ArrestAgencyRecordIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "A records management system identification of the originating case agency for an arrest."
+}
+,
+"j:ArrestCharge": {
+"$ref": "#/definitions/j:ChargeType","description": "A formal allegation of a violation of a statute and/or ordinance in association with an arrest."
+}
+,
+"j:ArrestLocation": {
+"$ref": "./nc.schema.json#/definitions/nc:LocationType","description": "A location where a subject was arrested."
+}
+,
+"j:ArrestOfficial": {
+"$ref": "#/definitions/j:EnforcementOfficialType","description": "A peace official who makes an arrest."
+}
+,
+"j:ArrestSubject": {
+"$ref": "#/definitions/j:SubjectType","description": "A person who is arrested."
+}
+,
+"j:ArrestType": {
+"additionalProperties" : false,"description": "A data type for the apprehension of a subject by a peace official.","properties": {
+"j:ArrestAgency": {
+"description": "An agency which employs the arresting official.","$ref": "#/definitions/j:ArrestAgency"
+},"j:ArrestAgencyRecordIdentification": {
+"description": "A records management system identification of the originating case agency for an arrest.","$ref": "#/definitions/j:ArrestAgencyRecordIdentification"
+},"j:ArrestCharge": {
+"description": "A formal allegation of a violation of a statute and/or ordinance in association with an arrest.","oneOf": [{
+"$ref": "#/definitions/j:ArrestCharge"
+},
+{
+"items": {
+"$ref": "#/definitions/j:ArrestCharge"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:ArrestLocation": {
+"description": "A location where a subject was arrested.","$ref": "#/definitions/j:ArrestLocation"
+},"j:ArrestOfficial": {
+"description": "A peace official who makes an arrest.","$ref": "#/definitions/j:ArrestOfficial"
+},"j:ArrestSubject": {
+"description": "A person who is arrested.","$ref": "#/definitions/j:ArrestSubject"
+},"j:ArrestWarrant": {
+"description": "A court authorized order which commands a peace official to arrest a subject and bring that subject before the court.","$ref": "#/definitions/j:ArrestWarrant"
+},"j:Booking": {
+"description": "An administrative step taken after an arrested subject is brought to a police station or detention facility, which involves entry of the subject's name and other relevant facts on the police blotter, and which may also include photographing,","$ref": "#/definitions/j:Booking"
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"j:ArrestWarrant": {
+"$ref": "#/definitions/j:WarrantType","description": "A court authorized order which commands a peace official to arrest a subject and bring that subject before the court."
+}
+,
+"j:Booking": {
+"$ref": "#/definitions/j:BookingType","description": "An administrative step taken after an arrested subject is brought to a police station or detention facility, which involves entry of the subject's name and other relevant facts on the police blotter, and which may also include photographing,"
+}
+,
+"j:BookingAgency": {
+"$ref": "./nc.schema.json#/definitions/nc:OrganizationType","description": "An organization which processes a booking."
+}
+,
+"j:BookingAgencyRecordIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "A booking identification of the originating case agency."
+}
+,
+"j:BookingType": {
+"additionalProperties" : false,"description": "A data type for an administrative step taken after an arrest subject is brought to a police station or detention facility.","properties": {
+"j:BookingAgency": {
+"description": "An organization which processes a booking.","$ref": "#/definitions/j:BookingAgency"
+},"j:BookingAgencyRecordIdentification": {
+"description": "A booking identification of the originating case agency.","$ref": "#/definitions/j:BookingAgencyRecordIdentification"
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"j:CaseAugmentation": {
+"$ref": "#/definitions/j:CaseAugmentationType","description": "Additional information about a case."
+}
+,
+"j:CaseAugmentationType": {
+"additionalProperties" : false,"description": "A data type for additional information about a case.","properties": {
+"j:CaseCharge": {
+"description": "A charge or accusation a person is being tried for in a court of law.","oneOf": [{
+"$ref": "#/definitions/j:CaseCharge"
+},
+{
+"items": {
+"$ref": "#/definitions/j:CaseCharge"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CaseCourt": {
+"description": "A court of law in which the case is being tried.","$ref": "#/definitions/j:CaseCourt"
+},"j:CaseCourtEvent": {
+"description": "A court occurrence related to a case.","oneOf": [{
+"$ref": "#/definitions/j:CaseCourtEvent"
+},
+{
+"items": {
+"$ref": "#/definitions/j:CaseCourtEvent"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CaseJudge": {
+"description": "A judicial official assigned to a case.","oneOf": [{
+"$ref": "#/definitions/j:CaseJudge"
+},
+{
+"items": {
+"$ref": "#/definitions/j:CaseJudge"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CaseLineageCase": {
+"description": "A description of a case at a previous stage.","oneOf": [{
+"$ref": "#/definitions/j:CaseLineageCase"
+},
+{
+"items": {
+"$ref": "#/definitions/j:CaseLineageCase"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CaseOfficial": {
+"description": "A justice official's involvement in a court case.","oneOf": [{
+"$ref": "#/definitions/j:CaseOfficial"
+},
+{
+"items": {
+"$ref": "#/definitions/j:CaseOfficial"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CaseOtherEntity": {
+"description": "A miscellaneous entity involved in a court case.","oneOf": [{
+"$ref": "#/definitions/j:CaseOtherEntity"
+},
+{
+"items": {
+"$ref": "#/definitions/j:CaseOtherEntity"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"type": "object"
+}
+,
+"j:CaseCharge": {
+"$ref": "#/definitions/j:ChargeType","description": "A charge or accusation a person is being tried for in a court of law."
+}
+,
+"j:CaseCourt": {
+"$ref": "#/definitions/j:CourtType","description": "A court of law in which the case is being tried."
+}
+,
+"j:CaseCourtEvent": {
+"$ref": "#/definitions/j:CourtEventType","description": "A court occurrence related to a case."
+}
+,
+"j:CaseJudge": {
+"$ref": "#/definitions/j:CaseOfficialType","description": "A judicial official assigned to a case."
+}
+,
+"j:CaseLineageCase": {
+"$ref": "./nc.schema.json#/definitions/nc:CaseType","description": "A description of a case at a previous stage."
+}
+,
+"j:CaseNumberText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An identifying number for a case that this activity is a part of, where the case number belongs to the agency that owns the activity information."
+}
+,
+"j:CaseOfficial": {
+"$ref": "#/definitions/j:CaseOfficialType","description": "A justice official's involvement in a court case."
+}
+,
+"j:CaseOfficialCaseIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "A unique identification a justice official uses to identify a case."
+}
+,
+"j:CaseOfficialType": {
+"additionalProperties" : false,"description": "A data type for an official's involvement in a case.","properties": {
+"ecf:CaseOfficialAugmentation": {
+"description": "The role played by an attorney in this case.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:CaseOfficialAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:CaseOfficialAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CaseOfficialCaseIdentification": {
+"description": "A unique identification a justice official uses to identify a case.","$ref": "#/definitions/j:CaseOfficialCaseIdentification"
+},"j:JudicialOfficialBarMembership": {
+"description": "A legal capacity in which a judicial official is able to practice law.","$ref": "#/definitions/j:JudicialOfficialBarMembership"
+},"j:JudicialOfficialRegistrationIdentification": {
+"description": "An identification assigned to a judicial official after registering within a state or region.","$ref": "#/definitions/j:JudicialOfficialRegistrationIdentification"
+},"nc:RoleOfPerson": {
+"description": "A person of whom the role object is a function.","$ref": "./nc.schema.json#/definitions/nc:RoleOfPerson"
+}
+},"required" : ["nc:RoleOfPerson"],"type": "object"
+}
+,
+"j:CaseOtherEntity": {
+"$ref": "./nc.schema.json#/definitions/nc:EntityType","description": "A miscellaneous entity involved in a court case."
+}
+,
+"j:ChargeDegreeText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A degree of a charge."
+}
+,
+"j:ChargeDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A plain language description of a charge."
+}
+,
+"j:ChargeDisposition": {
+"$ref": "#/definitions/j:ChargeDispositionType","description": "A result or processing of a charge."
+}
+,
+"j:ChargeDispositionType": {
+"additionalProperties" : false,"description": "A data type for the results or processing of a charge.","properties": {
+"nc:DispositionCategoryText": {
+"description": "A kind of disposition.","$ref": "./nc.schema.json#/definitions/nc:DispositionCategoryText"
+},"nc:DispositionDate": {
+"description": "A date a disposition occurred.","$ref": "./nc.schema.json#/definitions/nc:DispositionDate"
+},"nc:DispositionDescriptionText": {
+"description": "A description of a disposition.","$ref": "./nc.schema.json#/definitions/nc:DispositionDescriptionText"
+}
+},"type": "object"
+}
+,
+"j:ChargeEnhancingAllegationCharge": {
+"$ref": "#/definitions/j:ChargeType","description": "A formal allegation, contained in at least one charging instrument, that a defendant has violated a statute and/or ordinance in association with an incident."
+}
+,
+"j:ChargeEnhancingFactor": {
+"$ref": "#/definitions/j:ChargeEnhancingFactorType","description": "A factor or reason that makes a charge more serious."
+}
+,
+"j:ChargeEnhancingFactorText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A factor or reason that makes a charge more serious."
+}
+,
+"j:ChargeEnhancingFactorType": {
+"additionalProperties" : false,"description": "A data type for a factor or reason that makes a charge more serious.","properties": {
+"j:ChargeEnhancingFactorText": {
+"description": "A factor or reason that makes a charge more serious.","$ref": "#/definitions/j:ChargeEnhancingFactorText"
+}
+},"required" : ["j:ChargeEnhancingFactorText"],"type": "object"
+}
+,
+"j:ChargeQualifierText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An additional piece of information that clarifies a charge."
+}
+,
+"j:ChargeSequenceID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A sequentially assigned identifier for charge tracking purposes."
+}
+,
+"j:ChargeSeverityLevel": {
+"$ref": "#/definitions/j:SeverityLevelType","description": "A severity level of a charge."
+}
+,
+"j:ChargeSpecialAllegationText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A factor that has enhanced a charge, making it a more serious offense."
+}
+,
+"j:ChargeStatute": {
+"$ref": "#/definitions/j:StatuteType","description": "A unique identifier of a law, rule, or ordinance within a jurisdiction that a person is accused of violating."
+}
+,
+"j:ChargeType": {
+"additionalProperties" : false,"description": "A data type for a formal allegation that a specific person has committed a specific offense.","properties": {
+"criminal:ChargeAugmentation": {
+"description": "The crime or violation a defendant is alleged or found to have committed.","oneOf": [{
+"$ref": "../criminal.schema.json#/definitions/criminal:ChargeAugmentation"
+},
+{
+"items": {
+"$ref": "../criminal.schema.json#/definitions/criminal:ChargeAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:ChargeDegreeText": {
+"description": "A degree of a charge.","$ref": "#/definitions/j:ChargeDegreeText"
+},"j:ChargeDescriptionText": {
+"description": "A plain language description of a charge.","$ref": "#/definitions/j:ChargeDescriptionText"
+},"j:ChargeDisposition": {
+"description": "A result or processing of a charge.","$ref": "#/definitions/j:ChargeDisposition"
+},"j:ChargeEnhancingAllegationCharge": {
+"description": "A formal allegation, contained in at least one charging instrument, that a defendant has violated a statute and/or ordinance in association with an incident.","$ref": "#/definitions/j:ChargeEnhancingAllegationCharge"
+},"j:ChargeEnhancingFactor": {
+"description": "A factor or reason that makes a charge more serious.","$ref": "#/definitions/j:ChargeEnhancingFactor"
+},"j:ChargeQualifierText": {
+"description": "An additional piece of information that clarifies a charge.","$ref": "#/definitions/j:ChargeQualifierText"
+},"j:ChargeSequenceID": {
+"description": "A sequentially assigned identifier for charge tracking purposes.","$ref": "#/definitions/j:ChargeSequenceID"
+},"j:ChargeSeverityLevel": {
+"description": "A severity level of a charge.","$ref": "#/definitions/j:ChargeSeverityLevel"
+},"j:ChargeSpecialAllegationText": {
+"description": "A factor that has enhanced a charge, making it a more serious offense.","$ref": "#/definitions/j:ChargeSpecialAllegationText"
+},"j:ChargeStatute": {
+"description": "A unique identifier of a law, rule, or ordinance within a jurisdiction that a person is accused of violating.","$ref": "#/definitions/j:ChargeStatute"
+}
+},"type": "object"
+}
+,
+"j:Citation": {
+"$ref": "#/definitions/j:CitationType","description": "An official summons to appear in court or pay a fine given to a subject from a peace official due to a subjects violation or infraction of a law."
+}
+,
+"j:CitationAgency": {
+"$ref": "./nc.schema.json#/definitions/nc:OrganizationType","description": "An organization for whom the citation issuing official is employed."
+}
+,
+"j:CitationDismissalConditionIndicator": {
+"$ref": "./xs.schema.json#/definitions/xs:boolean","description": "True if a citation can be dismissed if certain conditions are met; false otherwise."
+}
+,
+"j:CitationDismissalConditionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A condition to be met that can make a citation eligible for dismissal."
+}
+,
+"j:CitationIssuingOfficial": {
+"$ref": "#/definitions/j:EnforcementOfficialType","description": "A peace official who gives a citation to a subject."
+}
+,
+"j:CitationSubject": {
+"$ref": "#/definitions/j:SubjectType","description": "A person who violates a law and receives a citation."
+}
+,
+"j:CitationType": {
+"additionalProperties" : false,"description": "A data type for an official summons to appear in court or pay a fine.","properties": {
+"j:CitationAgency": {
+"description": "An organization for whom the citation issuing official is employed.","$ref": "#/definitions/j:CitationAgency"
+},"j:CitationDismissalConditionIndicator": {
+"description": "True if a citation can be dismissed if certain conditions are met; false otherwise.","$ref": "#/definitions/j:CitationDismissalConditionIndicator"
+},"j:CitationDismissalConditionText": {
+"description": "A condition to be met that can make a citation eligible for dismissal.","$ref": "#/definitions/j:CitationDismissalConditionText"
+},"j:CitationIssuingOfficial": {
+"description": "A peace official who gives a citation to a subject.","$ref": "#/definitions/j:CitationIssuingOfficial"
+},"j:CitationSubject": {
+"description": "A person who violates a law and receives a citation.","$ref": "#/definitions/j:CitationSubject"
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"j:ConveyanceColorPrimaryCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A single, upper-most, front-most, or majority color of a vehicle."
+}
+,
+"j:ConveyanceRegistration": {
+"$ref": "#/definitions/j:ConveyanceRegistrationType","description": "A registration of a conveyance with an authority."
+}
+,
+"j:ConveyanceRegistrationPlateCategoryText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A kind of registration plate or license plate of a conveyance."
+}
+,
+"j:ConveyanceRegistrationPlateIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "An identification on a metal plate fixed to a conveyance."
+}
+,
+"j:ConveyanceRegistrationType": {
+"additionalProperties" : false,"description": "A data type for a registration of a conveyance with an authority.","properties": {
+"j:ConveyanceRegistrationPlateCategoryText": {
+"description": "A kind of registration plate or license plate of a conveyance.","$ref": "#/definitions/j:ConveyanceRegistrationPlateCategoryText"
+},"j:ConveyanceRegistrationPlateIdentification": {
+"description": "An identification on a metal plate fixed to a conveyance.","$ref": "#/definitions/j:ConveyanceRegistrationPlateIdentification"
+}
+},"type": "object"
+}
+,
+"j:CourtAdministrativeUnitText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A unit within a court system responsible for record maintenance."
+}
+,
+"j:CourtAppearance": {
+"$ref": "#/definitions/j:CourtAppearanceType","description": "An appearance required of a party in a court of law on a certain date."
+}
+,
+"j:CourtAppearanceDate": {
+"$ref": "./nc.schema.json#/definitions/nc:DateType","description": "A date on which a party must appear in court."
+}
+,
+"j:CourtAppearanceType": {
+"additionalProperties" : false,"description": "A data type for an appearance required of a party in a court of law on a certain date.","properties": {
+"j:CourtAppearanceDate": {
+"description": "A date on which a party must appear in court.","$ref": "#/definitions/j:CourtAppearanceDate"
+}
+},"type": "object"
+}
+,
+"j:CourtEventJudge": {
+"$ref": "#/definitions/j:JudicialOfficialType","description": "A judge associated with a court event."
+}
+,
+"j:CourtEventSchedule": {
+"$ref": "./nc.schema.json#/definitions/nc:ScheduleDayType","description": "A day for which a court event is scheduled."
+}
+,
+"j:CourtEventSequenceID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A unique identifier for a court case event record."
+}
+,
+"j:CourtEventType": {
+"additionalProperties" : false,"description": "A data type for a court occurrence.","properties": {
+"ecf:CourtEventAugmentation": {
+"description": "An entry in the docket or register of actions for a case.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:CourtEventAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:CourtEventAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CourtEventJudge": {
+"description": "A judge associated with a court event.","oneOf": [{
+"$ref": "#/definitions/j:CourtEventJudge"
+},
+{
+"items": {
+"$ref": "#/definitions/j:CourtEventJudge"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CourtEventSchedule": {
+"description": "A day for which a court event is scheduled.","oneOf": [{
+"$ref": "#/definitions/j:CourtEventSchedule"
+},
+{
+"items": {
+"$ref": "#/definitions/j:CourtEventSchedule"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CourtEventSequenceID": {
+"description": "A unique identifier for a court case event record.","$ref": "#/definitions/j:CourtEventSequenceID"
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"j:CourtName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a unit of a court."
+}
+,
+"j:CourtOrderType": {
+"additionalProperties" : false,"description": "A data type for a direction of a judge not including a judgement, which determines some point or directs some steps in proceedings.","properties": {
+"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"j:CourtType": {
+"additionalProperties" : false,"description": "A data type for a court or a unit of a court responsible for trying justice proceedings.","properties": {
+"ecf:OrganizationAugmentation": {
+"description": "A structure that describes a unit which conducts some sort of business or operations.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:OrganizationAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:OrganizationAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CourtName": {
+"description": "A name of a unit of a court.","$ref": "#/definitions/j:CourtName"
+},"j:OrganizationORIIdentification": {
+"description": "A unique nine character NCIC identification (ORI) assigned to a justice-related organization by the FBI CJIS Division.","$ref": "#/definitions/j:OrganizationORIIdentification"
+},"nc:OrganizationIdentification": {
+"description": "An identification that references an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationIdentification"
+},"nc:OrganizationLocation": {
+"description": "A location of an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationLocation"
+},"nc:OrganizationName": {
+"description": "A name of an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationName"
+},"nc:OrganizationPrimaryContactInformation": {
+"description": "A preferred means of contacting an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationPrimaryContactInformation"
+},"nc:OrganizationSubUnitName": {
+"description": "A name of a subdivision of an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationSubUnitName"
+},"nc:OrganizationTaxIdentification": {
+"description": "A tax identification assigned to an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationTaxIdentification"
+},"nc:OrganizationUnitName": {
+"description": "A name of a high-level division of an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationUnitName"
+}
+},"type": "object"
+}
+,
+"j:CrashDrivingRestrictionCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A Restriction assigned to an individuals driver license by the license examiner."
+}
+,
+"j:DriverLicense": {
+"$ref": "#/definitions/j:DriverLicenseType","description": "A license issued to a person granting driving privileges."
+}
+,
+"j:DriverLicenseBaseType": {
+"additionalProperties" : false,"description": "A data type for an authorization issued to a driver granting driving privileges.","properties": {
+"j:DriverLicenseExpirationDate": {
+"description": "A date after which a driver license or driver license permit is no longer valid.","$ref": "#/definitions/j:DriverLicenseExpirationDate"
+},"j:DriverLicenseIdentification": {
+"description": "A driver license identification or driver license permit identification, including the number and state.","$ref": "#/definitions/j:DriverLicenseIdentification"
+},"j:DriverLicenseIssueDate": {
+"description": "A date when a driver license or driver license permit is issued or renewed.","$ref": "#/definitions/j:DriverLicenseIssueDate"
+}
+},"required" : ["j:DriverLicenseIdentification"],"type": "object"
+}
+,
+"j:DriverLicenseCommercialClassCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A kind of commercial vehicle that a licensed driver has been examined on and approved to operate."
+}
+,
+"j:DriverLicenseExpirationDate": {
+"$ref": "./nc.schema.json#/definitions/nc:DateType","description": "A date after which a driver license or driver license permit is no longer valid."
+}
+,
+"j:DriverLicenseIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "A driver license identification or driver license permit identification, including the number and state."
+}
+,
+"j:DriverLicenseIssueDate": {
+"$ref": "./nc.schema.json#/definitions/nc:DateType","description": "A date when a driver license or driver license permit is issued or renewed."
+}
+,
+"j:DriverLicenseRestriction": {
+"$ref": "#/definitions/j:DriverLicenseRestrictionType","description": "A restriction on a driver license."
+}
+,
+"j:DriverLicenseRestrictionType": {
+"additionalProperties" : false,"description": "A data type for a restriction applicable to a driver license.","properties": {
+"j:CrashDrivingRestrictionCode": {
+"description": "A Restriction assigned to an individuals driver license by the license examiner.","$ref": "#/definitions/j:CrashDrivingRestrictionCode"
+},"j:DrivingRestrictionEndDate": {
+"description": "A date on which a special restriction ends.","$ref": "#/definitions/j:DrivingRestrictionEndDate"
+},"j:DrivingRestrictionText": {
+"description": "A category of a driving restriction.","$ref": "#/definitions/j:DrivingRestrictionText"
+}
+},"type": "object"
+}
+,
+"j:DriverLicenseType": {
+"additionalProperties" : false,"description": "A data type for a license issued to a person granting driving privileges.","properties": {
+"j:DriverLicenseCommercialClassCode": {
+"description": "A kind of commercial vehicle that a licensed driver has been examined on and approved to operate.","$ref": "#/definitions/j:DriverLicenseCommercialClassCode"
+},"j:DriverLicenseExpirationDate": {
+"description": "A date after which a driver license or driver license permit is no longer valid.","$ref": "#/definitions/j:DriverLicenseExpirationDate"
+},"j:DriverLicenseIdentification": {
+"description": "A driver license identification or driver license permit identification, including the number and state.","$ref": "#/definitions/j:DriverLicenseIdentification"
+},"j:DriverLicenseIssueDate": {
+"description": "A date when a driver license or driver license permit is issued or renewed.","$ref": "#/definitions/j:DriverLicenseIssueDate"
+},"j:DriverLicenseRestriction": {
+"description": "A restriction on a driver license.","$ref": "#/definitions/j:DriverLicenseRestriction"
+},"j:DriverLicenseWithdrawal": {
+"description": "A driver license withdrawal.","$ref": "#/definitions/j:DriverLicenseWithdrawal"
+}
+},"required" : ["j:DriverLicenseIdentification"],"type": "object"
+}
+,
+"j:DriverLicenseWithdrawal": {
+"$ref": "#/definitions/j:DriverLicenseWithdrawalType","description": "A driver license withdrawal."
+}
+,
+"j:DriverLicenseWithdrawalEffectiveDate": {
+"$ref": "./nc.schema.json#/definitions/nc:DateType","description": "A date on which a driver license withdrawal becomes effective."
+}
+,
+"j:DriverLicenseWithdrawalType": {
+"additionalProperties" : false,"description": "A data type for a driver license withdrawal.","properties": {
+"j:DriverLicenseWithdrawalEffectiveDate": {
+"description": "A date on which a driver license withdrawal becomes effective.","$ref": "#/definitions/j:DriverLicenseWithdrawalEffectiveDate"
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"j:DrivingAccidentSeverityCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A severity level of an accident, based on the most intense injury to any person or, if none were injured, so designating."
+}
+,
+"j:DrivingIncident": {
+"$ref": "#/definitions/j:DrivingIncidentType","description": "An incident involving a vehicle."
+}
+,
+"j:DrivingIncidentHazMatCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A determination of whether the incident occurred while the driver was operating a commercial vehicle that was carrying hazardous materials (that required a placard)."
+}
+,
+"j:DrivingIncidentLaserDetectionIndicator": {
+"$ref": "./xs.schema.json#/definitions/xs:boolean","description": "True if a laser was involved in the detection of an incident; false otherwise."
+}
+,
+"j:DrivingIncidentLegalSpeedRateMeasure": {
+"$ref": "./nc.schema.json#/definitions/nc:SpeedMeasureType","description": "A legally designated speed limit in the area where an incident occurred."
+}
+,
+"j:DrivingIncidentPassengerQuantityText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A number of people in a vehicle excluding the driver when an incident occurred."
+}
+,
+"j:DrivingIncidentRadarDetectionIndicator": {
+"$ref": "./xs.schema.json#/definitions/xs:boolean","description": "True if radar was involved in the detection of an incident; false otherwise."
+}
+,
+"j:DrivingIncidentRecordedSpeedRateMeasure": {
+"$ref": "./nc.schema.json#/definitions/nc:SpeedMeasureType","description": "A speed a vehicle was moving at when an incident occurred."
+}
+,
+"j:DrivingIncidentType": {
+"additionalProperties" : false,"description": "A data type for details of an incident involving a vehicle.","properties": {
+"citation:DrivingIncidentAugmentation": {
+"description": "The incident from which a traffic ticket arose.","oneOf": [{
+"$ref": "../citation.schema.json#/definitions/citation:DrivingIncidentAugmentation"
+},
+{
+"items": {
+"$ref": "../citation.schema.json#/definitions/citation:DrivingIncidentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:DrivingAccidentSeverityCode": {
+"description": "A severity level of an accident, based on the most intense injury to any person or, if none were injured, so designating.","$ref": "#/definitions/j:DrivingAccidentSeverityCode"
+},"j:DrivingIncidentHazMatCode": {
+"description": "A determination of whether the incident occurred while the driver was operating a commercial vehicle that was carrying hazardous materials (that required a placard).","$ref": "#/definitions/j:DrivingIncidentHazMatCode"
+},"j:DrivingIncidentLaserDetectionIndicator": {
+"description": "True if a laser was involved in the detection of an incident; false otherwise.","$ref": "#/definitions/j:DrivingIncidentLaserDetectionIndicator"
+},"j:DrivingIncidentLegalSpeedRateMeasure": {
+"description": "A legally designated speed limit in the area where an incident occurred.","$ref": "#/definitions/j:DrivingIncidentLegalSpeedRateMeasure"
+},"j:DrivingIncidentPassengerQuantityText": {
+"description": "A number of people in a vehicle excluding the driver when an incident occurred.","$ref": "#/definitions/j:DrivingIncidentPassengerQuantityText"
+},"j:DrivingIncidentRadarDetectionIndicator": {
+"description": "True if radar was involved in the detection of an incident; false otherwise.","$ref": "#/definitions/j:DrivingIncidentRadarDetectionIndicator"
+},"j:DrivingIncidentRecordedSpeedRateMeasure": {
+"description": "A speed a vehicle was moving at when an incident occurred.","$ref": "#/definitions/j:DrivingIncidentRecordedSpeedRateMeasure"
+},"j:IncidentAugmentation": {
+"description": "Additional information about an incident.","oneOf": [{
+"$ref": "#/definitions/j:IncidentAugmentation"
+},
+{
+"items": {
+"$ref": "#/definitions/j:IncidentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"juvenile:IncidentAugmentation": {
+"description": "The statutory or ordinance section, the violation of which would constitute a crime if committed by an adult. May include a probation violation.","oneOf": [{
+"$ref": "../juvenile.schema.json#/definitions/juvenile:IncidentAugmentation"
+},
+{
+"items": {
+"$ref": "../juvenile.schema.json#/definitions/juvenile:IncidentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+},"nc:IncidentLocation": {
+"description": "A location where an incident occurred.","$ref": "./nc.schema.json#/definitions/nc:IncidentLocation"
+}
+},"type": "object"
+}
+,
+"j:DrivingRestrictionEndDate": {
+"$ref": "./nc.schema.json#/definitions/nc:DateType","description": "A date on which a special restriction ends."
+}
+,
+"j:DrivingRestrictionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A category of a driving restriction."
+}
+,
+"j:DrivingRestrictionType": {
+"additionalProperties" : false,"description": "A data type for a restriction applicable to a driver permit or license.","properties": {
+"j:CrashDrivingRestrictionCode": {
+"description": "A Restriction assigned to an individuals driver license by the license examiner.","$ref": "#/definitions/j:CrashDrivingRestrictionCode"
+},"j:DrivingRestrictionEndDate": {
+"description": "A date on which a special restriction ends.","$ref": "#/definitions/j:DrivingRestrictionEndDate"
+},"j:DrivingRestrictionText": {
+"description": "A category of a driving restriction.","$ref": "#/definitions/j:DrivingRestrictionText"
+}
+},"type": "object"
+}
+,
+"j:EnforcementOfficialBadgeIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "An identification used to refer to an enforcement official."
+}
+,
+"j:EnforcementOfficialType": {
+"additionalProperties" : false,"description": "A data type for a person involved in the enforcement of law.","properties": {
+"j:EnforcementOfficialBadgeIdentification": {
+"description": "An identification used to refer to an enforcement official.","$ref": "#/definitions/j:EnforcementOfficialBadgeIdentification"
+},"j:EnforcementOfficialUnavailableSchedule": {
+"description": "A set of dates and times an enforcement official is unavailable for scheduling.","$ref": "#/definitions/j:EnforcementOfficialUnavailableSchedule"
+},"j:EnforcementOfficialUnit": {
+"description": "An enforcement unit to which an enforcement officer is assigned.","$ref": "#/definitions/j:EnforcementOfficialUnit"
+},"nc:RoleOfPerson": {
+"description": "A person of whom the role object is a function.","$ref": "./nc.schema.json#/definitions/nc:RoleOfPerson"
+}
+},"required" : ["nc:RoleOfPerson"],"type": "object"
+}
+,
+"j:EnforcementOfficialUnavailableSchedule": {
+"$ref": "./nc.schema.json#/definitions/nc:ScheduleDayType","description": "A set of dates and times an enforcement official is unavailable for scheduling."
+}
+,
+"j:EnforcementOfficialUnit": {
+"$ref": "#/definitions/j:EnforcementUnitType","description": "An enforcement unit to which an enforcement officer is assigned."
+}
+,
+"j:EnforcementUnitName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of an enforcement unit."
+}
+,
+"j:EnforcementUnitType": {
+"additionalProperties" : false,"description": "A data type for a unit of an agency responsible for enforcing the law and maintaining peace.","properties": {
+"ecf:OrganizationAugmentation": {
+"description": "A structure that describes a unit which conducts some sort of business or operations.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:OrganizationAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:OrganizationAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:EnforcementUnitName": {
+"description": "A name of an enforcement unit.","$ref": "#/definitions/j:EnforcementUnitName"
+},"j:OrganizationORIIdentification": {
+"description": "A unique nine character NCIC identification (ORI) assigned to a justice-related organization by the FBI CJIS Division.","$ref": "#/definitions/j:OrganizationORIIdentification"
+},"nc:OrganizationIdentification": {
+"description": "An identification that references an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationIdentification"
+},"nc:OrganizationLocation": {
+"description": "A location of an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationLocation"
+},"nc:OrganizationName": {
+"description": "A name of an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationName"
+},"nc:OrganizationPrimaryContactInformation": {
+"description": "A preferred means of contacting an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationPrimaryContactInformation"
+},"nc:OrganizationSubUnitName": {
+"description": "A name of a subdivision of an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationSubUnitName"
+},"nc:OrganizationTaxIdentification": {
+"description": "A tax identification assigned to an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationTaxIdentification"
+},"nc:OrganizationUnitName": {
+"description": "A name of a high-level division of an organization.","$ref": "./nc.schema.json#/definitions/nc:OrganizationUnitName"
+}
+},"type": "object"
+}
+,
+"j:IncidentAugmentation": {
+"$ref": "#/definitions/j:IncidentAugmentationType","description": "Additional information about an incident."
+}
+,
+"j:IncidentAugmentationType": {
+"additionalProperties" : false,"description": "A data type for additional information about an incident.","properties": {
+"j:IncidentDamagedItem": {
+"description": "A property item that was damaged in an incident.","$ref": "#/definitions/j:IncidentDamagedItem"
+},"j:IncidentLevelCode": {
+"description": "A level of an incident.","$ref": "#/definitions/j:IncidentLevelCode"
+},"j:IncidentOfficialPresentIndicator": {
+"description": "True if an official was present when an incident occurred; false otherwise.","$ref": "#/definitions/j:IncidentOfficialPresentIndicator"
+},"j:IncidentTrafficAccidentInvolvedIndicator": {
+"description": "True if an incident involved a traffic accident; false otherwise.","$ref": "#/definitions/j:IncidentTrafficAccidentInvolvedIndicator"
+},"juvenile:DelinquentActCategoryCode": {
+"description": "Code indicating the general category of the offense as set forth in state law. Allowable values set forth in Court Policy. Examples: Attempt, Conspiracy, Accessory before the fact, Accessory after the fact.","$ref": "../juvenile.schema.json#/definitions/juvenile:DelinquentActCategoryCode"
+}
+},"type": "object"
+}
+,
+"j:IncidentDamagedItem": {
+"$ref": "./nc.schema.json#/definitions/nc:ItemType","description": "A property item that was damaged in an incident."
+}
+,
+"j:IncidentLevelCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A level of an incident."
+}
+,
+"j:IncidentOfficialPresentIndicator": {
+"$ref": "./xs.schema.json#/definitions/xs:boolean","description": "True if an official was present when an incident occurred; false otherwise."
+}
+,
+"j:IncidentTrafficAccidentInvolvedIndicator": {
+"$ref": "./xs.schema.json#/definitions/xs:boolean","description": "True if an incident involved a traffic accident; false otherwise."
+}
+,
+"j:IncidentViolatedStatuteAssociation": {
+"$ref": "#/definitions/j:ViolatedStatuteAssociationType","description": "An association providing details about a statute, rule, or ordinance that was violated in an incident."
+}
+,
+"j:ItemRegistrationType": {
+"additionalProperties" : false,"description": "A data type for a registration of a property item with an authority.","properties": {
+
+},"type": "object"
+}
+,
+"j:ItemTotalDamageValue": {
+"$ref": "./nc.schema.json#/definitions/nc:ItemValueType","description": "A monetary value or worth of damage that occurred to a property item."
+}
+,
+"j:Judge": {
+"$ref": "#/definitions/j:JudicialOfficialType","description": "An official who hears and decides a case or who rules over a case proceeding."
+}
+,
+"j:JudicialOfficialBarIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "An identification assigned to a judicial official after meeting the requirement to practice law in a region."
+}
+,
+"j:JudicialOfficialBarMembership": {
+"$ref": "#/definitions/j:JudicialOfficialBarMembershipType","description": "A legal capacity in which a judicial official is able to practice law."
+}
+,
+"j:JudicialOfficialBarMembershipType": {
+"additionalProperties" : false,"description": "A data type for a legal capacity in which a judicial official is able to practice law.","properties": {
+"j:JudicialOfficialBarIdentification": {
+"description": "An identification assigned to a judicial official after meeting the requirement to practice law in a region.","$ref": "#/definitions/j:JudicialOfficialBarIdentification"
+}
+},"type": "object"
+}
+,
+"j:JudicialOfficialRegistrationIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "An identification assigned to a judicial official after registering within a state or region."
+}
+,
+"j:JudicialOfficialType": {
+"additionalProperties" : false,"description": "A data type for a person involved in a judicial area of government.","properties": {
+"j:JudicialOfficialBarMembership": {
+"description": "A legal capacity in which a judicial official is able to practice law.","$ref": "#/definitions/j:JudicialOfficialBarMembership"
+},"j:JudicialOfficialRegistrationIdentification": {
+"description": "An identification assigned to a judicial official after registering within a state or region.","$ref": "#/definitions/j:JudicialOfficialRegistrationIdentification"
+},"nc:RoleOfPerson": {
+"description": "A person of whom the role object is a function.","$ref": "./nc.schema.json#/definitions/nc:RoleOfPerson"
+}
+},"required" : ["nc:RoleOfPerson"],"type": "object"
+}
+,
+"j:JurisdictionANSID20AuthorityCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "An area, state, region, or other geographic unit over which some kind of authority exists."
+}
+,
+"j:LocationStateNCICLISCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A state, commonwealth, province, or other such geopolitical subdivision of a country."
+}
+,
+"j:Offense": {
+"$ref": "#/definitions/j:OffenseType","description": "An act or a course of action which may constitute a violation of a criminal statute, ordinance or rule that occurred during an incident."
+}
+,
+"j:OffenseChargeAssociation": {
+"$ref": "#/definitions/j:OffenseChargeAssociationType","description": "A relationship between an offense that occurred and the formal charge that was assigned to it as a result of classifying the offense."
+}
+,
+"j:OffenseChargeAssociationType": {
+"additionalProperties" : false,"description": "A data type for a relationship between an offense that occurred and the formal charge that was assigned to it as a result of classifying the offense.","properties": {
+"j:Offense": {
+"description": "An act or a course of action which may constitute a violation of a criminal statute, ordinance or rule that occurred during an incident.","$ref": "#/definitions/j:Offense"
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "./nc.schema.json#/definitions/nc:AssociationDescriptionText"
+}
+},"type": "object"
+}
+,
+"j:OffenseLocationAssociation": {
+"$ref": "#/definitions/j:OffenseLocationAssociationType","description": "A relationship between an offense and a location at which the offense occurred."
+}
+,
+"j:OffenseLocationAssociationType": {
+"additionalProperties" : false,"description": "A data type for a relationship between an offense and a location at which the offense occurred.","properties": {
+"j:Offense": {
+"description": "An act or a course of action which may constitute a violation of a criminal statute, ordinance or rule that occurred during an incident.","$ref": "#/definitions/j:Offense"
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "./nc.schema.json#/definitions/nc:AssociationDescriptionText"
+},"nc:Location": {
+"description": "A geospatial location.","$ref": "./nc.schema.json#/definitions/nc:Location"
+}
+},"type": "object"
+}
+,
+"j:OffenseType": {
+"additionalProperties" : false,"description": "A data type for an alleged violation of a statute, ordinance, or rule.","properties": {
+"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"j:OrganizationAlternateName": {
+"$ref": "#/definitions/j:OrganizationAlternateNameType","description": "A name other than the primary one used by an organization."
+}
+,
+"j:OrganizationAlternateNameCategoryCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A kind of alternate name used by an organization."
+}
+,
+"j:OrganizationAlternateNameType": {
+"additionalProperties" : false,"description": "A data type for another name used by an organization.","properties": {
+"j:OrganizationAlternateNameCategoryCode": {
+"description": "A kind of alternate name used by an organization.","$ref": "#/definitions/j:OrganizationAlternateNameCategoryCode"
+}
+},"type": "object"
+}
+,
+"j:OrganizationAugmentationType": {
+"additionalProperties" : false,"description": "A data type for additional information about an organization.","properties": {
+"j:OrganizationAlternateName": {
+"description": "A name other than the primary one used by an organization.","$ref": "#/definitions/j:OrganizationAlternateName"
+}
+},"type": "object"
+}
+,
+"j:OrganizationORIIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "A unique nine character NCIC identification (ORI) assigned to a justice-related organization by the FBI CJIS Division."
+}
+,
+"j:PersonAFISIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "An identification number issued by an agency's automatic fingerprint system based on submitted fingerprints other than FBI ID and SSN."
+}
+,
+"j:PersonAugmentation": {
+"$ref": "#/definitions/j:PersonAugmentationType","description": "Additional information about a person."
+}
+,
+"j:PersonAugmentationType": {
+"additionalProperties" : false,"description": "A data type for additional information about a person.","properties": {
+"j:PersonAFISIdentification": {
+"description": "An identification number issued by an agency's automatic fingerprint system based on submitted fingerprints other than FBI ID and SSN.","$ref": "#/definitions/j:PersonAFISIdentification"
+},"j:PersonFBIIdentification": {
+"description": "A number issued by the FBI's Automated Fingerprint Identification System (AFIS) based on submitted fingerprints.","$ref": "#/definitions/j:PersonFBIIdentification"
+},"j:PersonStateFingerprintIdentification": {
+"description": "An identifier assigned to a person by a state identification bureau, generally based on submission of the person's fingerprints to the state's Automated Fingerprint Identification System (AFIS).","$ref": "#/definitions/j:PersonStateFingerprintIdentification"
+}
+},"type": "object"
+}
+,
+"j:PersonBloodAlcoholContentAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association that links a person to a Blood Alcohol Content (BAC) Test reading, measured due to a related activity such as an arrest or a driving incident.","properties": {
+"j:PersonBloodAlcoholContentNumberText": {
+"description": "A blood-alcohol percentage reading from a Blood Alcohol Test (BAC Test).","$ref": "#/definitions/j:PersonBloodAlcoholContentNumberText"
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "./nc.schema.json#/definitions/nc:AssociationDescriptionText"
+}
+},"type": "object"
+}
+,
+"j:PersonBloodAlcoholContentNumberText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A blood-alcohol percentage reading from a Blood Alcohol Test (BAC Test)."
+}
+,
+"j:PersonChargeAssociation": {
+"$ref": "#/definitions/j:PersonChargeAssociationType","description": "An association between a person and a charge issued to that person."
+}
+,
+"j:PersonChargeAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association between a person and a charge.","properties": {
+"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "./nc.schema.json#/definitions/nc:AssociationDescriptionText"
+},"nc:Person": {
+"description": "A human being.","$ref": "./nc.schema.json#/definitions/nc:Person"
+}
+},"type": "object"
+}
+,
+"j:PersonEthnicityCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A cultural lineage of a person."
+}
+,
+"j:PersonEyeColorCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A color of the eyes of a person."
+}
+,
+"j:PersonFBIIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "A number issued by the FBI's Automated Fingerprint Identification System (AFIS) based on submitted fingerprints."
+}
+,
+"j:PersonHairColorCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A color of the hair of a person."
+}
+,
+"j:PersonNameCategoryCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A kind of name for a person."
+}
+,
+"j:PersonNameCategoryCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for possible kinds of names.","properties": {
+
+},"type": "object"
+}
+,
+"j:PersonNameCategoryCodeType": {
+"additionalProperties" : false,"description": "A data type for possible kinds of names.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"j:PersonRaceCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A classification of a person based on factors such as geographical locations and genetics."
+}
+,
+"j:PersonSexCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A gender or sex of a person."
+}
+,
+"j:PersonStateFingerprintIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "An identifier assigned to a person by a state identification bureau, generally based on submission of the person's fingerprints to the state's Automated Fingerprint Identification System (AFIS)."
+}
+,
+"j:PhysicalFeatureCategoryCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A specific kind of physical feature."
+}
+,
+"j:ProtectionOrder": {
+"$ref": "#/definitions/j:ProtectionOrderType","description": "A civil order, issued by a court, protecting one individual from another."
+}
+,
+"j:ProtectionOrderConditionCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A specific kind of protection order."
+}
+,
+"j:ProtectionOrderConditionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A Translation of the Protection Order Condition Indicates Response Message."
+}
+,
+"j:ProtectionOrderRestrictedPerson": {
+"$ref": "./nc.schema.json#/definitions/nc:PersonType","description": "A person that a subject is restricted from having any contact with as defined in a protection order."
+}
+,
+"j:ProtectionOrderType": {
+"additionalProperties" : false,"description": "A data type for a civil order protecting one individual from another.","properties": {
+"j:ProtectionOrderConditionCode": {
+"description": "A specific kind of protection order.","$ref": "#/definitions/j:ProtectionOrderConditionCode"
+},"j:ProtectionOrderConditionText": {
+"description": "A Translation of the Protection Order Condition Indicates Response Message.","$ref": "#/definitions/j:ProtectionOrderConditionText"
+},"j:ProtectionOrderRestrictedPerson": {
+"description": "A person that a subject is restricted from having any contact with as defined in a protection order.","$ref": "#/definitions/j:ProtectionOrderRestrictedPerson"
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"required" : ["j:ProtectionOrderConditionText", "j:ProtectionOrderRestrictedPerson"],"type": "object"
+}
+,
+"j:RapSheetTransactionControlIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "A Transaction Control Number (TCN) is the identification for a fingerprint event, submitted from the Livescan device to AFIS when transmitting fingerprints.  The TCN links the offender to the fingerprint event."
+}
+,
+"j:RegisteredOffenderIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "An identification identifying a person as a certain kind of registered offender."
+}
+,
+"j:RegisteredOffenderType": {
+"additionalProperties" : false,"description": "A data type for information about a person who is required to register information with a law enforcement agency due to having been convicted of a certain type of crime.","properties": {
+"j:RegisteredOffenderIdentification": {
+"description": "An identification identifying a person as a certain kind of registered offender.","$ref": "#/definitions/j:RegisteredOffenderIdentification"
+},"j:RegisteredSexOffender": {
+"description": "A person who is required to register as a sexual offender.","$ref": "#/definitions/j:RegisteredSexOffender"
+}
+},"type": "object"
+}
+,
+"j:RegisteredSexOffender": {
+"$ref": "#/definitions/j:RegisteredOffenderType","description": "A person who is required to register as a sexual offender."
+}
+,
+"j:Sentence": {
+"$ref": "#/definitions/j:SentenceType","description": "A punishment resulting from conviction of charges in a court case."
+}
+,
+"j:SentenceCharge": {
+"$ref": "#/definitions/j:ChargeType","description": "A specific charge in a court case resulting in a sentence."
+}
+,
+"j:SentenceDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of the sentence being imposed."
+}
+,
+"j:SentenceTerm": {
+"$ref": "#/definitions/j:TermType","description": "A duration of a sentence. Specified as either a specific term in days-months-years or as a minimum - maximum range."
+}
+,
+"j:SentenceType": {
+"additionalProperties" : false,"description": "A data type for a punishment resulting from conviction of charges in a court case.","properties": {
+"criminal:SentenceAugmentation": {
+"description": "A sentence associated with a specific charge in a case. A sentence may have multiple components (prison, probation, post-incarceration supervision/probation fine, etc.).","oneOf": [{
+"$ref": "../criminal.schema.json#/definitions/criminal:SentenceAugmentation"
+},
+{
+"items": {
+"$ref": "../criminal.schema.json#/definitions/criminal:SentenceAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:SentenceCharge": {
+"description": "A specific charge in a court case resulting in a sentence.","oneOf": [{
+"$ref": "#/definitions/j:SentenceCharge"
+},
+{
+"items": {
+"$ref": "#/definitions/j:SentenceCharge"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"j:SentenceDescriptionText": {
+"description": "A description of the sentence being imposed.","$ref": "#/definitions/j:SentenceDescriptionText"
+},"j:SentenceTerm": {
+"description": "A duration of a sentence. Specified as either a specific term in days-months-years or as a minimum - maximum range.","$ref": "#/definitions/j:SentenceTerm"
+},"j:SupervisionFineAmount": {
+"description": "A pecuniary criminal punishment or penalty payable to the public treasury","oneOf": [{
+"$ref": "#/definitions/j:SupervisionFineAmount"
+},
+{
+"items": {
+"$ref": "#/definitions/j:SupervisionFineAmount"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"required" : ["j:SentenceCharge"],"type": "object"
+}
+,
+"j:SeverityLevelDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A narrative description of a severity level assigned to a charge."
+}
+,
+"j:SeverityLevelType": {
+"additionalProperties" : false,"description": "A data type for a sentencing guideline severity level assigned to a charge by a judge or supervising agency.","properties": {
+"j:SeverityLevelDescriptionText": {
+"description": "A narrative description of a severity level assigned to a charge.","$ref": "#/definitions/j:SeverityLevelDescriptionText"
+}
+},"type": "object"
+}
+,
+"j:Statute": {
+"$ref": "#/definitions/j:StatuteType","description": "A unique identifier of a law, rule, or ordinance within a jurisdiction."
+}
+,
+"j:StatuteCodeIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "An identification number of a set of laws for a particular jurisdiction."
+}
+,
+"j:StatuteCodeSectionIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "An identification of a section or category within a code book."
+}
+,
+"j:StatuteDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of a statute."
+}
+,
+"j:StatuteJurisdiction": {
+"$ref": "./nc.schema.json#/definitions/nc:JurisdictionType","description": "An area in which a statute applies."
+}
+,
+"j:StatuteLevelText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A level of crime a statute applies to."
+}
+,
+"j:StatuteOffenseIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "An identification of a criminal offense within a code book."
+}
+,
+"j:StatuteType": {
+"additionalProperties" : false,"description": "A data type for a law, rule, or ordinance within a jurisdiction.","properties": {
+"j:StatuteCodeIdentification": {
+"description": "An identification number of a set of laws for a particular jurisdiction.","$ref": "#/definitions/j:StatuteCodeIdentification"
+},"j:StatuteCodeSectionIdentification": {
+"description": "An identification of a section or category within a code book.","$ref": "#/definitions/j:StatuteCodeSectionIdentification"
+},"j:StatuteDescriptionText": {
+"description": "A description of a statute.","$ref": "#/definitions/j:StatuteDescriptionText"
+},"j:StatuteJurisdiction": {
+"description": "An area in which a statute applies.","$ref": "#/definitions/j:StatuteJurisdiction"
+},"j:StatuteLevelText": {
+"description": "A level of crime a statute applies to.","$ref": "#/definitions/j:StatuteLevelText"
+},"j:StatuteOffenseIdentification": {
+"description": "An identification of a criminal offense within a code book.","$ref": "#/definitions/j:StatuteOffenseIdentification"
+}
+},"required" : ["j:StatuteCodeIdentification", "j:StatuteOffenseIdentification"],"type": "object"
+}
+,
+"j:SubjectIdentification": {
+"$ref": "./nc.schema.json#/definitions/nc:IdentificationType","description": "An assigned identification that identifies a subject."
+}
+,
+"j:SubjectSupervision": {
+"$ref": "./nc.schema.json#/definitions/nc:SupervisionType","description": "An incarceration, detention, or other form of supervision a subject is currently undergoing."
+}
+,
+"j:SubjectType": {
+"additionalProperties" : false,"description": "A data type for a person or organization that is involved or suspected of being involved in a violation of a criminal statute, ordinance or rule.","properties": {
+"citation:SubjectAugmentation": {
+"description": "A person named in a citation alleged to have violated a statute or ordinance.","oneOf": [{
+"$ref": "../citation.schema.json#/definitions/citation:SubjectAugmentation"
+},
+{
+"items": {
+"$ref": "../citation.schema.json#/definitions/citation:SubjectAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:SubjectAugmentation": {
+"description": "A person or organization alleged or found to have committed a crime or violation.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:SubjectAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:SubjectAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:SubjectIdentification": {
+"description": "An assigned identification that identifies a subject.","$ref": "#/definitions/j:SubjectIdentification"
+},"j:SubjectSupervision": {
+"description": "An incarceration, detention, or other form of supervision a subject is currently undergoing.","$ref": "#/definitions/j:SubjectSupervision"
+},"nc:RoleOfPerson": {
+"description": "A person of whom the role object is a function.","$ref": "./nc.schema.json#/definitions/nc:RoleOfPerson"
+}
+},"required" : ["nc:RoleOfPerson"],"type": "object"
+}
+,
+"j:SupervisionFineAmount": {
+"$ref": "./nc.schema.json#/definitions/nc:AmountType","description": "A pecuniary criminal punishment or penalty payable to the public treasury"
+}
+,
+"j:TermType": {
+"additionalProperties" : false,"description": "A data type for a duration length either in specific terms or as a range.","properties": {
+"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"j:VehicleMakeCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A manufacturer of a vehicle."
+}
+,
+"j:VehicleModelCode": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A specific design or class of vehicle made by a manufacturer."
+}
+,
+"j:VehicleStyleCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A style of a vehicle."
+}
+,
+"j:ViolatedStatuteAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association of a statute that has been violated and other information.","properties": {
+"j:Statute": {
+"description": "A unique identifier of a law, rule, or ordinance within a jurisdiction.","$ref": "#/definitions/j:Statute"
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "./nc.schema.json#/definitions/nc:AssociationDescriptionText"
+}
+},"required" : ["j:Statute"],"type": "object"
+}
+,
+"j:WarrantExtraditionLimitationCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A kind of limitation placed on the extradition of a subject from an area outside the immediate jurisdiction of the issuing court."
+}
+,
+"j:WarrantType": {
+"additionalProperties" : false,"description": "A data type for an authorization for an enforcement official to perform a specified action.","properties": {
+"j:WarrantExtraditionLimitationCode": {
+"description": "A kind of limitation placed on the extradition of a subject from an area outside the immediate jurisdiction of the issuing court.","$ref": "#/definitions/j:WarrantExtraditionLimitationCode"
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

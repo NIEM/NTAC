@@ -1,0 +1,179 @@
+{
+"$id" : "http://release.niem.gov/niem/domains/cbrn/4.1/"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"cbrn" : "http://release.niem.gov/niem/domains/cbrn/4.1/#"
+,
+
+"cbrncl" : "http://release.niem.gov/niem/codes/cbrncl/4.0/#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"cbrn:CredentialsAuthenticatedCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A verfication of the authenticating credentials."
+}
+,
+"cbrn:ErrorCodeDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of an error code in free form text."
+}
+,
+"cbrn:ErrorCodeText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An error code."
+}
+,
+"cbrn:ErrorDescription": {
+"$ref": "#/definitions/cbrn:MessageErrorType","description": "A text description of an error that occurred at a specific XML tag while processing an XML message."
+}
+,
+"cbrn:ErrorNodeName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of the XML tag at which an error occurred."
+}
+,
+"cbrn:MessageContentError": {
+"$ref": "#/definitions/cbrn:MessageContentErrorType","description": "A set of information about the point in the xml payload content of a message where an error occurred in processing the message."
+}
+,
+"cbrn:MessageContentErrorType": {
+"additionalProperties" : false,"description": "A data type that provides information about the point in the xml payload content of a message where an error occurred in processing the message.","properties": {
+"cbrn:ErrorDescription": {
+"description": "A text description of an error that occurred at a specific XML tag while processing an XML message.","$ref": "#/definitions/cbrn:ErrorDescription"
+},"cbrn:ErrorNodeName": {
+"description": "A name of the XML tag at which an error occurred.","$ref": "#/definitions/cbrn:ErrorNodeName"
+}
+},"required" : ["cbrn:ErrorDescription", "cbrn:ErrorNodeName"],"type": "object"
+}
+,
+"cbrn:MessageErrorType": {
+"additionalProperties" : false,"description": "A data type that describes a message error.","properties": {
+"cbrn:ErrorCodeDescriptionText": {
+"description": "A description of an error code in free form text.","$ref": "#/definitions/cbrn:ErrorCodeDescriptionText"
+},"cbrn:ErrorCodeText": {
+"description": "An error code.","$ref": "#/definitions/cbrn:ErrorCodeText"
+}
+},"required" : ["cbrn:ErrorCodeText"],"type": "object"
+}
+,
+"cbrn:MessageHandlingError": {
+"$ref": "#/definitions/cbrn:MessageErrorType","description": "A description of a  message error encountered by an infrastructure component in the process of message handling and transmission."
+}
+,
+"cbrn:MessageStatus": {
+"$ref": "#/definitions/cbrn:MessageStatusType","description": "A status of the message."
+}
+,
+"cbrn:MessageStatusCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A code for the receiving status of a message."
+}
+,
+"cbrn:MessageStatusType": {
+"additionalProperties" : false,"description": "A data type to provide success or error feedback on a message that has been received.","properties": {
+"cbrn:CredentialsAuthenticatedCode": {
+"description": "A verfication of the authenticating credentials.","$ref": "#/definitions/cbrn:CredentialsAuthenticatedCode"
+},"cbrn:MessageContentError": {
+"description": "A set of information about the point in the xml payload content of a message where an error occurred in processing the message.","oneOf": [{
+"$ref": "#/definitions/cbrn:MessageContentError"
+},
+{
+"items": {
+"$ref": "#/definitions/cbrn:MessageContentError"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"cbrn:MessageHandlingError": {
+"description": "A description of a  message error encountered by an infrastructure component in the process of message handling and transmission.","$ref": "#/definitions/cbrn:MessageHandlingError"
+},"cbrn:MessageStatusCode": {
+"description": "A code for the receiving status of a message.","$ref": "#/definitions/cbrn:MessageStatusCode"
+},"cbrn:ResendRequestIndicator": {
+"description": "True if the message should be resent; false otherwise.","$ref": "#/definitions/cbrn:ResendRequestIndicator"
+},"cbrn:SystemEventDateTime": {
+"description": "A date and time of a system event.","$ref": "#/definitions/cbrn:SystemEventDateTime"
+},"cbrn:SystemOperatingModeCode": {
+"description": "A code for an operating mode of a system.","$ref": "#/definitions/cbrn:SystemOperatingModeCode"
+},"ecf:MessageStatusAugmentation": {
+"description": "A value describing the status of electronic service on a particular recipient.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:MessageStatusAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:MessageStatusAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"required" : ["cbrn:CredentialsAuthenticatedCode", "cbrn:MessageHandlingError", "cbrn:MessageStatusCode", "cbrn:ResendRequestIndicator"],"type": "object"
+}
+,
+"cbrn:MultimediaDataMIMEKindText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A media type listed in http://www.iana.org/assignments/media-types/index.html.  If the media type is not listed, then describe the media type using free-form text."
+}
+,
+"cbrn:RemarksComplexObjectType": {
+"additionalProperties" : false,"description": "A data type providing a Remark via inheritance to applicable Types.","properties": {
+
+},"type": "object"
+}
+,
+"cbrn:ResendRequestIndicator": {
+"$ref": "./xs.schema.json#/definitions/xs:boolean","description": "True if the message should be resent; false otherwise."
+}
+,
+"cbrn:SystemEventDateTime": {
+"$ref": "./xs.schema.json#/definitions/xs:dateTime","description": "A date and time of a system event."
+}
+,
+"cbrn:SystemEventType": {
+"additionalProperties" : false,"description": "A data type for a system event.","properties": {
+"cbrn:SystemEventDateTime": {
+"description": "A date and time of a system event.","$ref": "#/definitions/cbrn:SystemEventDateTime"
+},"cbrn:SystemOperatingModeCode": {
+"description": "A code for an operating mode of a system.","$ref": "#/definitions/cbrn:SystemOperatingModeCode"
+}
+},"type": "object"
+}
+,
+"cbrn:SystemOperatingModeCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A code for an operating mode of a system."
+}
+
+},
+"properties" : {
+"cbrn:MessageStatus": {
+"$ref": "#/definitions/cbrn:MessageStatusType","description": "A status of the message."
+}
+
+},
+"required" : [
+]
+}

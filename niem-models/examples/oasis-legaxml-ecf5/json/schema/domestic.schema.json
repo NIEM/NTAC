@@ -1,0 +1,239 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/domestic"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"domestic" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/domestic#"
+,
+
+"ecf" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/ecf#"
+,
+
+"hs" : "http://release.niem.gov/niem/domains/humanServices/4.1/#"
+,
+
+"j" : "http://release.niem.gov/niem/domains/jxdm/6.1/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"domestic:CaseAugmentation": {
+"$ref": "#/definitions/domestic:CaseAugmentationType","description": "Information required to initiate a new domestic case in a court.  Domestic includes divorces, legal separations, annulment, child custody and visitation, paternity, child support, and domestic violence cases."
+}
+,
+"domestic:CaseAugmentationType": {
+"additionalProperties" : false,"properties": {
+"domestic:CaseContestedIndicator": {
+"description": "Whether a divorce is contested.","$ref": "#/definitions/domestic:CaseContestedIndicator"
+},"domestic:DomesticCaseOrder": {
+"description": "Information concerning a court order in a domestic case.","oneOf": [{
+"$ref": "#/definitions/domestic:DomesticCaseOrder"
+},
+{
+"items": {
+"$ref": "#/definitions/domestic:DomesticCaseOrder"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"domestic:DomesticViolencePetition": {
+"description": "Information concerning a petition for domestic violence restraining or protective order.","$ref": "#/definitions/domestic:DomesticViolencePetition"
+},"ecf:CaseCauseOfActionCode": {
+"description": "The legal ground on which the request for relief is based.  Allowed values set forth in court policy. Example: the basis(es) for relief in a civil case; the grounds for divorce in a state that does not recognize no-fault divorce; grounds for entry of an order of protection in a domestic violence case.","$ref": "./ecf.schema.json#/definitions/ecf:CaseCauseOfActionCode"
+},"hs:ChildSupportEnforcementCase": {
+"description": "A child support enforcement case.","oneOf": [{
+"$ref": "./niem/hs.schema.json#/definitions/hs:ChildSupportEnforcementCase"
+},
+{
+"items": {
+"$ref": "./niem/hs.schema.json#/definitions/hs:ChildSupportEnforcementCase"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"hs:ParentChildAssociation": {
+"description": "An association between a child and a person who is in a parent role toward that child.","oneOf": [{
+"$ref": "./niem/hs.schema.json#/definitions/hs:ParentChildAssociation"
+},
+{
+"items": {
+"$ref": "./niem/hs.schema.json#/definitions/hs:ParentChildAssociation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"hs:PersonCaseAssociation": {
+"description": "A relationship between a person and a case.","oneOf": [{
+"$ref": "./niem/hs.schema.json#/definitions/hs:PersonCaseAssociation"
+},
+{
+"items": {
+"$ref": "./niem/hs.schema.json#/definitions/hs:PersonCaseAssociation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:PersonUnionAssociation": {
+"description": "An association between two persons who are in a state of union with each other.","$ref": "./niem/nc.schema.json#/definitions/nc:PersonUnionAssociation"
+}
+},"required" : ["ecf:CaseCauseOfActionCode"],"type": "object"
+}
+,
+"domestic:CaseContestedIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Whether a divorce is contested."
+}
+,
+"domestic:ChildSuportText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "Description of temporary child support award that the court is being asked to order."
+}
+,
+"domestic:CourtFindingsText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "A description of the findings of the court."
+}
+,
+"domestic:CustodyDescriptionText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "Description of temporary custody award that court is being asked to include in the order."
+}
+,
+"domestic:DomesticCaseOrder": {
+"$ref": "#/definitions/domestic:DomesticCaseOrderType","description": "Information concerning a court order in a domestic case."
+}
+,
+"domestic:DomesticCaseOrderType": {
+"additionalProperties" : false,"description": "Information concerning a court order in a domestic case.","properties": {
+"domestic:CourtFindingsText": {
+"description": "A description of the findings of the court.","$ref": "#/definitions/domestic:CourtFindingsText"
+},"domestic:DomesticCaseOrderTypeText": {
+"description": "Category of order, including Establish, Modify, Enforce, Modify and Enforce, and Vacate.","$ref": "#/definitions/domestic:DomesticCaseOrderTypeText"
+},"domestic:FinancialObligation": {
+"description": "A responsibility of a party in a case ordered by a court.","oneOf": [{
+"$ref": "#/definitions/domestic:FinancialObligation"
+},
+{
+"items": {
+"$ref": "#/definitions/domestic:FinancialObligation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./niem/nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./niem/nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./niem/nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./niem/nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./niem/nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./niem/nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"domestic:DomesticCaseOrderTypeText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "Category of order, including Establish, Modify, Enforce, Modify and Enforce, and Vacate."
+}
+,
+"domestic:DomesticViolencePetition": {
+"$ref": "#/definitions/domestic:DomesticViolencePetitionType","description": "Information concerning a petition for domestic violence restraining or protective order."
+}
+,
+"domestic:DomesticViolencePetitionType": {
+"additionalProperties" : false,"description": "Information concerning a petition for domestic violence restraining or protective order.","properties": {
+"domestic:ChildSuportText": {
+"description": "Description of temporary child support award that the court is being asked to order.","$ref": "#/definitions/domestic:ChildSuportText"
+},"domestic:CustodyDescriptionText": {
+"description": "Description of temporary custody award that court is being asked to include in the order.","$ref": "#/definitions/domestic:CustodyDescriptionText"
+},"domestic:RespondentDangerAlertindicator": {
+"description": "Whether the person against whom a proposed order would be entered should be considered a danger to others, including law enforcement officers responding to a domestic disturbance call.","$ref": "#/definitions/domestic:RespondentDangerAlertindicator"
+},"j:ProtectionOrder": {
+"description": "A civil order, issued by a court, protecting one individual from another.","$ref": "./niem/j.schema.json#/definitions/j:ProtectionOrder"
+}
+},"required" : ["domestic:ChildSuportText", "domestic:CustodyDescriptionText", "domestic:RespondentDangerAlertindicator"],"type": "object"
+}
+,
+"domestic:FinancialObligation": {
+"$ref": "#/definitions/domestic:FinancialObligationType","description": "A responsibility of a party in a case ordered by a court."
+}
+,
+"domestic:FinancialObligationType": {
+"additionalProperties" : false,"description": "A financial responsibility of a party in a case ordered by a court.","properties": {
+"domestic:IncomeAttachedIndicator": {
+"description": "Indicates whether the responsible party income should be attached.","$ref": "#/definitions/domestic:IncomeAttachedIndicator"
+},"domestic:ObligationPaymentAmount": {
+"description": "he amount owed each payment period.","$ref": "#/definitions/domestic:ObligationPaymentAmount"
+},"hs:StateDisbursementIndicator": {
+"description": "True if the child-support order directs the obligor to make payments to a state agency for disbursement to the custodial parent; false otherwise.","$ref": "./niem/hs.schema.json#/definitions/hs:StateDisbursementIndicator"
+},"nc:ObligationCategoryText": {
+"description": "A kind of obligation.","$ref": "./niem/nc.schema.json#/definitions/nc:ObligationCategoryText"
+},"nc:ObligationDueAmount": {
+"description": "An amount of a payment obligation that has not been made.","$ref": "./niem/nc.schema.json#/definitions/nc:ObligationDueAmount"
+},"nc:ObligationEntity": {
+"description": "An entity that must fulfill an obligation.","$ref": "./niem/nc.schema.json#/definitions/nc:ObligationEntity"
+},"nc:ObligationExemption": {
+"description": "A waiving or dismissal of an obligation.","$ref": "./niem/nc.schema.json#/definitions/nc:ObligationExemption"
+},"nc:ObligationRecipient": {
+"description": "An entity to whom an obligation must be fulfilled.","$ref": "./niem/nc.schema.json#/definitions/nc:ObligationRecipient"
+},"nc:ObligationRecurrence": {
+"description": "A periodic basis on which an obligation must be met.","$ref": "./niem/nc.schema.json#/definitions/nc:ObligationRecurrence"
+},"nc:ObligationRequirementDescriptionText": {
+"description": "A description of what is necessary in order to fulfill an obligation.","$ref": "./niem/nc.schema.json#/definitions/nc:ObligationRequirementDescriptionText"
+}
+},"required" : ["domestic:ObligationPaymentAmount", "nc:ObligationEntity"],"type": "object"
+}
+,
+"domestic:IncomeAttachedIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicates whether the responsible party income should be attached."
+}
+,
+"domestic:ObligationPaymentAmount": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:AmountType","description": "he amount owed each payment period."
+}
+,
+"domestic:RespondentDangerAlertindicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Whether the person against whom a proposed order would be entered should be considered a danger to others, including law enforcement officers responding to a domestic disturbance call."
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

@@ -1,0 +1,130 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/datecallback"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"datecallback" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/datecallback#"
+,
+
+"ecf" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/ecf#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xcal" : "urn:ietf:params:xml:ns:icalendar-2.0#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"datecallback:NotifyCourtDateMessage": {
+"$ref": "#/definitions/datecallback:NotifyCourtDateMessageType","description": "The message returned when the a court date is scheduled, generally in response to a ReserveCourtDateRequest."
+}
+,
+"datecallback:NotifyCourtDateMessageType": {
+"additionalProperties" : false,"description": "The message returned when the a court date is scheduled, generally in response to a ReserveCourtDateRequest.","properties": {
+"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "./ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "./ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:SendingMDELocationID": {
+"description": "Location for the MDE to which asynchronous and service messages can be sent. This unique location is self-assigned by the MDE.","$ref": "./ecf.schema.json#/definitions/ecf:SendingMDELocationID"
+},"ecf:ServiceInteractionProfileCode": {
+"description": "An identifier, from a list of allowed values defined in the Court Filing specification, of a message profile supported by this court.","$ref": "./ecf.schema.json#/definitions/ecf:ServiceInteractionProfileCode"
+},"j:CaseCourt": {
+"description": "A court of law in which the case is being tried.","$ref": "./niem/j.schema.json#/definitions/j:CaseCourt"
+},"nc:Case": {
+"description": "An aggregation of information about a set of related activities and events.","$ref": "./niem/nc.schema.json#/definitions/nc:Case"
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentInformationCutOffDate": {
+"description": "A date after which contributions to the content of a document will no longer be accepted.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentInformationCutOffDate"
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentPostDate": {
+"description": "A date a document is entered or posted to an information system or network; used when the date of posting is different from the date on which a document was officially filed.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentPostDate"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentTitleText"
+},"xcal:icalendar": {
+"description": "A schedule of upcoming events in a court","$ref": ""
+}
+},"required" : ["ecf:SendingMDELocationID", "ecf:ServiceInteractionProfileCode", "j:CaseCourt", "nc:DocumentIdentification", "nc:DocumentPostDate"],"type": "object"
+}
+
+},
+"properties" : {
+"datecallback:NotifyCourtDateMessage": {
+"$ref": "#/definitions/datecallback:NotifyCourtDateMessageType","description": "The message returned when the a court date is scheduled, generally in response to a ReserveCourtDateRequest."
+}
+
+},
+"required" : [
+]
+}

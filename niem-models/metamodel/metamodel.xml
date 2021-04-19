@@ -57,7 +57,7 @@
           <ObjectProperty>
             <Name>NamespacePrefixName</Name>
             <Namespace s:ref="mm" xsi:nil="true"/>
-            <DefinitionText>A namespace name URI for a namespace.</DefinitionText>
+            <DefinitionText>A namespace prefix name for a namespace.</DefinitionText>
             <Class s:ref="NCName" xsi:nil="true"/>
           </ObjectProperty>
         </HasObjectProperty>
@@ -113,7 +113,7 @@
             <Class>
               <Name>SubPropertyOfType</Name>
               <Namespace s:ref="mm" xsi:nil="true"/>
-              <DefinitionText>A data type for a description of a subproperty.</DefinitionText>
+              <DefinitionText>A data type for a subproperty.</DefinitionText>
               <ExtensionOf>
                 <Class s:ref="structures.ObjectType" xsi:nil="true"/>
                 <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
@@ -170,7 +170,7 @@
                     <Class>
                       <Name>HasValueType</Name>
                       <Namespace s:ref="mm" xsi:nil="true"/>
-                      <DefinitionText>A data type for an occurrence of a value as content of a class.</DefinitionText>
+                      <DefinitionText>A data type for an occurrence of a data value as content of a class.</DefinitionText>
                       <ExtensionOf>
                         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
                         <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
@@ -184,11 +184,11 @@
                   <ObjectProperty>
                     <Name>HasDataProperty</Name>
                     <Namespace s:ref="mm" xsi:nil="true"/>
-                    <DefinitionText>An occurrence of a data property within a class.</DefinitionText>
+                    <DefinitionText>An occurrence of a data property as content of a class.</DefinitionText>
                     <Class>
                       <Name>HasDataPropertyType</Name>
                       <Namespace s:ref="mm" xsi:nil="true"/>
-                      <DefinitionText>A data type for an occurrence of a data property within a class.</DefinitionText>
+                      <DefinitionText>A data type for an occurrence of a data property as content of a class.</DefinitionText>
                       <ExtensionOf>
                         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
                         <HasDataProperty mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
@@ -208,11 +208,11 @@
                   <ObjectProperty>
                     <Name>HasObjectProperty</Name>
                     <Namespace s:ref="mm" xsi:nil="true"/>
-                    <DefinitionText>An occurrence of an object property within a class.</DefinitionText>
+                    <DefinitionText>An occurrence of an object property as content of a class.</DefinitionText>
                     <Class>
                       <Name>HasObjectPropertyType</Name>
                       <Namespace s:ref="mm" xsi:nil="true"/>
-                      <DefinitionText>A data type for an occurrence of an object property within a class.</DefinitionText>
+                      <DefinitionText>A data type for an occurrence of an object property as content of a class.</DefinitionText>
                       <ExtensionOf>
                         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
                         <HasDataProperty mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
@@ -332,7 +332,7 @@
   <ObjectProperty s:id="Datatype">
     <Name>Datatype</Name>
     <Namespace s:ref="mm" xsi:nil="true"/>
-    <DefinitionText>A datatype.</DefinitionText>
+    <DefinitionText>A data type.</DefinitionText>
     <SubPropertyOf>
       <ObjectProperty s:ref="ModelItemAbstract" xsi:nil="true"/>
     </SubPropertyOf>
@@ -414,7 +414,7 @@
     <Class s:id="NonNegativeValueFacetType">
       <Name>NonNegativeValueFacetType</Name>
       <Namespace s:ref="mm" xsi:nil="true"/>
-      <DefinitionText>A data type for a restriction of the length of a data type.</DefinitionText>
+      <DefinitionText>A data type for a facet that carries a value that is either zero or a positive integer.</DefinitionText>
       <ExtensionOf>
         <Class s:ref="structures.ObjectType" xsi:nil="true"/>
         <HasObjectProperty mm:sequenceID="1" mm:minOccursQuantity="1" mm:maxOccursQuantity="1">
@@ -516,7 +516,7 @@
                   <Datatype>
                     <Name>WhiteSpaceFacetCodeSimpleType</Name>
                     <Namespace s:ref="mm" xsi:nil="true"/>
-                    <DefinitionText>A data type for a data type for a specification of white space for a data type.</DefinitionText>
+                    <DefinitionText>A data type for a specification of white space for a data type.</DefinitionText>
                     <RestrictionOf>
                       <Datatype s:ref="xs.string" xsi:nil="true"/>
                       <Enumeration>
@@ -583,7 +583,7 @@
   <ObjectProperty>
     <Name>TotalDigits</Name>
     <Namespace s:ref="mm" xsi:nil="true"/>
-    <DefinitionText>A restriction on the precision and of a decimal data type, via a restriction on the number of digits required to represent its value.</DefinitionText>
+    <DefinitionText>A restriction on the size and precision of a decimal data type, via a restriction on the number of digits required to represent its value.</DefinitionText>
     <SubPropertyOf>
       <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>
@@ -605,7 +605,7 @@
   <ObjectProperty>
     <Name>FractionDigits</Name>
     <Namespace s:ref="mm" xsi:nil="true"/>
-    <DefinitionText>A restriction on the precision and of a decimal data type, via a restriction on the number of digits allowed to the right of the decimal point of its decimal representation.</DefinitionText>
+    <DefinitionText>A restriction on the precision of a decimal data type, via a restriction on the number of digits allowed to the right of the decimal point of its decimal representation.</DefinitionText>
     <SubPropertyOf>
       <ObjectProperty s:ref="FacetAbstract" xsi:nil="true"/>
     </SubPropertyOf>

@@ -1,0 +1,2318 @@
+{
+"$id" : "http://release.niem.gov/niem/niem-core/4.0/"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"iso_3166" : "http://release.niem.gov/niem/codes/iso_3166-1/4.0/#"
+,
+
+"iso_4217" : "http://release.niem.gov/niem/codes/iso_4217/4.0/#"
+,
+
+"iso_639-3" : "http://release.niem.gov/niem/codes/iso_639-3/4.0/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"unece" : "http://release.niem.gov/niem/codes/unece_rec20/4.0/#"
+,
+
+"usps" : "http://release.niem.gov/niem/codes/usps_states/4.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"nc:Activity": {
+"$ref": "#/definitions/nc:ActivityType","description": "A single or set of related actions, events, or process steps."
+}
+,
+"nc:ActivityDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date of an activity."
+}
+,
+"nc:ActivityDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of an activity."
+}
+,
+"nc:ActivityDisposition": {
+"$ref": "#/definitions/nc:DispositionType","description": "A result or outcome of an activity."
+}
+,
+"nc:ActivityIdentification": {
+"$ref": "#/definitions/nc:IdentificationType","description": "An identification that references an activity."
+}
+,
+"nc:ActivityStatus": {
+"$ref": "#/definitions/nc:StatusType","description": "A status of an activity."
+}
+,
+"nc:ActivityType": {
+"additionalProperties" : false,"description": "A data type for a single or set of related actions, events, or process steps.","properties": {
+"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"nc:Address": {
+"$ref": "#/definitions/nc:AddressType","description": "A postal location to which paper mail can be directed."
+}
+,
+"nc:AddressDeliveryPointID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An identifier of a single place or unit at which mail is delivered."
+}
+,
+"nc:AddressFullText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A complete address."
+}
+,
+"nc:AddressRecipientName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a person, organization, or other recipient to whom physical mail may be sent."
+}
+,
+"nc:AddressType": {
+"additionalProperties" : false,"description": "A data type for a geophysical location described by postal information.","properties": {
+"nc:AddressDeliveryPointID": {
+"description": "An identifier of a single place or unit at which mail is delivered.","$ref": "#/definitions/nc:AddressDeliveryPointID"
+},"nc:AddressFullText": {
+"description": "A complete address.","$ref": "#/definitions/nc:AddressFullText"
+},"nc:AddressRecipientName": {
+"description": "A name of a person, organization, or other recipient to whom physical mail may be sent.","$ref": "#/definitions/nc:AddressRecipientName"
+},"nc:LocationCityName": {
+"description": "A name of a city or town.","$ref": "#/definitions/nc:LocationCityName"
+},"nc:LocationCountry": {
+"description": "A country, territory, dependency, or other such geopolitical subdivision of a location.","$ref": "#/definitions/nc:LocationCountry"
+},"nc:LocationCountyName": {
+"description": "A name of a county, parish, vicinage, or other such geopolitical subdivision of a state.","$ref": "#/definitions/nc:LocationCountyName"
+},"nc:LocationPostalCode": {
+"description": "An identifier of a post office-assigned zone for an address.","$ref": "#/definitions/nc:LocationPostalCode"
+},"nc:LocationPostalExtensionCode": {
+"description": "An identifier of a smaller area within a post office-assigned zone for an address.","$ref": "#/definitions/nc:LocationPostalExtensionCode"
+},"nc:LocationState": {
+"description": "A state, commonwealth, province, or other such geopolitical subdivision of a country.","$ref": "#/definitions/nc:LocationState"
+},"nc:LocationStateUSPostalServiceCode": {
+"description": "A state, commonwealth, province, or other such geopolitical subdivision of a country.","$ref": "#/definitions/nc:LocationStateUSPostalServiceCode"
+},"nc:LocationStreet": {
+"description": "A road, thoroughfare or highway.","$ref": "#/definitions/nc:LocationStreet"
+}
+},"type": "object"
+}
+,
+"nc:Amount": {
+"$ref": "./xs.schema.json#/definitions/xs:decimal","description": "An amount of money."
+}
+,
+"nc:AmountType": {
+"additionalProperties" : false,"description": "A data type for an amount of money.","properties": {
+"nc:Amount": {
+"description": "An amount of money.","$ref": "#/definitions/nc:Amount"
+},"nc:CurrencyCode": {
+"description": "A unit of money or exchange.","$ref": "#/definitions/nc:CurrencyCode"
+},"nc:CurrencyText": {
+"description": "A unit of money or exchange.","$ref": "#/definitions/nc:CurrencyText"
+}
+},"required" : ["nc:Amount"],"type": "object"
+}
+,
+"nc:AssociationDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of an association."
+}
+,
+"nc:AssociationType": {
+"additionalProperties" : false,"description": "A data type for an association, connection, relationship, or involvement somehow linking people, things, and/or activities together.","properties": {
+"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "#/definitions/nc:AssociationDescriptionText"
+}
+},"type": "object"
+}
+,
+"nc:Attachment": {
+"$ref": "#/definitions/nc:BinaryType","description": "A binary attachment to a report or document."
+}
+,
+"nc:Base64BinaryObject": {
+"$ref": "./xs.schema.json#/definitions/xs:base64Binary","description": "A base64 binary encoding of data."
+}
+,
+"nc:BinaryCapturer": {
+"$ref": "#/definitions/nc:EntityType","description": "An entity which captured or created a binary object."
+}
+,
+"nc:BinaryDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of a binary object."
+}
+,
+"nc:BinaryFormatText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A file format or content type of a binary object."
+}
+,
+"nc:BinaryID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An identifier that references a binary object."
+}
+,
+"nc:BinarySizeValue": {
+"$ref": "./xs.schema.json#/definitions/xs:decimal","description": "A size of a binary object in kilobytes."
+}
+,
+"nc:BinaryType": {
+"additionalProperties" : false,"description": "A data type for a digital representation of an object encoded in a binary format.","properties": {
+"nc:Base64BinaryObject": {
+"description": "A base64 binary encoding of data.","$ref": "#/definitions/nc:Base64BinaryObject"
+},"nc:BinaryCapturer": {
+"description": "An entity which captured or created a binary object.","$ref": "#/definitions/nc:BinaryCapturer"
+},"nc:BinaryDescriptionText": {
+"description": "A description of a binary object.","$ref": "#/definitions/nc:BinaryDescriptionText"
+},"nc:BinaryFormatText": {
+"description": "A file format or content type of a binary object.","$ref": "#/definitions/nc:BinaryFormatText"
+},"nc:BinaryID": {
+"description": "An identifier that references a binary object.","$ref": "#/definitions/nc:BinaryID"
+},"nc:BinarySizeValue": {
+"description": "A size of a binary object in kilobytes.","$ref": "#/definitions/nc:BinarySizeValue"
+},"nc:BinaryURI": {
+"description": "A URL or file reference of a binary object.","$ref": "#/definitions/nc:BinaryURI"
+}
+},"type": "object"
+}
+,
+"nc:BinaryURI": {
+"$ref": "./xs.schema.json#/definitions/xs:anyURI","description": "A URL or file reference of a binary object."
+}
+,
+"nc:CapabilityDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of a capacity or ability."
+}
+,
+"nc:CapabilityType": {
+"additionalProperties" : false,"description": "A data type for an ability to complete a task or execute a course of action under specified condition and level of performance.","properties": {
+"nc:CapabilityDescriptionText": {
+"description": "A description of a capacity or ability.","$ref": "#/definitions/nc:CapabilityDescriptionText"
+}
+},"type": "object"
+}
+,
+"nc:Case": {
+"$ref": "#/definitions/nc:CaseType","description": "An aggregation of information about a set of related activities and events."
+}
+,
+"nc:CaseDisposition": {
+"$ref": "#/definitions/nc:CaseDispositionType","description": "An outcome or processing of a case."
+}
+,
+"nc:CaseDispositionFinalDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date that all charges in a case were disposed."
+}
+,
+"nc:CaseDispositionType": {
+"additionalProperties" : false,"description": "A data type for an outcome or processing of a case.","properties": {
+"nc:CaseDispositionFinalDate": {
+"description": "A date that all charges in a case were disposed.","$ref": "#/definitions/nc:CaseDispositionFinalDate"
+},"nc:DispositionCategoryText": {
+"description": "A kind of disposition.","$ref": "#/definitions/nc:DispositionCategoryText"
+},"nc:DispositionDate": {
+"description": "A date a disposition occurred.","$ref": "#/definitions/nc:DispositionDate"
+},"nc:DispositionDescriptionText": {
+"description": "A description of a disposition.","$ref": "#/definitions/nc:DispositionDescriptionText"
+}
+},"type": "object"
+}
+,
+"nc:CaseDocketID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An identifier used to reference a case docket."
+}
+,
+"nc:CaseTitleText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An official name of a case."
+}
+,
+"nc:CaseType": {
+"additionalProperties" : false,"description": "A data type for an aggregation of information about a set of related activities and events.","properties": {
+"appellate:CaseAugmentation": {
+"description": "Additional information specific to appellate cases.","oneOf": [{
+"$ref": "../appellate.schema.json#/definitions/appellate:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../appellate.schema.json#/definitions/appellate:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"bankruptcy:CaseAugmentation": {
+"description": "Additional information specific to bankruptcy cases.","oneOf": [{
+"$ref": "../bankruptcy.schema.json#/definitions/bankruptcy:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../bankruptcy.schema.json#/definitions/bankruptcy:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"citation:CaseAugmentation": {
+"description": "A charge issued by a law enforcement officer for a violation requiring the person charged to plead guilty to the charge or to appear in court to contest the charge.  A citation is issued in lieu of an arrest and booking.  Violations are a subset of charges for which a law enforcement officer is authorized to issue a citation in lieu of arrest and booking.  Examples:  traffic ticket, parking ticket or ticket issued for some other ordinance violation such as barking dog or illegal dumping.","oneOf": [{
+"$ref": "../citation.schema.json#/definitions/citation:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../citation.schema.json#/definitions/citation:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"civil:CaseAugmentation": {
+"description": "Information required to initiate a new civil case in a court.  Civil includes conservatorships, guardianships, mental health and probate.","oneOf": [{
+"$ref": "../civil.schema.json#/definitions/civil:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../civil.schema.json#/definitions/civil:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"criminal:CaseAugmentation": {
+"description": "Information required to initiate a new criminal case in a court.  Criminal includes felonies and misdemeanors.","oneOf": [{
+"$ref": "../criminal.schema.json#/definitions/criminal:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../criminal.schema.json#/definitions/criminal:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"domestic:CaseAugmentation": {
+"description": "Information required to initiate a new domestic case in a court.  Domestic includes divorces, legal separations, annulment, child custody and visitation, paternity, child support, and domestic violence cases.","oneOf": [{
+"$ref": "../domestic.schema.json#/definitions/domestic:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../domestic.schema.json#/definitions/domestic:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:CaseAugmentation": {
+"description": "Information about a court case.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CaseAugmentation": {
+"description": "Additional information about a case.","oneOf": [{
+"$ref": "./j.schema.json#/definitions/j:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "./j.schema.json#/definitions/j:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"juvenile:CaseAugmentation": {
+"description": "A delinquency or dependency case.","oneOf": [{
+"$ref": "../juvenile.schema.json#/definitions/juvenile:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../juvenile.schema.json#/definitions/juvenile:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "#/definitions/nc:CaseDisposition"
+},"nc:CaseTitleText": {
+"description": "An official name of a case.","$ref": "#/definitions/nc:CaseTitleText"
+}
+},"type": "object"
+}
+,
+"nc:ContactEmailID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An electronic mailing address by which a person or organization may be contacted."
+}
+,
+"nc:ContactEntity": {
+"$ref": "#/definitions/nc:EntityType","description": "An entity that may be contacted by using the given contact information."
+}
+,
+"nc:ContactEntityDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of the entity being contacted."
+}
+,
+"nc:ContactInformation": {
+"$ref": "#/definitions/nc:ContactInformationType","description": "A set of details about how to contact a person or an organization."
+}
+,
+"nc:ContactInformationAvailabilityCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A period of time or a situation in which an entity is available to be contacted with the given contact information."
+}
+,
+"nc:ContactInformationAvailabilityCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for a period of time or a situation in which an entity is available to be contacted with the given contact information.","properties": {
+
+},"type": "object"
+}
+,
+"nc:ContactInformationAvailabilityCodeType": {
+"additionalProperties" : false,"description": "A data type for a period of time or a situation in which an entity is available to be contacted with the given contact information.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"nc:ContactInformationDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of the contact information."
+}
+,
+"nc:ContactInformationType": {
+"additionalProperties" : false,"description": "A data type for how to contact a person or an organization.","properties": {
+"nc:ContactEmailID": {
+"description": "An electronic mailing address by which a person or organization may be contacted.","oneOf": [{
+"$ref": "#/definitions/nc:ContactEmailID"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:ContactEmailID"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ContactEntity": {
+"description": "An entity that may be contacted by using the given contact information.","$ref": "#/definitions/nc:ContactEntity"
+},"nc:ContactEntityDescriptionText": {
+"description": "A description of the entity being contacted.","$ref": "#/definitions/nc:ContactEntityDescriptionText"
+},"nc:ContactInformationAvailabilityCode": {
+"description": "A period of time or a situation in which an entity is available to be contacted with the given contact information.","$ref": "#/definitions/nc:ContactInformationAvailabilityCode"
+},"nc:ContactInformationDescriptionText": {
+"description": "A description of the contact information.","$ref": "#/definitions/nc:ContactInformationDescriptionText"
+},"nc:ContactMailingAddress": {
+"description": "A postal address by which a person or organization may be contacted.","oneOf": [{
+"$ref": "#/definitions/nc:ContactMailingAddress"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:ContactMailingAddress"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ContactResponder": {
+"description": "A third party person who answers a call and connects or directs the caller to the intended person.","$ref": "#/definitions/nc:ContactResponder"
+},"nc:ContactTelephoneNumber": {
+"description": "A telephone number for a telecommunication device by which a person or organization may be contacted.","oneOf": [{
+"$ref": "#/definitions/nc:ContactTelephoneNumber"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:ContactTelephoneNumber"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"type": "object"
+}
+,
+"nc:ContactMailingAddress": {
+"$ref": "#/definitions/nc:AddressType","description": "A postal address by which a person or organization may be contacted."
+}
+,
+"nc:ContactResponder": {
+"$ref": "#/definitions/nc:PersonType","description": "A third party person who answers a call and connects or directs the caller to the intended person."
+}
+,
+"nc:ContactTelephoneNumber": {
+"$ref": "#/definitions/nc:TelephoneNumberType","description": "A telephone number for a telecommunication device by which a person or organization may be contacted."
+}
+,
+"nc:ConveyanceColorPrimaryText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A single, upper-most, front-most, or majority color of a conveyance."
+}
+,
+"nc:ConveyanceType": {
+"additionalProperties" : false,"description": "A data type for a means of transport from place to place.","properties": {
+"ecf:ItemAugmentation": {
+"description": "An augmentation to a property entity","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:ItemAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:ItemAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:ConveyanceColorPrimaryCode": {
+"description": "A single, upper-most, front-most, or majority color of a vehicle.","$ref": "./j.schema.json#/definitions/j:ConveyanceColorPrimaryCode"
+},"j:VehicleStyleCode": {
+"description": "A style of a vehicle.","$ref": "./j.schema.json#/definitions/j:VehicleStyleCode"
+},"nc:ConveyanceColorPrimaryText": {
+"description": "A single, upper-most, front-most, or majority color of a conveyance.","$ref": "#/definitions/nc:ConveyanceColorPrimaryText"
+},"nc:ItemColorDescriptionText": {
+"description": "A description of the overall color of an item.","$ref": "#/definitions/nc:ItemColorDescriptionText"
+},"nc:ItemDescriptionText": {
+"description": "A description of an item.","$ref": "#/definitions/nc:ItemDescriptionText"
+},"nc:ItemModelYearDate": {
+"description": "A year in which an item was manufactured or produced.","$ref": "#/definitions/nc:ItemModelYearDate"
+},"nc:ItemOtherIdentification": {
+"description": "An identification assigned to an item.","$ref": "#/definitions/nc:ItemOtherIdentification"
+},"nc:ItemStyleText": {
+"description": "A style of a property item.","$ref": "#/definitions/nc:ItemStyleText"
+},"nc:ItemValue": {
+"description": "An evaluation of the monetary worth of an item.","$ref": "#/definitions/nc:ItemValue"
+}
+},"type": "object"
+}
+,
+"nc:CountryType": {
+"additionalProperties" : false,"description": "A data type for a country, territory, dependency, or other such geopolitical subdivision of a location.","properties": {
+"intel:LocationCountryFIPS10-4PlusNCTCCodeText": {
+"description": "A union of additional country codes managed by NCTC and the FIPS 10-4 country codes.","$ref": "./intel.schema.json#/definitions/intel:LocationCountryFIPS10-4PlusNCTCCodeText"
+},"nc:LocationCountryName": {
+"description": "A name of a country, territory, dependency, or other such geopolitical subdivision of a location.","$ref": "#/definitions/nc:LocationCountryName"
+}
+},"type": "object"
+}
+,
+"nc:CurrencyCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A unit of money or exchange."
+}
+,
+"nc:CurrencyText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A unit of money or exchange."
+}
+,
+"nc:Date": {
+"$ref": "./xs.schema.json#/definitions/xs:date","description": "A full date."
+}
+,
+"nc:DateRange": {
+"$ref": "#/definitions/nc:DateRangeType","description": "A time period measured by a starting and ending point."
+}
+,
+"nc:DateRangeType": {
+"additionalProperties" : false,"description": "A data type for a range of dates.","properties": {
+"nc:EndDate": {
+"description": "An end date.","$ref": "#/definitions/nc:EndDate"
+},"nc:StartDate": {
+"description": "A date on which something begins.","$ref": "#/definitions/nc:StartDate"
+}
+},"type": "object"
+}
+,
+"nc:DateTime": {
+"$ref": "./xs.schema.json#/definitions/xs:dateTime","description": "A full date and time."
+}
+,
+"nc:DateType": {
+"additionalProperties" : false,"description": "A data type for a calendar date.","properties": {
+"nc:Date": {
+"description": "A full date.","$ref": "#/definitions/nc:Date"
+},"nc:DateTime": {
+"description": "A full date and time.","$ref": "#/definitions/nc:DateTime"
+}
+},"type": "object"
+}
+,
+"nc:DispositionCategoryText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A kind of disposition."
+}
+,
+"nc:DispositionDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date a disposition occurred."
+}
+,
+"nc:DispositionDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of a disposition."
+}
+,
+"nc:DispositionType": {
+"additionalProperties" : false,"description": "A data type for a result or outcome that is the product of handling, processing, or finalizing something.","properties": {
+"nc:DispositionCategoryText": {
+"description": "A kind of disposition.","$ref": "#/definitions/nc:DispositionCategoryText"
+},"nc:DispositionDate": {
+"description": "A date a disposition occurred.","$ref": "#/definitions/nc:DispositionDate"
+},"nc:DispositionDescriptionText": {
+"description": "A description of a disposition.","$ref": "#/definitions/nc:DispositionDescriptionText"
+}
+},"type": "object"
+}
+,
+"nc:Document": {
+"$ref": "#/definitions/nc:DocumentType","description": "A paper or electronic document."
+}
+,
+"nc:DocumentAssociation": {
+"$ref": "#/definitions/nc:DocumentAssociationType","description": "An association between documents."
+}
+,
+"nc:DocumentAssociationType": {
+"additionalProperties" : false,"description": "A data type for a relationship between documents.","properties": {
+"ecf:DocumentAssociationAugmentation": {
+"description": "A related document that was previously filed in this case.  For instance, the document to which this document is a response.","$ref": "../ecf.schema.json#/definitions/ecf:DocumentAssociationAugmentation"
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "#/definitions/nc:AssociationDescriptionText"
+},"nc:PrimaryDocument": {
+"description": "A main or primary document.","$ref": "#/definitions/nc:PrimaryDocument"
+}
+},"type": "object"
+}
+,
+"nc:DocumentCategoryText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A kind of document; a nature or genre of the content."
+}
+,
+"nc:DocumentDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of the content of a document."
+}
+,
+"nc:DocumentEffectiveDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date in which the content or action becomes enforceable, active, or effective."
+}
+,
+"nc:DocumentFileControlID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An identifier assigned to a document to locate it within a file control system."
+}
+,
+"nc:DocumentFiledDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date a document was officially filed with an organization or agency."
+}
+,
+"nc:DocumentIdentification": {
+"$ref": "#/definitions/nc:IdentificationType","description": "An identification that references a document."
+}
+,
+"nc:DocumentInformationCutOffDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date after which contributions to the content of a document will no longer be accepted."
+}
+,
+"nc:DocumentLanguageCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A language of the content of the resource."
+}
+,
+"nc:DocumentPostDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date a document is entered or posted to an information system or network; used when the date of posting is different from the date on which a document was officially filed."
+}
+,
+"nc:DocumentReceivedDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date a transmitted document was received."
+}
+,
+"nc:DocumentSequenceID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An identifier that determines the document order in a set of related documents."
+}
+,
+"nc:DocumentSoftwareName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a computer application used to process a document."
+}
+,
+"nc:DocumentSubmitter": {
+"$ref": "#/definitions/nc:EntityType","description": "An entity responsible for making the resource available."
+}
+,
+"nc:DocumentTitleText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name given to a document."
+}
+,
+"nc:DocumentType": {
+"additionalProperties" : false,"description": "A data type for a paper or electronic document.","properties": {
+"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["nc:DocumentIdentification"],"type": "object"
+}
+,
+"nc:EffectiveDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date that information take effect."
+}
+,
+"nc:Employee": {
+"$ref": "#/definitions/nc:PersonType","description": "A person who works for a business or a person."
+}
+,
+"nc:Employer": {
+"$ref": "#/definitions/nc:EntityType","description": "A party/entity (organization or person) who employs a person."
+}
+,
+"nc:EndDate": {
+"$ref": "#/definitions/nc:DateType","description": "An end date."
+}
+,
+"nc:EntityItem": {
+"$ref": "#/definitions/nc:ItemType","description": "An item capable of bearing legal rights and responsibilities."
+}
+,
+"nc:EntityOrganization": {
+"$ref": "#/definitions/nc:OrganizationType","description": "An organization capable of bearing legal rights and responsibilities."
+}
+,
+"nc:EntityPerson": {
+"$ref": "#/definitions/nc:PersonType","description": "A person capable of bearing legal rights and responsibilities."
+}
+,
+"nc:EntityType": {
+"additionalProperties" : false,"description": "A data type for a person, organization, or thing capable of bearing legal rights and responsibilities.","properties": {
+"nc:EntityItem": {
+"description": "An item capable of bearing legal rights and responsibilities.","$ref": "#/definitions/nc:EntityItem"
+},"nc:EntityOrganization": {
+"description": "An organization capable of bearing legal rights and responsibilities.","$ref": "#/definitions/nc:EntityOrganization"
+},"nc:EntityPerson": {
+"description": "A person capable of bearing legal rights and responsibilities.","$ref": "#/definitions/nc:EntityPerson"
+}
+},"type": "object"
+}
+,
+"nc:ExpirationDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date after which information is no longer valid."
+}
+,
+"nc:FacilityIdentification": {
+"$ref": "#/definitions/nc:IdentificationType","description": "An identification assigned to a facility."
+}
+,
+"nc:FacilityName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a facility."
+}
+,
+"nc:FacilityType": {
+"additionalProperties" : false,"description": "A data type for a building, place, or structure that provides a particular service.","properties": {
+"nc:FacilityIdentification": {
+"description": "An identification assigned to a facility.","$ref": "#/definitions/nc:FacilityIdentification"
+},"nc:FacilityName": {
+"description": "A name of a facility.","$ref": "#/definitions/nc:FacilityName"
+}
+},"type": "object"
+}
+,
+"nc:FinancialObligationExemptionAmount": {
+"$ref": "#/definitions/nc:AmountType","description": "An amount of an exemption from a payment obligation."
+}
+,
+"nc:FullTelephoneNumber": {
+"$ref": "#/definitions/nc:FullTelephoneNumberType","description": "A full telephone number."
+}
+,
+"nc:FullTelephoneNumberType": {
+"additionalProperties" : false,"description": "A data type for a full telephone number.","properties": {
+"nc:TelephoneNumberFullID": {
+"description": "A complete telephone number.","$ref": "#/definitions/nc:TelephoneNumberFullID"
+},"nc:TelephoneSuffixID": {
+"description": "An additional sequence of numbers to be entered after a call connects to be directed to the appropriate place.","$ref": "#/definitions/nc:TelephoneSuffixID"
+}
+},"type": "object"
+}
+,
+"nc:IdentificationCategoryDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of a kind of identification."
+}
+,
+"nc:IdentificationID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An identifier."
+}
+,
+"nc:IdentificationJurisdiction": {
+"$ref": "#/definitions/nc:JurisdictionType","description": "An area, region, or unit where a unique identification is issued."
+}
+,
+"nc:IdentificationSourceText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A person, organization, or locale which issues an identification."
+}
+,
+"nc:IdentificationType": {
+"additionalProperties" : false,"description": "A data type for a representation of an identity.","properties": {
+"ecf:PersonIdentificationCategoryCode": {
+"description": "A type of person identifier.","$ref": "../ecf.schema.json#/definitions/ecf:PersonIdentificationCategoryCode"
+},"nc:IdentificationCategoryDescriptionText": {
+"description": "A description of a kind of identification.","$ref": "#/definitions/nc:IdentificationCategoryDescriptionText"
+},"nc:IdentificationID": {
+"description": "An identifier.","$ref": "#/definitions/nc:IdentificationID"
+},"nc:IdentificationJurisdiction": {
+"description": "An area, region, or unit where a unique identification is issued.","$ref": "#/definitions/nc:IdentificationJurisdiction"
+},"nc:IdentificationSourceText": {
+"description": "A person, organization, or locale which issues an identification.","$ref": "#/definitions/nc:IdentificationSourceText"
+}
+},"type": "object"
+}
+,
+"nc:IncidentLocation": {
+"$ref": "#/definitions/nc:LocationType","description": "A location where an incident occurred."
+}
+,
+"nc:IncidentType": {
+"additionalProperties" : false,"description": "A data type for an occurrence or an event that may require a response.","properties": {
+"j:IncidentAugmentation": {
+"description": "Additional information about an incident.","oneOf": [{
+"$ref": "./j.schema.json#/definitions/j:IncidentAugmentation"
+},
+{
+"items": {
+"$ref": "./j.schema.json#/definitions/j:IncidentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"juvenile:IncidentAugmentation": {
+"description": "The statutory or ordinance section, the violation of which would constitute a crime if committed by an adult. May include a probation violation.","oneOf": [{
+"$ref": "../juvenile.schema.json#/definitions/juvenile:IncidentAugmentation"
+},
+{
+"items": {
+"$ref": "../juvenile.schema.json#/definitions/juvenile:IncidentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "#/definitions/nc:CaseDisposition"
+},"nc:IncidentLocation": {
+"description": "A location where an incident occurred.","$ref": "#/definitions/nc:IncidentLocation"
+}
+},"type": "object"
+}
+,
+"nc:Insurance": {
+"$ref": "#/definitions/nc:InsuranceType","description": "A coverage by a contract whereby one party agrees to indemnify or guarantee another against loss by a specified contingent event or peril."
+}
+,
+"nc:InsuranceActiveIndicator": {
+"$ref": "./xs.schema.json#/definitions/xs:boolean","description": "True if an insurance policy is active; false otherwise."
+}
+,
+"nc:InsuranceCarrierName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a company which underwrites an insurance policy."
+}
+,
+"nc:InsuranceCoverageCategoryText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A kind of insurance coverage."
+}
+,
+"nc:InsuranceType": {
+"additionalProperties" : false,"description": "A data type for coverage by a contract whereby one party agrees to indemnify or guarantee another against loss by a specified contingent event or peril.","properties": {
+"nc:InsuranceActiveIndicator": {
+"description": "True if an insurance policy is active; false otherwise.","$ref": "#/definitions/nc:InsuranceActiveIndicator"
+},"nc:InsuranceCarrierName": {
+"description": "A name of a company which underwrites an insurance policy.","$ref": "#/definitions/nc:InsuranceCarrierName"
+},"nc:InsuranceCoverageCategoryText": {
+"description": "A kind of insurance coverage.","$ref": "#/definitions/nc:InsuranceCoverageCategoryText"
+}
+},"type": "object"
+}
+,
+"nc:InternationalTelephoneNumber": {
+"$ref": "#/definitions/nc:InternationalTelephoneNumberType","description": "An international telephone number."
+}
+,
+"nc:InternationalTelephoneNumberType": {
+"additionalProperties" : false,"description": "A data type for an international telephone number.","properties": {
+"nc:TelephoneCountryCodeID": {
+"description": "An international dialing code for a country.","$ref": "#/definitions/nc:TelephoneCountryCodeID"
+},"nc:TelephoneNumberID": {
+"description": "A telephone number.","$ref": "#/definitions/nc:TelephoneNumberID"
+},"nc:TelephoneSuffixID": {
+"description": "An additional sequence of numbers to be entered after a call connects to be directed to the appropriate place.","$ref": "#/definitions/nc:TelephoneSuffixID"
+}
+},"required" : ["nc:TelephoneCountryCodeID", "nc:TelephoneNumberID"],"type": "object"
+}
+,
+"nc:ItemColorDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of the overall color of an item."
+}
+,
+"nc:ItemDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of an item."
+}
+,
+"nc:ItemModelYearDate": {
+"$ref": "./xs.schema.json#/definitions/xs:gYear","description": "A year in which an item was manufactured or produced."
+}
+,
+"nc:ItemOtherIdentification": {
+"$ref": "#/definitions/nc:IdentificationType","description": "An identification assigned to an item."
+}
+,
+"nc:ItemStyleText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A style of a property item."
+}
+,
+"nc:ItemType": {
+"additionalProperties" : false,"description": "A data type for an article or thing.","properties": {
+"ecf:ItemAugmentation": {
+"description": "An augmentation to a property entity","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:ItemAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:ItemAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:ConveyanceColorPrimaryCode": {
+"description": "A single, upper-most, front-most, or majority color of a vehicle.","$ref": "./j.schema.json#/definitions/j:ConveyanceColorPrimaryCode"
+},"j:VehicleStyleCode": {
+"description": "A style of a vehicle.","$ref": "./j.schema.json#/definitions/j:VehicleStyleCode"
+},"nc:ConveyanceColorPrimaryText": {
+"description": "A single, upper-most, front-most, or majority color of a conveyance.","$ref": "#/definitions/nc:ConveyanceColorPrimaryText"
+},"nc:ItemColorDescriptionText": {
+"description": "A description of the overall color of an item.","$ref": "#/definitions/nc:ItemColorDescriptionText"
+},"nc:ItemDescriptionText": {
+"description": "A description of an item.","$ref": "#/definitions/nc:ItemDescriptionText"
+},"nc:ItemModelYearDate": {
+"description": "A year in which an item was manufactured or produced.","$ref": "#/definitions/nc:ItemModelYearDate"
+},"nc:ItemOtherIdentification": {
+"description": "An identification assigned to an item.","$ref": "#/definitions/nc:ItemOtherIdentification"
+},"nc:ItemStyleText": {
+"description": "A style of a property item.","$ref": "#/definitions/nc:ItemStyleText"
+},"nc:ItemValue": {
+"description": "An evaluation of the monetary worth of an item.","$ref": "#/definitions/nc:ItemValue"
+}
+},"type": "object"
+}
+,
+"nc:ItemValue": {
+"$ref": "#/definitions/nc:ItemValueType","description": "An evaluation of the monetary worth of an item."
+}
+,
+"nc:ItemValueAmount": {
+"$ref": "#/definitions/nc:AmountType","description": "A monetary value of an item."
+}
+,
+"nc:ItemValueType": {
+"additionalProperties" : false,"description": "A data type for an evaluation of the monetary worth of an item.","properties": {
+"nc:ItemValueAmount": {
+"description": "A monetary value of an item.","$ref": "#/definitions/nc:ItemValueAmount"
+}
+},"required" : ["nc:ItemValueAmount"],"type": "object"
+}
+,
+"nc:JurisdictionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An area in which an organization or person has some kind of authoritative capacity or responsibility over."
+}
+,
+"nc:JurisdictionType": {
+"additionalProperties" : false,"description": "A data type for a geopolitical area in which an organization, person, or object has a specific range of authority.","properties": {
+"j:JurisdictionANSID20AuthorityCode": {
+"description": "An area, state, region, or other geographic unit over which some kind of authority exists.","$ref": "./j.schema.json#/definitions/j:JurisdictionANSID20AuthorityCode"
+},"nc:JurisdictionText": {
+"description": "An area in which an organization or person has some kind of authoritative capacity or responsibility over.","$ref": "#/definitions/nc:JurisdictionText"
+}
+},"type": "object"
+}
+,
+"nc:LanguageCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A system of words or symbols used for communication."
+}
+,
+"nc:LastUpdatedDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date information was last modified."
+}
+,
+"nc:LengthMeasureType": {
+"additionalProperties" : false,"description": "A data type for a measure of a distance or extent.","properties": {
+"nc:LengthUnitCode": {
+"description": "A unit of measure of a length value.","$ref": "#/definitions/nc:LengthUnitCode"
+},"nc:MeasureDecimalValue": {
+"description": "A decimal measurement value.","$ref": "#/definitions/nc:MeasureDecimalValue"
+},"nc:WeightUnitCode": {
+"description": "A unit of measure of the weight value.","$ref": "#/definitions/nc:WeightUnitCode"
+}
+},"type": "object"
+}
+,
+"nc:LengthUnitCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A unit of measure of a length value."
+}
+,
+"nc:Location": {
+"$ref": "#/definitions/nc:LocationType","description": "A geospatial location."
+}
+,
+"nc:LocationCityName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a city or town."
+}
+,
+"nc:LocationCountry": {
+"$ref": "#/definitions/nc:CountryType","description": "A country, territory, dependency, or other such geopolitical subdivision of a location."
+}
+,
+"nc:LocationCountryName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a country, territory, dependency, or other such geopolitical subdivision of a location."
+}
+,
+"nc:LocationCountyName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a county, parish, vicinage, or other such geopolitical subdivision of a state."
+}
+,
+"nc:LocationDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of a location."
+}
+,
+"nc:LocationName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a location."
+}
+,
+"nc:LocationPostalCode": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An identifier of a post office-assigned zone for an address."
+}
+,
+"nc:LocationPostalExtensionCode": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An identifier of a smaller area within a post office-assigned zone for an address."
+}
+,
+"nc:LocationState": {
+"$ref": "#/definitions/nc:StateType","description": "A state, commonwealth, province, or other such geopolitical subdivision of a country."
+}
+,
+"nc:LocationStateName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a state, commonwealth, province, or other such geopolitical subdivision of a country."
+}
+,
+"nc:LocationStateUSPostalServiceCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A state, commonwealth, province, or other such geopolitical subdivision of a country."
+}
+,
+"nc:LocationStreet": {
+"$ref": "#/definitions/nc:StreetType","description": "A road, thoroughfare or highway."
+}
+,
+"nc:LocationType": {
+"additionalProperties" : false,"description": "A data type for geospatial location.","properties": {
+"nc:Address": {
+"description": "A postal location to which paper mail can be directed.","$ref": "#/definitions/nc:Address"
+},"nc:LocationDescriptionText": {
+"description": "A description of a location.","$ref": "#/definitions/nc:LocationDescriptionText"
+},"nc:LocationName": {
+"description": "A name of a location.","$ref": "#/definitions/nc:LocationName"
+}
+},"type": "object"
+}
+,
+"nc:MeasureDecimalValue": {
+"$ref": "./xs.schema.json#/definitions/xs:decimal","description": "A decimal measurement value."
+}
+,
+"nc:MeasureType": {
+"additionalProperties" : false,"description": "A data type for a measurement.","properties": {
+"nc:LengthUnitCode": {
+"description": "A unit of measure of a length value.","$ref": "#/definitions/nc:LengthUnitCode"
+},"nc:MeasureDecimalValue": {
+"description": "A decimal measurement value.","$ref": "#/definitions/nc:MeasureDecimalValue"
+},"nc:WeightUnitCode": {
+"description": "A unit of measure of the weight value.","$ref": "#/definitions/nc:WeightUnitCode"
+}
+},"type": "object"
+}
+,
+"nc:Metadata": {
+"$ref": "#/definitions/nc:MetadataType","description": "Information that further qualifies primary data; data about data."
+}
+,
+"nc:MetadataType": {
+"additionalProperties" : false,"description": "A data type for information that further qualifies primary data; data about data.","properties": {
+"nc:EffectiveDate": {
+"description": "A date that information take effect.","$ref": "#/definitions/nc:EffectiveDate"
+},"nc:ExpirationDate": {
+"description": "A date after which information is no longer valid.","$ref": "#/definitions/nc:ExpirationDate"
+},"nc:LanguageCode": {
+"description": "A system of words or symbols used for communication.","$ref": "#/definitions/nc:LanguageCode"
+},"nc:LastUpdatedDate": {
+"description": "A date information was last modified.","$ref": "#/definitions/nc:LastUpdatedDate"
+},"nc:SensitivityText": {
+"description": "A sensitivity level of the information.","$ref": "#/definitions/nc:SensitivityText"
+}
+},"type": "object"
+}
+,
+"nc:NANPTelephoneNumber": {
+"$ref": "#/definitions/nc:NANPTelephoneNumberType","description": "A North American Numbering Plan telephone number."
+}
+,
+"nc:NANPTelephoneNumberType": {
+"additionalProperties" : false,"description": "A data type for a North American Numbering Plan telephone number.","properties": {
+"nc:TelephoneAreaCodeID": {
+"description": "A dialing code for a state or province for phone numbers in the USA, Canada, Mexico, and the Caribbean.","$ref": "#/definitions/nc:TelephoneAreaCodeID"
+},"nc:TelephoneExchangeID": {
+"description": "A portion of a telephone number that usually represents a central telephone switch.","$ref": "#/definitions/nc:TelephoneExchangeID"
+},"nc:TelephoneLineID": {
+"description": "A portion of a telephone number that identifies the individual circuit within an exchange.","$ref": "#/definitions/nc:TelephoneLineID"
+},"nc:TelephoneSuffixID": {
+"description": "An additional sequence of numbers to be entered after a call connects to be directed to the appropriate place.","$ref": "#/definitions/nc:TelephoneSuffixID"
+}
+},"required" : ["nc:TelephoneAreaCodeID", "nc:TelephoneExchangeID", "nc:TelephoneLineID", "nc:TelephoneSuffixID"],"type": "object"
+}
+,
+"nc:NonNegativeDecimalSimpleType": {
+"additionalProperties" : false,"description": "A data type for a decimal value with a minimum value of 0.","properties": {
+
+},"type": "object"
+}
+,
+"nc:NonNegativeDecimalType": {
+"additionalProperties" : false,"description": "A data type for a decimal value with a minimum value of 0.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"nc:NumericType": {
+"additionalProperties" : false,"description": "A data type for a number value.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"nc:ObligationCategoryText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A kind of obligation."
+}
+,
+"nc:ObligationDateRange": {
+"$ref": "#/definitions/nc:DateRangeType","description": "A date range of an obligation."
+}
+,
+"nc:ObligationDueAmount": {
+"$ref": "#/definitions/nc:AmountType","description": "An amount of a payment obligation that has not been made."
+}
+,
+"nc:ObligationEntity": {
+"$ref": "#/definitions/nc:EntityType","description": "An entity that must fulfill an obligation."
+}
+,
+"nc:ObligationExemption": {
+"$ref": "#/definitions/nc:ObligationExemptionType","description": "A waiving or dismissal of an obligation."
+}
+,
+"nc:ObligationExemptionDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of an exemption from an obligation."
+}
+,
+"nc:ObligationExemptionType": {
+"additionalProperties" : false,"description": "A data type for a waival or dismissal of an obligation.","properties": {
+"nc:FinancialObligationExemptionAmount": {
+"description": "An amount of an exemption from a payment obligation.","$ref": "#/definitions/nc:FinancialObligationExemptionAmount"
+},"nc:ObligationExemptionDescriptionText": {
+"description": "A description of an exemption from an obligation.","$ref": "#/definitions/nc:ObligationExemptionDescriptionText"
+}
+},"type": "object"
+}
+,
+"nc:ObligationPeriodText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An interval or period at which an obligation is required to be fulfilled."
+}
+,
+"nc:ObligationRecipient": {
+"$ref": "#/definitions/nc:EntityType","description": "An entity to whom an obligation must be fulfilled."
+}
+,
+"nc:ObligationRecurrence": {
+"$ref": "#/definitions/nc:ObligationRecurrenceType","description": "A periodic basis on which an obligation must be met."
+}
+,
+"nc:ObligationRecurrenceType": {
+"additionalProperties" : false,"description": "A data type for a periodic basis on which an obligation must be met.","properties": {
+"nc:ObligationDateRange": {
+"description": "A date range of an obligation.","$ref": "#/definitions/nc:ObligationDateRange"
+},"nc:ObligationPeriodText": {
+"description": "An interval or period at which an obligation is required to be fulfilled.","$ref": "#/definitions/nc:ObligationPeriodText"
+}
+},"type": "object"
+}
+,
+"nc:ObligationRequirementDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of what is necessary in order to fulfill an obligation."
+}
+,
+"nc:ObligationType": {
+"additionalProperties" : false,"description": "A data type for something that is owed to an entity.","properties": {
+"nc:ObligationCategoryText": {
+"description": "A kind of obligation.","$ref": "#/definitions/nc:ObligationCategoryText"
+},"nc:ObligationDueAmount": {
+"description": "An amount of a payment obligation that has not been made.","$ref": "#/definitions/nc:ObligationDueAmount"
+},"nc:ObligationEntity": {
+"description": "An entity that must fulfill an obligation.","$ref": "#/definitions/nc:ObligationEntity"
+},"nc:ObligationExemption": {
+"description": "A waiving or dismissal of an obligation.","$ref": "#/definitions/nc:ObligationExemption"
+},"nc:ObligationRecipient": {
+"description": "An entity to whom an obligation must be fulfilled.","$ref": "#/definitions/nc:ObligationRecipient"
+},"nc:ObligationRecurrence": {
+"description": "A periodic basis on which an obligation must be met.","$ref": "#/definitions/nc:ObligationRecurrence"
+},"nc:ObligationRequirementDescriptionText": {
+"description": "A description of what is necessary in order to fulfill an obligation.","$ref": "#/definitions/nc:ObligationRequirementDescriptionText"
+}
+},"required" : ["nc:ObligationEntity"],"type": "object"
+}
+,
+"nc:OffenseLevelCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for levels of an incident.","properties": {
+
+},"type": "object"
+}
+,
+"nc:OffenseLevelCodeType": {
+"additionalProperties" : false,"description": "A data type for levels of an incident.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"nc:Organization": {
+"$ref": "#/definitions/nc:OrganizationType","description": "A unit which conducts some sort of business or operations."
+}
+,
+"nc:OrganizationAssociation": {
+"$ref": "#/definitions/nc:OrganizationAssociationType","description": "An association between an organization and another organization."
+}
+,
+"nc:OrganizationAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association between organizations.","properties": {
+"ecf:OrganizationAssociationAugmentation": {
+"description": "The relationship between two organizations.  Example: subsidiary corporation.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:OrganizationAssociationAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:OrganizationAssociationAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "#/definitions/nc:AssociationDescriptionText"
+},"nc:Organization": {
+"description": "A unit which conducts some sort of business or operations.","items": {
+"$ref": "#/definitions/nc:Organization"
+},
+
+"minItems": 2,
+"type": "array"
+}
+},"required" : ["nc:Organization"],"type": "object"
+}
+,
+"nc:OrganizationIdentification": {
+"$ref": "#/definitions/nc:IdentificationType","description": "An identification that references an organization."
+}
+,
+"nc:OrganizationLocation": {
+"$ref": "#/definitions/nc:LocationType","description": "A location of an organization."
+}
+,
+"nc:OrganizationName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of an organization."
+}
+,
+"nc:OrganizationPrimaryContactInformation": {
+"$ref": "#/definitions/nc:ContactInformationType","description": "A preferred means of contacting an organization."
+}
+,
+"nc:OrganizationSubUnitName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a subdivision of an organization."
+}
+,
+"nc:OrganizationTaxIdentification": {
+"$ref": "#/definitions/nc:IdentificationType","description": "A tax identification assigned to an organization."
+}
+,
+"nc:OrganizationType": {
+"additionalProperties" : false,"description": "A data type for a body of people organized for a particular purpose.","properties": {
+"ecf:OrganizationAugmentation": {
+"description": "A structure that describes a unit which conducts some sort of business or operations.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:OrganizationAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:OrganizationAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:OrganizationORIIdentification": {
+"description": "A unique nine character NCIC identification (ORI) assigned to a justice-related organization by the FBI CJIS Division.","$ref": "./j.schema.json#/definitions/j:OrganizationORIIdentification"
+},"nc:OrganizationIdentification": {
+"description": "An identification that references an organization.","$ref": "#/definitions/nc:OrganizationIdentification"
+},"nc:OrganizationLocation": {
+"description": "A location of an organization.","$ref": "#/definitions/nc:OrganizationLocation"
+},"nc:OrganizationName": {
+"description": "A name of an organization.","$ref": "#/definitions/nc:OrganizationName"
+},"nc:OrganizationPrimaryContactInformation": {
+"description": "A preferred means of contacting an organization.","$ref": "#/definitions/nc:OrganizationPrimaryContactInformation"
+},"nc:OrganizationSubUnitName": {
+"description": "A name of a subdivision of an organization.","$ref": "#/definitions/nc:OrganizationSubUnitName"
+},"nc:OrganizationTaxIdentification": {
+"description": "A tax identification assigned to an organization.","$ref": "#/definitions/nc:OrganizationTaxIdentification"
+},"nc:OrganizationUnitName": {
+"description": "A name of a high-level division of an organization.","$ref": "#/definitions/nc:OrganizationUnitName"
+}
+},"type": "object"
+}
+,
+"nc:OrganizationUnitName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a high-level division of an organization."
+}
+,
+"nc:Person": {
+"$ref": "#/definitions/nc:PersonType","description": "A human being."
+}
+,
+"nc:PersonAssociation": {
+"$ref": "#/definitions/nc:PersonAssociationType","description": "An association between people."
+}
+,
+"nc:PersonAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association between people.","properties": {
+"ecf:PersonAssociationAugmentation": {
+"description": "The relationship of a person to another person in a case.  Allowable values set forth in Court Policy.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:PersonAssociationAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:PersonAssociationAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "#/definitions/nc:AssociationDescriptionText"
+},"nc:Person": {
+"description": "A human being.","items": {
+"$ref": "#/definitions/nc:Person"
+},
+
+"minItems": 2,
+"type": "array"
+}
+},"required" : ["nc:Person"],"type": "object"
+}
+,
+"nc:PersonBirthDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date a person was born."
+}
+,
+"nc:PersonCapability": {
+"$ref": "#/definitions/nc:CapabilityType","description": "A capacity or ability of a person."
+}
+,
+"nc:PersonCitizenshipISO3166Alpha2Code": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A country that assigns rights, duties, and privileges to a person because of the birth or naturalization of the person in that country."
+}
+,
+"nc:PersonDeathDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date a person died or was declared legally dead."
+}
+,
+"nc:PersonDisunion": {
+"$ref": "#/definitions/nc:PersonDisunionType","description": "A legal termination of a Person Union."
+}
+,
+"nc:PersonDisunionDecreeIndicator": {
+"$ref": "./xs.schema.json#/definitions/xs:boolean","description": "True if a legal document finalizing the Person Disunion exists (for example, a divorce decree); false otherwise."
+}
+,
+"nc:PersonDisunionType": {
+"additionalProperties" : false,"description": "A data type for a legal termination of a Person Union.","properties": {
+"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "#/definitions/nc:CaseDisposition"
+},"nc:PersonDisunionDecreeIndicator": {
+"description": "True if a legal document finalizing the Person Disunion exists (for example, a divorce decree); false otherwise.","$ref": "#/definitions/nc:PersonDisunionDecreeIndicator"
+}
+},"type": "object"
+}
+,
+"nc:PersonEmploymentAssociation": {
+"$ref": "#/definitions/nc:PersonEmploymentAssociationType","description": "An association between a person and employment information."
+}
+,
+"nc:PersonEmploymentAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association between a person and an employment.","properties": {
+"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "#/definitions/nc:AssociationDescriptionText"
+},"nc:Employee": {
+"description": "A person who works for a business or a person.","$ref": "#/definitions/nc:Employee"
+},"nc:Employer": {
+"description": "A party/entity (organization or person) who employs a person.","$ref": "#/definitions/nc:Employer"
+}
+},"required" : ["nc:Employee", "nc:Employer"],"type": "object"
+}
+,
+"nc:PersonEthnicityText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A cultural lineage of a person."
+}
+,
+"nc:PersonFullName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A complete name of a person."
+}
+,
+"nc:PersonGivenName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A first name of a person."
+}
+,
+"nc:PersonHeightMeasure": {
+"$ref": "#/definitions/nc:LengthMeasureType","description": "A measurement of the height of a person."
+}
+,
+"nc:PersonLanguageEnglishIndicator": {
+"$ref": "./xs.schema.json#/definitions/xs:boolean","description": "True if a person understands and speaks English; false otherwise."
+}
+,
+"nc:PersonLanguageType": {
+"additionalProperties" : false,"description": "A data type for a language capability of a person.","properties": {
+"nc:LanguageCode": {
+"description": "A system of words or symbols used for communication.","$ref": "#/definitions/nc:LanguageCode"
+}
+},"type": "object"
+}
+,
+"nc:PersonMaidenName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An original last name or surname of a person before changed by marriage."
+}
+,
+"nc:PersonMiddleName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A middle name of a person."
+}
+,
+"nc:PersonName": {
+"$ref": "#/definitions/nc:PersonNameType","description": "A combination of names and/or titles by which a person is known."
+}
+,
+"nc:PersonNameCategoryCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for a kind of person name.","properties": {
+
+},"type": "object"
+}
+,
+"nc:PersonNameCategoryCodeType": {
+"additionalProperties" : false,"description": "A data type for a kind of person name.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"nc:PersonNamePrefixText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A title or honorific used by a person."
+}
+,
+"nc:PersonNameSuffixText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A term appended after the family name that qualifies the name."
+}
+,
+"nc:PersonNameTextType": {
+"additionalProperties" : false,"description": "A data type for a name by which a person is known, referred, or addressed.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"nc:PersonNameType": {
+"additionalProperties" : false,"description": "A data type for a combination of names and/or titles by which a person is known.","properties": {
+"j:PersonNameCategoryCode": {
+"description": "A kind of name for a person.","$ref": "./j.schema.json#/definitions/j:PersonNameCategoryCode"
+},"nc:PersonFullName": {
+"description": "A complete name of a person.","$ref": "#/definitions/nc:PersonFullName"
+},"nc:PersonGivenName": {
+"description": "A first name of a person.","$ref": "#/definitions/nc:PersonGivenName"
+},"nc:PersonMaidenName": {
+"description": "An original last name or surname of a person before changed by marriage.","$ref": "#/definitions/nc:PersonMaidenName"
+},"nc:PersonMiddleName": {
+"description": "A middle name of a person.","$ref": "#/definitions/nc:PersonMiddleName"
+},"nc:PersonNamePrefixText": {
+"description": "A title or honorific used by a person.","$ref": "#/definitions/nc:PersonNamePrefixText"
+},"nc:PersonNameSuffixText": {
+"description": "A term appended after the family name that qualifies the name.","$ref": "#/definitions/nc:PersonNameSuffixText"
+},"nc:PersonSurName": {
+"description": "A last name or family name of a person.","$ref": "#/definitions/nc:PersonSurName"
+}
+},"type": "object"
+}
+,
+"nc:PersonOrganizationAssociation": {
+"$ref": "#/definitions/nc:PersonOrganizationAssociationType","description": "An association between a person and an organization."
+}
+,
+"nc:PersonOrganizationAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association between a person and an organization.","properties": {
+"ecf:PersonOrganizationAugmentation": {
+"description": "The relationship of a person to an organization in a case.  Allowable values set forth in Court Policy.  An example is the relationship between an attorney and the law firm.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:PersonOrganizationAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:PersonOrganizationAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "#/definitions/nc:AssociationDescriptionText"
+},"nc:Organization": {
+"description": "A unit which conducts some sort of business or operations.","oneOf": [{
+"$ref": "#/definitions/nc:Organization"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:Organization"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:Person": {
+"description": "A human being.","oneOf": [{
+"$ref": "#/definitions/nc:Person"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:Person"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+}
+},"required" : ["nc:Organization", "nc:Person"],"type": "object"
+}
+,
+"nc:PersonOtherIdentification": {
+"$ref": "#/definitions/nc:IdentificationType","description": "An identification with a kind that is not explicitly defined in the standard that refers to a person within a certain domain."
+}
+,
+"nc:PersonPhysicalFeature": {
+"$ref": "#/definitions/nc:PhysicalFeatureType","description": "A prominent or easily identifiable aspect of  a person."
+}
+,
+"nc:PersonPrimaryLanguage": {
+"$ref": "#/definitions/nc:PersonLanguageType","description": "A capacity of a person for a language with which that person has the strongest familiarity."
+}
+,
+"nc:PersonRaceText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A classification of a person based on factors such as geographical locations and genetics."
+}
+,
+"nc:PersonStateIdentification": {
+"$ref": "#/definitions/nc:IdentificationType","description": "An identification of a person based on a state-issued ID card."
+}
+,
+"nc:PersonSurName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A last name or family name of a person."
+}
+,
+"nc:PersonTaxIdentification": {
+"$ref": "#/definitions/nc:IdentificationType","description": "An identification used to refer to a specific person within the tax system of a country."
+}
+,
+"nc:PersonType": {
+"additionalProperties" : false,"description": "A data type for a human being.","properties": {
+"ecf:PersonAugmentation": {
+"description": "The person playing a role in a case.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:PersonAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:PersonAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:PersonAugmentation": {
+"description": "Additional information about a person.","oneOf": [{
+"$ref": "./j.schema.json#/definitions/j:PersonAugmentation"
+},
+{
+"items": {
+"$ref": "./j.schema.json#/definitions/j:PersonAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:PersonEthnicityCode": {
+"description": "A cultural lineage of a person.","$ref": "./j.schema.json#/definitions/j:PersonEthnicityCode"
+},"j:PersonEyeColorCode": {
+"description": "A color of the eyes of a person.","$ref": "./j.schema.json#/definitions/j:PersonEyeColorCode"
+},"j:PersonHairColorCode": {
+"description": "A color of the hair of a person.","$ref": "./j.schema.json#/definitions/j:PersonHairColorCode"
+},"j:PersonRaceCode": {
+"description": "A classification of a person based on factors such as geographical locations and genetics.","$ref": "./j.schema.json#/definitions/j:PersonRaceCode"
+},"j:PersonSexCode": {
+"description": "A gender or sex of a person.","$ref": "./j.schema.json#/definitions/j:PersonSexCode"
+},"nc:PersonBirthDate": {
+"description": "A date a person was born.","$ref": "#/definitions/nc:PersonBirthDate"
+},"nc:PersonCapability": {
+"description": "A capacity or ability of a person.","oneOf": [{
+"$ref": "#/definitions/nc:PersonCapability"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:PersonCapability"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:PersonCitizenshipISO3166Alpha2Code": {
+"description": "A country that assigns rights, duties, and privileges to a person because of the birth or naturalization of the person in that country.","oneOf": [{
+"$ref": "#/definitions/nc:PersonCitizenshipISO3166Alpha2Code"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:PersonCitizenshipISO3166Alpha2Code"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:PersonEthnicityText": {
+"description": "A cultural lineage of a person.","$ref": "#/definitions/nc:PersonEthnicityText"
+},"nc:PersonHeightMeasure": {
+"description": "A measurement of the height of a person.","$ref": "#/definitions/nc:PersonHeightMeasure"
+},"nc:PersonLanguageEnglishIndicator": {
+"description": "True if a person understands and speaks English; false otherwise.","$ref": "#/definitions/nc:PersonLanguageEnglishIndicator"
+},"nc:PersonName": {
+"description": "A combination of names and/or titles by which a person is known.","$ref": "#/definitions/nc:PersonName"
+},"nc:PersonOtherIdentification": {
+"description": "An identification with a kind that is not explicitly defined in the standard that refers to a person within a certain domain.","oneOf": [{
+"$ref": "#/definitions/nc:PersonOtherIdentification"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:PersonOtherIdentification"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:PersonPhysicalFeature": {
+"description": "A prominent or easily identifiable aspect of  a person.","oneOf": [{
+"$ref": "#/definitions/nc:PersonPhysicalFeature"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:PersonPhysicalFeature"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:PersonPrimaryLanguage": {
+"description": "A capacity of a person for a language with which that person has the strongest familiarity.","$ref": "#/definitions/nc:PersonPrimaryLanguage"
+},"nc:PersonRaceText": {
+"description": "A classification of a person based on factors such as geographical locations and genetics.","$ref": "#/definitions/nc:PersonRaceText"
+},"nc:PersonStateIdentification": {
+"description": "An identification of a person based on a state-issued ID card.","$ref": "#/definitions/nc:PersonStateIdentification"
+},"nc:PersonTaxIdentification": {
+"description": "An identification used to refer to a specific person within the tax system of a country.","$ref": "#/definitions/nc:PersonTaxIdentification"
+},"nc:PersonWeightMeasure": {
+"description": "A measurement of the weight of a person.","$ref": "#/definitions/nc:PersonWeightMeasure"
+}
+},"type": "object"
+}
+,
+"nc:PersonUnionAssociation": {
+"$ref": "#/definitions/nc:PersonUnionAssociationType","description": "An association between two persons who are in a state of union with each other."
+}
+,
+"nc:PersonUnionAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association between two persons who are in a state of union with each other.","properties": {
+"ecf:PersonAssociationAugmentation": {
+"description": "The relationship of a person to another person in a case.  Allowable values set forth in Court Policy.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:PersonAssociationAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:PersonAssociationAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "#/definitions/nc:AssociationDescriptionText"
+},"nc:Person": {
+"description": "A human being.","items": {
+"$ref": "#/definitions/nc:Person"
+},
+
+"minItems": 2,
+"type": "array"
+},"nc:PersonDisunion": {
+"description": "A legal termination of a Person Union.","$ref": "#/definitions/nc:PersonDisunion"
+},"nc:PersonUnionCategoryCode": {
+"description": "A kind of union between two people.","$ref": "#/definitions/nc:PersonUnionCategoryCode"
+},"nc:PersonUnionLocation": {
+"description": "A location where the Person Union occurred.","$ref": "#/definitions/nc:PersonUnionLocation"
+},"nc:PersonUnionSeparation": {
+"description": "A separation of the parties in a Person Union.","$ref": "#/definitions/nc:PersonUnionSeparation"
+}
+},"required" : ["nc:Person"],"type": "object"
+}
+,
+"nc:PersonUnionCategoryCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A kind of union between two people."
+}
+,
+"nc:PersonUnionCategoryCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type describing the legally recognized union between two persons.","properties": {
+
+},"type": "object"
+}
+,
+"nc:PersonUnionCategoryCodeType": {
+"additionalProperties" : false,"description": "A data type describing the legally recognized union between two persons.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"nc:PersonUnionLocation": {
+"$ref": "#/definitions/nc:LocationType","description": "A location where the Person Union occurred."
+}
+,
+"nc:PersonUnionSeparation": {
+"$ref": "#/definitions/nc:PersonUnionSeparationType","description": "A separation of the parties in a Person Union."
+}
+,
+"nc:PersonUnionSeparationType": {
+"additionalProperties" : false,"description": "A data type for a separation of the parties in a Person Union.","properties": {
+"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"nc:PersonWeightMeasure": {
+"$ref": "#/definitions/nc:WeightMeasureType","description": "A measurement of the weight of a person."
+}
+,
+"nc:PhysicalFeatureType": {
+"additionalProperties" : false,"description": "A data type for a prominent or easily identifiable aspect of something or someone.","properties": {
+"j:PhysicalFeatureCategoryCode": {
+"description": "A specific kind of physical feature.","$ref": "./j.schema.json#/definitions/j:PhysicalFeatureCategoryCode"
+}
+},"type": "object"
+}
+,
+"nc:PrimaryDocument": {
+"$ref": "#/definitions/nc:DocumentType","description": "A main or primary document."
+}
+,
+"nc:ProperNameTextType": {
+"additionalProperties" : false,"description": "A data type for a word or phrase by which a person or thing is known, referred, or addressed.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"nc:RelatedActivityAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association between related activities.","properties": {
+"ecf:RelationActivityAssociationAugmentation": {
+"description": "Case or cases sharing characteristics, such as common parties or events, with this case.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:RelationActivityAssociationAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:RelationActivityAssociationAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:Activity": {
+"description": "A single or set of related actions, events, or process steps.","oneOf": [{
+"$ref": "#/definitions/nc:Activity"
+},
+{
+"items": {
+"$ref": "#/definitions/nc:Activity"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "#/definitions/nc:AssociationDescriptionText"
+}
+},"type": "object"
+}
+,
+"nc:RoleOfItem": {
+"$ref": "#/definitions/nc:ItemType","description": "An entity of whom the role object is a function."
+}
+,
+"nc:RoleOfOrganization": {
+"$ref": "#/definitions/nc:OrganizationType","description": "An organization of whom the role object is a function."
+}
+,
+"nc:RoleOfPerson": {
+"$ref": "#/definitions/nc:PersonType","description": "A person of whom the role object is a function."
+}
+,
+"nc:ScheduleActivityText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An activity planned to occur on a certain date and time."
+}
+,
+"nc:ScheduleDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date for which an activity is scheduled."
+}
+,
+"nc:ScheduleDayEndTime": {
+"$ref": "./xs.schema.json#/definitions/xs:time","description": "A time at which an activity is scheduled to end."
+}
+,
+"nc:ScheduleDayStartTime": {
+"$ref": "./xs.schema.json#/definitions/xs:time","description": "A time at which an activity is scheduled to begin."
+}
+,
+"nc:ScheduleDayType": {
+"additionalProperties" : false,"description": "A data type for a plan or agenda for the activities of a day.","properties": {
+"nc:ScheduleActivityText": {
+"description": "An activity planned to occur on a certain date and time.","$ref": "#/definitions/nc:ScheduleActivityText"
+},"nc:ScheduleDate": {
+"description": "A date for which an activity is scheduled.","$ref": "#/definitions/nc:ScheduleDate"
+},"nc:ScheduleDayEndTime": {
+"description": "A time at which an activity is scheduled to end.","$ref": "#/definitions/nc:ScheduleDayEndTime"
+},"nc:ScheduleDayStartTime": {
+"description": "A time at which an activity is scheduled to begin.","$ref": "#/definitions/nc:ScheduleDayStartTime"
+}
+},"type": "object"
+}
+,
+"nc:ScheduleType": {
+"additionalProperties" : false,"description": "A data type for a schedule providing the beginning and ending hours of operation by weekday, for a designated time period.","properties": {
+
+},"type": "object"
+}
+,
+"nc:SensitivityText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A sensitivity level of the information."
+}
+,
+"nc:SoftwareNameType": {
+"additionalProperties" : false,"description": "A data type for a name of a computer application used to process data.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"nc:SpeedMeasureType": {
+"additionalProperties" : false,"description": "A data type for a measure of a speed or rate of motion.","properties": {
+"nc:LengthUnitCode": {
+"description": "A unit of measure of a length value.","$ref": "#/definitions/nc:LengthUnitCode"
+},"nc:MeasureDecimalValue": {
+"description": "A decimal measurement value.","$ref": "#/definitions/nc:MeasureDecimalValue"
+},"nc:SpeedUnitCode": {
+"description": "A unit of measurement of speed.","$ref": "#/definitions/nc:SpeedUnitCode"
+},"nc:WeightUnitCode": {
+"description": "A unit of measure of the weight value.","$ref": "#/definitions/nc:WeightUnitCode"
+}
+},"type": "object"
+}
+,
+"nc:SpeedUnitCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A unit of measurement of speed."
+}
+,
+"nc:StartDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date on which something begins."
+}
+,
+"nc:StateType": {
+"additionalProperties" : false,"description": "A data type for a state, commonwealth, province, or other such geopolitical subdivision of a country.","properties": {
+"j:LocationStateNCICLISCode": {
+"description": "A state, commonwealth, province, or other such geopolitical subdivision of a country.","$ref": "./j.schema.json#/definitions/j:LocationStateNCICLISCode"
+},"nc:LocationStateName": {
+"description": "A name of a state, commonwealth, province, or other such geopolitical subdivision of a country.","$ref": "#/definitions/nc:LocationStateName"
+}
+},"type": "object"
+}
+,
+"nc:StatusDate": {
+"$ref": "#/definitions/nc:DateType","description": "A date a status was set, effected, or reported."
+}
+,
+"nc:StatusDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of a status or condition of something or someone."
+}
+,
+"nc:StatusText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A status or condition of something or someone."
+}
+,
+"nc:StatusType": {
+"additionalProperties" : false,"description": "A data type for a state of something or someone.","properties": {
+"nc:StatusDate": {
+"description": "A date a status was set, effected, or reported.","$ref": "#/definitions/nc:StatusDate"
+},"nc:StatusDescriptionText": {
+"description": "A description of a status or condition of something or someone.","$ref": "#/definitions/nc:StatusDescriptionText"
+},"nc:StatusText": {
+"description": "A status or condition of something or someone.","$ref": "#/definitions/nc:StatusText"
+}
+},"type": "object"
+}
+,
+"nc:StreetCategoryText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A kind of street."
+}
+,
+"nc:StreetExtensionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An additional part of a street reference that follows the street category and post directional."
+}
+,
+"nc:StreetFullText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A complete reference for a street."
+}
+,
+"nc:StreetName": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A name of a street."
+}
+,
+"nc:StreetNumberText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A number that identifies a particular unit or location within a street."
+}
+,
+"nc:StreetPostdirectionalText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A direction that appears after a street name."
+}
+,
+"nc:StreetPredirectionalText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A direction that appears before a street name."
+}
+,
+"nc:StreetType": {
+"additionalProperties" : false,"description": "A data type for a road, thoroughfare, or highway.","properties": {
+"nc:StreetCategoryText": {
+"description": "A kind of street.","$ref": "#/definitions/nc:StreetCategoryText"
+},"nc:StreetExtensionText": {
+"description": "An additional part of a street reference that follows the street category and post directional.","$ref": "#/definitions/nc:StreetExtensionText"
+},"nc:StreetFullText": {
+"description": "A complete reference for a street.","$ref": "#/definitions/nc:StreetFullText"
+},"nc:StreetName": {
+"description": "A name of a street.","$ref": "#/definitions/nc:StreetName"
+},"nc:StreetNumberText": {
+"description": "A number that identifies a particular unit or location within a street.","$ref": "#/definitions/nc:StreetNumberText"
+},"nc:StreetPostdirectionalText": {
+"description": "A direction that appears after a street name.","$ref": "#/definitions/nc:StreetPostdirectionalText"
+},"nc:StreetPredirectionalText": {
+"description": "A direction that appears before a street name.","$ref": "#/definitions/nc:StreetPredirectionalText"
+}
+},"type": "object"
+}
+,
+"nc:SupervisionCustodyStatus": {
+"$ref": "#/definitions/nc:StatusType","description": "A status of the custody of a person under supervision."
+}
+,
+"nc:SupervisionFacility": {
+"$ref": "#/definitions/nc:FacilityType","description": "A facility at which a subject is being supervised."
+}
+,
+"nc:SupervisionType": {
+"additionalProperties" : false,"description": "A data type for an act of officially overseeing, supervising, or keeping track in some capacity of a person.","properties": {
+"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "#/definitions/nc:CaseDisposition"
+},"nc:SupervisionCustodyStatus": {
+"description": "A status of the custody of a person under supervision.","$ref": "#/definitions/nc:SupervisionCustodyStatus"
+},"nc:SupervisionFacility": {
+"description": "A facility at which a subject is being supervised.","$ref": "#/definitions/nc:SupervisionFacility"
+}
+},"required" : ["nc:SupervisionFacility"],"type": "object"
+}
+,
+"nc:TelephoneAreaCodeID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A dialing code for a state or province for phone numbers in the USA, Canada, Mexico, and the Caribbean."
+}
+,
+"nc:TelephoneCountryCodeID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An international dialing code for a country."
+}
+,
+"nc:TelephoneExchangeID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A portion of a telephone number that usually represents a central telephone switch."
+}
+,
+"nc:TelephoneLineID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A portion of a telephone number that identifies the individual circuit within an exchange."
+}
+,
+"nc:TelephoneNumberFullID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A complete telephone number."
+}
+,
+"nc:TelephoneNumberID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A telephone number."
+}
+,
+"nc:TelephoneNumberType": {
+"additionalProperties" : false,"description": "A data type for a telephone number for a telecommunication device.","properties": {
+"nc:FullTelephoneNumber": {
+"description": "A full telephone number.","$ref": "#/definitions/nc:FullTelephoneNumber"
+},"nc:InternationalTelephoneNumber": {
+"description": "An international telephone number.","$ref": "#/definitions/nc:InternationalTelephoneNumber"
+},"nc:NANPTelephoneNumber": {
+"description": "A North American Numbering Plan telephone number.","$ref": "#/definitions/nc:NANPTelephoneNumber"
+}
+},"type": "object"
+}
+,
+"nc:TelephoneSuffixID": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An additional sequence of numbers to be entered after a call connects to be directed to the appropriate place."
+}
+,
+"nc:TextType": {
+"additionalProperties" : false,"description": "A data type for a character string.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"nc:Vehicle": {
+"$ref": "#/definitions/nc:VehicleType","description": "A conveyance designed to carry an operator, passengers and/or cargo, over land."
+}
+,
+"nc:VehicleIdentification": {
+"$ref": "#/definitions/nc:IdentificationType","description": "A unique identification for a specific vehicle."
+}
+,
+"nc:VehicleType": {
+"additionalProperties" : false,"description": "A data type for a conveyance designed to carry an operator, passengers and/or cargo, over land.","properties": {
+"citation:VehicleAugmentation": {
+"description": "Information describing a motor vehicle.","oneOf": [{
+"$ref": "../citation.schema.json#/definitions/citation:VehicleAugmentation"
+},
+{
+"items": {
+"$ref": "../citation.schema.json#/definitions/citation:VehicleAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:ItemAugmentation": {
+"description": "An augmentation to a property entity","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:ItemAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:ItemAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:ConveyanceColorPrimaryCode": {
+"description": "A single, upper-most, front-most, or majority color of a vehicle.","$ref": "./j.schema.json#/definitions/j:ConveyanceColorPrimaryCode"
+},"j:VehicleMakeCode": {
+"description": "A manufacturer of a vehicle.","$ref": "./j.schema.json#/definitions/j:VehicleMakeCode"
+},"j:VehicleModelCode": {
+"description": "A specific design or class of vehicle made by a manufacturer.","$ref": "./j.schema.json#/definitions/j:VehicleModelCode"
+},"j:VehicleStyleCode": {
+"description": "A style of a vehicle.","$ref": "./j.schema.json#/definitions/j:VehicleStyleCode"
+},"nc:ConveyanceColorPrimaryText": {
+"description": "A single, upper-most, front-most, or majority color of a conveyance.","$ref": "#/definitions/nc:ConveyanceColorPrimaryText"
+},"nc:ItemColorDescriptionText": {
+"description": "A description of the overall color of an item.","$ref": "#/definitions/nc:ItemColorDescriptionText"
+},"nc:ItemDescriptionText": {
+"description": "A description of an item.","$ref": "#/definitions/nc:ItemDescriptionText"
+},"nc:ItemModelYearDate": {
+"description": "A year in which an item was manufactured or produced.","$ref": "#/definitions/nc:ItemModelYearDate"
+},"nc:ItemOtherIdentification": {
+"description": "An identification assigned to an item.","$ref": "#/definitions/nc:ItemOtherIdentification"
+},"nc:ItemStyleText": {
+"description": "A style of a property item.","$ref": "#/definitions/nc:ItemStyleText"
+},"nc:ItemValue": {
+"description": "An evaluation of the monetary worth of an item.","$ref": "#/definitions/nc:ItemValue"
+},"nc:VehicleIdentification": {
+"description": "A unique identification for a specific vehicle.","$ref": "#/definitions/nc:VehicleIdentification"
+}
+},"type": "object"
+}
+,
+"nc:WeightMeasureType": {
+"additionalProperties" : false,"description": "A data type for a measure of a weight.","properties": {
+"nc:LengthUnitCode": {
+"description": "A unit of measure of a length value.","$ref": "#/definitions/nc:LengthUnitCode"
+},"nc:MeasureDecimalValue": {
+"description": "A decimal measurement value.","$ref": "#/definitions/nc:MeasureDecimalValue"
+},"nc:WeightUnitCode": {
+"description": "A unit of measure of the weight value.","$ref": "#/definitions/nc:WeightUnitCode"
+}
+},"type": "object"
+}
+,
+"nc:WeightUnitCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A unit of measure of the weight value."
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

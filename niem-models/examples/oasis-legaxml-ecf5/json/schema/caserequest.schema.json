@@ -1,0 +1,205 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/caserequest"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"caserequest" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/caserequest#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"ecf" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/ecf#"
+,
+
+"j" : "http://release.niem.gov/niem/domains/jxdm/6.1/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"caserequest:CalendarEventTimeRange": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DateRangeType","description": "A filter criterion for calendar events. If present, the response should only include calendar events that fall between the from and to dates and times."
+}
+,
+"caserequest:CaseQueryCriteria": {
+"$ref": "#/definitions/caserequest:CaseQueryCriteriaType","description": "Criteria limiting the case information to be returned."
+}
+,
+"caserequest:CaseQueryCriteriaType": {
+"additionalProperties" : false,"description": "Criteria limiting the list of cases to be returned.","properties": {
+"caserequest:CalendarEventTimeRange": {
+"description": "A filter criterion for calendar events. If present, the response should only include calendar events that fall between the from and to dates and times.","$ref": "#/definitions/caserequest:CalendarEventTimeRange"
+},"caserequest:DocketEntryTimeRange": {
+"description": "A filter criterion for docket entries. If present, the response should only include docket entries that fall between the from and to dates and times.","$ref": "#/definitions/caserequest:DocketEntryTimeRange"
+},"caserequest:DocketEntryTypeCodeFilterText": {
+"description": "Filter criterion indicating that only docket entries of a specified type are being requested.","oneOf": [{
+"$ref": "#/definitions/caserequest:DocketEntryTypeCodeFilterText"
+},
+{
+"items": {
+"$ref": "#/definitions/caserequest:DocketEntryTypeCodeFilterText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"caserequest:IncludeCalendarEventIndicator": {
+"description": "Indicates whether requester wishes calendar event information to be included in the response.","$ref": "#/definitions/caserequest:IncludeCalendarEventIndicator"
+},"caserequest:IncludeDocketEntryIndicator": {
+"description": "Indicates whether requester wishes docket entry information to be included in the response.","$ref": "#/definitions/caserequest:IncludeDocketEntryIndicator"
+},"caserequest:IncludeParticipantsIndicator": {
+"description": "Indicates whether requester wishes participant information to be included in the response.","$ref": "#/definitions/caserequest:IncludeParticipantsIndicator"
+},"ecf:CaseTrackingID": {
+"description": "Court case number.","$ref": "./ecf.schema.json#/definitions/ecf:CaseTrackingID"
+},"ecf:CourtEventTypeCode": {
+"description": "Filter criterion indicating that only calendar entries of a specified type are being requested.","oneOf": [{
+"$ref": "./ecf.schema.json#/definitions/ecf:CourtEventTypeCode"
+},
+{
+"items": {
+"$ref": "./ecf.schema.json#/definitions/ecf:CourtEventTypeCode"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:CaseNumberText": {
+"description": "An identifying number for a case that this activity is a part of, where the case number belongs to the agency that owns the activity information.","$ref": "./niem/j.schema.json#/definitions/j:CaseNumberText"
+}
+},"required" : ["caserequest:IncludeCalendarEventIndicator", "caserequest:IncludeDocketEntryIndicator", "caserequest:IncludeParticipantsIndicator", "j:CaseNumberText"],"type": "object"
+}
+,
+"caserequest:DocketEntryTimeRange": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DateRangeType","description": "A filter criterion for docket entries. If present, the response should only include docket entries that fall between the from and to dates and times."
+}
+,
+"caserequest:DocketEntryTypeCodeFilterText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "Filter criterion indicating that only docket entries of a specified type are being requested."
+}
+,
+"caserequest:GetCaseRequestMessage": {
+"$ref": "#/definitions/caserequest:GetCaseRequestMessageType","description": "A message requesting a case from a court case management information system conforming to the parameter or parameters identified in the message."
+}
+,
+"caserequest:GetCaseRequestMessageType": {
+"additionalProperties" : false,"description": "A message requesting a case from a court case management information system conforming to the parameter or parameters identified in the message.","properties": {
+"caserequest:CaseQueryCriteria": {
+"description": "Criteria limiting the case information to be returned.","$ref": "#/definitions/caserequest:CaseQueryCriteria"
+},"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "./ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "./ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:SendingMDELocationID": {
+"description": "Location for the MDE to which asynchronous and service messages can be sent. This unique location is self-assigned by the MDE.","$ref": "./ecf.schema.json#/definitions/ecf:SendingMDELocationID"
+},"ecf:ServiceInteractionProfileCode": {
+"description": "An identifier, from a list of allowed values defined in the Court Filing specification, of a message profile supported by this court.","$ref": "./ecf.schema.json#/definitions/ecf:ServiceInteractionProfileCode"
+},"j:CaseCourt": {
+"description": "A court of law in which the case is being tried.","$ref": "./niem/j.schema.json#/definitions/j:CaseCourt"
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentInformationCutOffDate": {
+"description": "A date after which contributions to the content of a document will no longer be accepted.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentInformationCutOffDate"
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentPostDate": {
+"description": "A date a document is entered or posted to an information system or network; used when the date of posting is different from the date on which a document was officially filed.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentPostDate"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["caserequest:CaseQueryCriteria", "ecf:SendingMDELocationID", "ecf:ServiceInteractionProfileCode", "j:CaseCourt", "nc:DocumentIdentification", "nc:DocumentPostDate"],"type": "object"
+}
+,
+"caserequest:IncludeCalendarEventIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicates whether requester wishes calendar event information to be included in the response."
+}
+,
+"caserequest:IncludeDocketEntryIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicates whether requester wishes docket entry information to be included in the response."
+}
+,
+"caserequest:IncludeParticipantsIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicates whether requester wishes participant information to be included in the response."
+}
+
+},
+"properties" : {
+"caserequest:GetCaseRequestMessage": {
+"$ref": "#/definitions/caserequest:GetCaseRequestMessageType","description": "A message requesting a case from a court case management information system conforming to the parameter or parameters identified in the message."
+}
+
+},
+"required" : [
+]
+}

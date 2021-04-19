@@ -1,0 +1,147 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/feesresponse"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"cac" : "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"ecf" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/ecf#"
+,
+
+"feesresponse" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/feesresponse#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"feesresponse:FeesCalculationAmount": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:AmountType","description": "A total of all fees required to submit a document."
+}
+,
+"feesresponse:GetFeesCalculationResponseMessage": {
+"$ref": "#/definitions/feesresponse:GetFeesCalculationResponseMessageType","description": "The response to a CalculatedFeesQueryMessage, which may either be 0 indicating no fee is due, a currency amount indicating the fee due upon filing, or unknown indicating that the court case management information system is unable to calculate the fee for the proposed filing."
+}
+,
+"feesresponse:GetFeesCalculationResponseMessageType": {
+"additionalProperties" : false,"description": "The response to a CalculatedFeesQueryMessage, which may either be 0 indicating no fee is due, a currency amount indicating the fee due upon filing, or unknown indicating that the court case management information system is unable to calculate the fee for the proposed filing.","properties": {
+"cac:AllowanceCharge": {
+"description": "An authorization by the filer allowing the court to take money from the filer, for the purpose of this filing, by a particular means.","oneOf": [{
+"$ref": ""
+},
+{
+"items": {
+"$ref": ""
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"cbrn:MessageStatus": {
+"description": "A status of the message.","$ref": "./niem/cbrn.schema.json#/definitions/cbrn:MessageStatus"
+},"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "./ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "./ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:SendingMDELocationID": {
+"description": "Location for the MDE to which asynchronous and service messages can be sent. This unique location is self-assigned by the MDE.","$ref": "./ecf.schema.json#/definitions/ecf:SendingMDELocationID"
+},"ecf:ServiceInteractionProfileCode": {
+"description": "An identifier, from a list of allowed values defined in the Court Filing specification, of a message profile supported by this court.","$ref": "./ecf.schema.json#/definitions/ecf:ServiceInteractionProfileCode"
+},"feesresponse:FeesCalculationAmount": {
+"description": "A total of all fees required to submit a document.","$ref": "#/definitions/feesresponse:FeesCalculationAmount"
+},"j:CaseCourt": {
+"description": "A court of law in which the case is being tried.","$ref": "./niem/j.schema.json#/definitions/j:CaseCourt"
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentInformationCutOffDate": {
+"description": "A date after which contributions to the content of a document will no longer be accepted.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentInformationCutOffDate"
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentPostDate": {
+"description": "A date a document is entered or posted to an information system or network; used when the date of posting is different from the date on which a document was officially filed.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentPostDate"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["ecf:SendingMDELocationID", "ecf:ServiceInteractionProfileCode", "feesresponse:FeesCalculationAmount", "j:CaseCourt", "nc:DocumentIdentification", "nc:DocumentPostDate"],"type": "object"
+}
+
+},
+"properties" : {
+"feesresponse:GetFeesCalculationResponseMessage": {
+"$ref": "#/definitions/feesresponse:GetFeesCalculationResponseMessageType","description": "The response to a CalculatedFeesQueryMessage, which may either be 0 indicating no fee is due, a currency amount indicating the fee due upon filing, or unknown indicating that the court case management information system is unable to calculate the fee for the proposed filing."
+}
+
+},
+"required" : [
+]
+}

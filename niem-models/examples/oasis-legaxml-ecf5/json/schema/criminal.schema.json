@@ -1,0 +1,132 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/criminal"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"criminal" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/criminal#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"j" : "http://release.niem.gov/niem/domains/jxdm/6.1/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"criminal:CaseAugmentation": {
+"$ref": "#/definitions/criminal:CaseAugmentationType","description": "Information required to initiate a new criminal case in a court.  Criminal includes felonies and misdemeanors."
+}
+,
+"criminal:CaseAugmentationType": {
+"additionalProperties" : false,"properties": {
+"criminal:PreliminaryHearingEstimatedDuration": {
+"description": "The prosecutor estimate of the time that will be required to conduct a preliminary hearing.","$ref": "#/definitions/criminal:PreliminaryHearingEstimatedDuration"
+},"criminal:ProsecutionRecommendedBailText": {
+"description": "The bail amount recommended by the prosecutor.","$ref": "#/definitions/criminal:ProsecutionRecommendedBailText"
+},"j:Arrest": {
+"description": "An apprehension of a subject by a peace official based on an observed or a reported violation of a law or ordinance, an outstanding arrest warrant, or probable cause information.","$ref": "./niem/j.schema.json#/definitions/j:Arrest"
+},"j:Citation": {
+"description": "An official summons to appear in court or pay a fine given to a subject from a peace official due to a subjects violation or infraction of a law.","$ref": "./niem/j.schema.json#/definitions/j:Citation"
+},"j:Sentence": {
+"description": "A punishment resulting from conviction of charges in a court case.","oneOf": [{
+"$ref": "./niem/j.schema.json#/definitions/j:Sentence"
+},
+{
+"items": {
+"$ref": "./niem/j.schema.json#/definitions/j:Sentence"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"type": "object"
+}
+,
+"criminal:ChargeAmendedIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "An indicator that the charge submitted amends an earlier submitted charge."
+}
+,
+"criminal:ChargeAugmentation": {
+"$ref": "#/definitions/criminal:ChargeAugmentationType","description": "The crime or violation a defendant is alleged or found to have committed."
+}
+,
+"criminal:ChargeAugmentationType": {
+"additionalProperties" : false,"properties": {
+"criminal:ChargeAmendedIndicator": {
+"description": "An indicator that the charge submitted amends an earlier submitted charge.","$ref": "#/definitions/criminal:ChargeAmendedIndicator"
+},"j:OffenseChargeAssociation": {
+"description": "A relationship between an offense that occurred and the formal charge that was assigned to it as a result of classifying the offense.","$ref": "./niem/j.schema.json#/definitions/j:OffenseChargeAssociation"
+},"j:OffenseLocationAssociation": {
+"description": "A relationship between an offense and a location at which the offense occurred.","$ref": "./niem/j.schema.json#/definitions/j:OffenseLocationAssociation"
+},"j:PersonChargeAssociation": {
+"description": "An association between a person and a charge issued to that person.","$ref": "./niem/j.schema.json#/definitions/j:PersonChargeAssociation"
+}
+},"required" : ["criminal:ChargeAmendedIndicator", "j:PersonChargeAssociation"],"type": "object"
+}
+,
+"criminal:PreliminaryHearingEstimatedDuration": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:duration","description": "The prosecutor estimate of the time that will be required to conduct a preliminary hearing."
+}
+,
+"criminal:ProsecutionRecommendedBailText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "The bail amount recommended by the prosecutor."
+}
+,
+"criminal:SentenceAugmentation": {
+"$ref": "#/definitions/criminal:SentenceAugmentationType","description": "A sentence associated with a specific charge in a case. A sentence may have multiple components (prison, probation, post-incarceration supervision/probation fine, etc.)."
+}
+,
+"criminal:SentenceAugmentationType": {
+"additionalProperties" : false,"properties": {
+"criminal:SentenceConcurrentAssociation": {
+"description": "Reference to another sentence which is to be served concurrent with this sentence.  In the case of multiple sentences without references to concurrent sentences, they are assumed to be served consecutively.","oneOf": [{
+"$ref": "#/definitions/criminal:SentenceConcurrentAssociation"
+},
+{
+"items": {
+"$ref": "#/definitions/criminal:SentenceConcurrentAssociation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"type": "object"
+}
+,
+"criminal:SentenceConcurrentAssociation": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:RelatedActivityAssociationType","description": "Reference to another sentence which is to be served concurrent with this sentence.  In the case of multiple sentences without references to concurrent sentences, they are assumed to be served consecutively."
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

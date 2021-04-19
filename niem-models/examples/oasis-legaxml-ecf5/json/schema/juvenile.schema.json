@@ -1,0 +1,141 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/juvenile"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"hs" : "http://release.niem.gov/niem/domains/humanServices/4.1/#"
+,
+
+"j" : "http://release.niem.gov/niem/domains/jxdm/6.1/#"
+,
+
+"juvenile" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/juvenile#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"juvenile:CaseAugmentation": {
+"$ref": "#/definitions/juvenile:CaseAugmentationType","description": "A delinquency or dependency case."
+}
+,
+"juvenile:CaseAugmentationType": {
+"additionalProperties" : false,"properties": {
+"hs:DelinquentAct": {
+"description": "A delinquent act.","$ref": "./niem/hs.schema.json#/definitions/hs:DelinquentAct"
+},"hs:DependencyPetition": {
+"description": "A document that is filed with the Court, typically by an attorney representing the Child Welfare Agency, that formally files allegations of abuse and/or neglect against one or more alleged perpetrators.","oneOf": [{
+"$ref": "./niem/hs.schema.json#/definitions/hs:DependencyPetition"
+},
+{
+"items": {
+"$ref": "./niem/hs.schema.json#/definitions/hs:DependencyPetition"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"hs:JuvenileAbuseNeglectAllegation": {
+"description": "A set of specifics of the referred incident of abuse or neglect as it relates to the victim. Information recorded includes the Abuse/Neglect Category and Type as well as narrative descriptions of the abuse and/or injuries","$ref": "./niem/hs.schema.json#/definitions/hs:JuvenileAbuseNeglectAllegation"
+},"hs:JuvenileCase": {
+"description": "An aggregation of information about a set of related activities and events pertaining to a juvenile. This can be, but is not necessarily, a court case.","$ref": "./niem/hs.schema.json#/definitions/hs:JuvenileCase"
+},"hs:ParentChildAssociation": {
+"description": "An association between a child and a person who is in a parent role toward that child.","oneOf": [{
+"$ref": "./niem/hs.schema.json#/definitions/hs:ParentChildAssociation"
+},
+{
+"items": {
+"$ref": "./niem/hs.schema.json#/definitions/hs:ParentChildAssociation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"j:Arrest": {
+"description": "An apprehension of a subject by a peace official based on an observed or a reported violation of a law or ordinance, an outstanding arrest warrant, or probable cause information.","$ref": "./niem/j.schema.json#/definitions/j:Arrest"
+}
+},"required" : ["hs:JuvenileCase"],"type": "object"
+}
+,
+"juvenile:DelinquentActCategoryCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "Code indicating the general category of the offense as set forth in state law. Allowable values set forth in Court Policy. Examples: Attempt, Conspiracy, Accessory before the fact, Accessory after the fact."
+}
+,
+"juvenile:IncidentAugmentation": {
+"$ref": "#/definitions/juvenile:IncidentAugmentationType","description": "The statutory or ordinance section, the violation of which would constitute a crime if committed by an adult. May include a probation violation."
+}
+,
+"juvenile:IncidentAugmentationType": {
+"additionalProperties" : false,"properties": {
+"j:IncidentViolatedStatuteAssociation": {
+"description": "An association providing details about a statute, rule, or ordinance that was violated in an incident.","$ref": "./niem/j.schema.json#/definitions/j:IncidentViolatedStatuteAssociation"
+}
+},"required" : ["j:IncidentViolatedStatuteAssociation"],"type": "object"
+}
+,
+"juvenile:JuvenileAugmentation": {
+"$ref": "#/definitions/juvenile:JuvenileAugmentationType","description": "A minor who is the subject of a delinquency or dependency case."
+}
+,
+"juvenile:JuvenileAugmentationType": {
+"additionalProperties" : false,"properties": {
+"hs:JuvenilePlacement": {
+"description": "A description of the placement where a juvenile is directed to reside during the pendency of the delinquency proceeding.","$ref": "./niem/hs.schema.json#/definitions/hs:JuvenilePlacement"
+},"j:RegisteredSexOffender": {
+"description": "A person who is required to register as a sexual offender.","$ref": "./niem/j.schema.json#/definitions/j:RegisteredSexOffender"
+},"juvenile:PersonEmacipatedIndicator": {
+"description": "Indicator whether a minor has been adjudicated an emancipated person by a court.","$ref": "#/definitions/juvenile:PersonEmacipatedIndicator"
+}
+},"type": "object"
+}
+,
+"juvenile:PersonEmacipatedIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicator whether a minor has been adjudicated an emancipated person by a court."
+}
+,
+"juvenile:PlacementAugmentation": {
+"$ref": "#/definitions/juvenile:PlacementAugmentationType","description": "Information about the person or organization orther than parent or guardian with whom the juvenile lives. Examples: Foster home, foster parents, state institution, hospital, shelter."
+}
+,
+"juvenile:PlacementAugmentationType": {
+"additionalProperties" : false,"properties": {
+"hs:JuvenilePlacementFacilityAssociation": {
+"description": "An association between a juvenile and a facility where the juvenile is directed to reside (e.g., orphanage, teen shelter, detention center, etc.).","$ref": "./niem/hs.schema.json#/definitions/hs:JuvenilePlacementFacilityAssociation"
+},"hs:JuvenilePlacementPersonAssociation": {
+"description": "An association between a juvenile and a person with whom the juvenile is directed to reside (e.g., foster parent, grandparent, etc.).","$ref": "./niem/hs.schema.json#/definitions/hs:JuvenilePlacementPersonAssociation"
+}
+},"type": "object"
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

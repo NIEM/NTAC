@@ -1,0 +1,1531 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/ecf"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"biom" : "http://release.niem.gov/niem/domains/biometrics/4.1/#"
+,
+
+"cbrn" : "http://release.niem.gov/niem/domains/cbrn/4.1/#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"ecf" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/ecf#"
+,
+
+"j" : "http://release.niem.gov/niem/domains/jxdm/6.1/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"ecf:AffectedParticipant": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:EntityType","description": "Identifier recognized by the court as being unique within this case,and used to identify a party other than the filer who is affected by the document."
+}
+,
+"ecf:CallbackMessageType": {
+"additionalProperties" : false,"description": "The base message for an asynchronous response to a message.","properties": {
+"ecf:ConnectedDocumentReview": {
+"description": "The review process for a connected document","oneOf": [{
+"$ref": "#/definitions/ecf:ConnectedDocumentReview"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:ConnectedDocumentReview"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:FilingCompletionDate": {
+"description": "the date and time at which the Court Record MDE filing process was completed following the acceptance by the Filing Review MDE","$ref": "#/definitions/ecf:FilingCompletionDate"
+},"ecf:FilingStatus": {
+"description": "The status of a filing","$ref": "#/definitions/ecf:FilingStatus"
+},"ecf:LeadDocumentReview": {
+"description": "A review process for a lead document.","oneOf": [{
+"$ref": "#/definitions/ecf:LeadDocumentReview"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:LeadDocumentReview"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"ecf:SendingMDELocationID": {
+"description": "Location for the MDE to which asynchronous and service messages can be sent. This unique location is self-assigned by the MDE.","$ref": "#/definitions/ecf:SendingMDELocationID"
+},"ecf:ServiceInteractionProfileCode": {
+"description": "An identifier, from a list of allowed values defined in the Court Filing specification, of a message profile supported by this court.","$ref": "#/definitions/ecf:ServiceInteractionProfileCode"
+},"j:CaseCourt": {
+"description": "A court of law in which the case is being tried.","$ref": "./niem/j.schema.json#/definitions/j:CaseCourt"
+},"nc:Case": {
+"description": "An aggregation of information about a set of related activities and events.","$ref": "./niem/nc.schema.json#/definitions/nc:Case"
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentInformationCutOffDate": {
+"description": "A date after which contributions to the content of a document will no longer be accepted.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentInformationCutOffDate"
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentPostDate": {
+"description": "A date a document is entered or posted to an information system or network; used when the date of posting is different from the date on which a document was officially filed.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentPostDate"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["ecf:FilingStatus", "ecf:LeadDocumentReview", "ecf:SendingMDELocationID", "ecf:ServiceInteractionProfileCode", "j:CaseCourt", "nc:Case", "nc:DocumentIdentification", "nc:DocumentPostDate"],"type": "object"
+}
+,
+"ecf:CaseAugmentation": {
+"$ref": "#/definitions/ecf:CaseAugmentationType","description": "Information about a court case."
+}
+,
+"ecf:CaseAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:CaseCategoryCode": {
+"description": "The type of trial in the lower court (e.g. bench, jury).","$ref": "#/definitions/ecf:CaseCategoryCode"
+},"ecf:CaseNewIndicator": {
+"description": "Indicates that the case is new.","$ref": "#/definitions/ecf:CaseNewIndicator"
+},"ecf:CaseParty": {
+"description": "A person alleged or found to have committed a crime or violation.","oneOf": [{
+"$ref": "#/definitions/ecf:CaseParty"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:CaseParty"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:CaseShortTitleText": {
+"description": "An abbreviated official name of a Case, usually shortened to contain only the last name of the first listed party on each side of the case.  Examples: Smith v. Jones, et al.; State v. Alexander. No title exists when the message is initiating a new case.","$ref": "#/definitions/ecf:CaseShortTitleText"
+},"ecf:CaseTrackingID": {
+"description": "Court case number.","oneOf": [{
+"$ref": "#/definitions/ecf:CaseTrackingID"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:CaseTrackingID"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:CaseTypeCode": {
+"description": "Indicates whether the e-filing system supports electronic filing of a certain case type.","$ref": "#/definitions/ecf:CaseTypeCode"
+},"j:CaseNumberText": {
+"description": "An identifying number for a case that this activity is a part of, where the case number belongs to the agency that owns the activity information.","$ref": "./niem/j.schema.json#/definitions/j:CaseNumberText"
+},"nc:Metadata": {
+"description": "Information that further qualifies primary data; data about data.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:Metadata"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:Metadata"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:OrganizationAssociation": {
+"description": "An association between an organization and another organization.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:OrganizationAssociation"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:OrganizationAssociation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:PersonAssociation": {
+"description": "An association between people.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:PersonAssociation"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:PersonAssociation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:PersonOrganizationAssociation": {
+"description": "An association between a person and an organization.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:PersonOrganizationAssociation"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:PersonOrganizationAssociation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"type": "object"
+}
+,
+"ecf:CaseCategoryCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "The type of trial in the lower court (e.g. bench, jury)."
+}
+,
+"ecf:CaseCauseOfActionCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "The legal ground on which the request for relief is based.  Allowed values set forth in court policy. Example: the basis(es) for relief in a civil case; the grounds for divorce in a state that does not recognize no-fault divorce; grounds for entry of an order of protection in a domestic violence case."
+}
+,
+"ecf:CaseFiling": {
+"$ref": "#/definitions/ecf:CaseFilingType","description": "The base message for a message with an asynchronous response."
+}
+,
+"ecf:CaseFilingType": {
+"additionalProperties" : false,"description": "The core information contained in an ECF 5.0 message.","properties": {
+"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:SendingMDELocationID": {
+"description": "Location for the MDE to which asynchronous and service messages can be sent. This unique location is self-assigned by the MDE.","$ref": "#/definitions/ecf:SendingMDELocationID"
+},"ecf:ServiceInteractionProfileCode": {
+"description": "An identifier, from a list of allowed values defined in the Court Filing specification, of a message profile supported by this court.","$ref": "#/definitions/ecf:ServiceInteractionProfileCode"
+},"j:CaseCourt": {
+"description": "A court of law in which the case is being tried.","$ref": "./niem/j.schema.json#/definitions/j:CaseCourt"
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentInformationCutOffDate": {
+"description": "A date after which contributions to the content of a document will no longer be accepted.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentInformationCutOffDate"
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentPostDate": {
+"description": "A date a document is entered or posted to an information system or network; used when the date of posting is different from the date on which a document was officially filed.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentPostDate"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["ecf:SendingMDELocationID", "ecf:ServiceInteractionProfileCode", "j:CaseCourt", "nc:DocumentIdentification", "nc:DocumentPostDate"],"type": "object"
+}
+,
+"ecf:CaseNewIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicates that the case is new."
+}
+,
+"ecf:CaseOfficialAugmentation": {
+"$ref": "#/definitions/ecf:CaseOfficialAugmentationType","description": "The role played by an attorney in this case."
+}
+,
+"ecf:CaseOfficialAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:CaseRepresentedParty": {
+"description": "A party represented by an attorney","oneOf": [{
+"$ref": "#/definitions/ecf:CaseRepresentedParty"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:CaseRepresentedParty"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"type": "object"
+}
+,
+"ecf:CaseParticipantRoleCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "A type of participant in a court case"
+}
+,
+"ecf:CaseParty": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:EntityType","description": "A person alleged or found to have committed a crime or violation."
+}
+,
+"ecf:CasePartySelfRepresentationIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Person or organization representing themselves, with (e.g. advisory counsel) or  without an attorney"
+}
+,
+"ecf:CaseRepresentedParty": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:EntityType","description": "A party represented by an attorney"
+}
+,
+"ecf:CaseShortTitleText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "An abbreviated official name of a Case, usually shortened to contain only the last name of the first listed party on each side of the case.  Examples: Smith v. Jones, et al.; State v. Alexander. No title exists when the message is initiating a new case."
+}
+,
+"ecf:CaseTrackingID": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:IdentificationType","description": "Court case number."
+}
+,
+"ecf:CaseTypeCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "Indicates whether the e-filing system supports electronic filing of a certain case type."
+}
+,
+"ecf:CauseOfActionCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "The legal ground on which the request for relief is based.  Allowed values set forth in court policy. Example: the basis(es) for relief in a civil case; the grounds for divorce in a state that does not recognize no-fault divorce; grounds for entry of an order of protection in a domestic violence case."
+}
+,
+"ecf:ChildDocket": {
+"$ref": "./niem/j.schema.json#/definitions/j:CourtEventType","description": "An entry on the docket or register of actions that is a child of the current docket entry."
+}
+,
+"ecf:ColorRelevantIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicates whether color is or is not relevant for the presentation of the document."
+}
+,
+"ecf:ConnectedDocument": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentType","description": "The pleading, motion or order that is the subject of this docket entry."
+}
+,
+"ecf:ConnectedDocumentReview": {
+"$ref": "#/definitions/ecf:DocumentReviewType","description": "The review process for a connected document"
+}
+,
+"ecf:CourtEventActor": {
+"$ref": "#/definitions/ecf:CourtEventOnBehalfOfActorType","description": "The actor who performed the action as set forth in the docket entry."
+}
+,
+"ecf:CourtEventActorType": {
+"additionalProperties" : false,"description": "The actor who performed the action as set forth in the docket entry. E.g. the person who filed the document.  Does not include the name of the court clerk composing the docket entry.","properties": {
+"nc:RoleOfItem": {
+"description": "An entity of whom the role object is a function.","$ref": "./niem/nc.schema.json#/definitions/nc:RoleOfItem"
+},"nc:RoleOfOrganization": {
+"description": "An organization of whom the role object is a function.","$ref": "./niem/nc.schema.json#/definitions/nc:RoleOfOrganization"
+},"nc:RoleOfPerson": {
+"description": "A person of whom the role object is a function.","$ref": "./niem/nc.schema.json#/definitions/nc:RoleOfPerson"
+}
+},"type": "object"
+}
+,
+"ecf:CourtEventAugmentation": {
+"$ref": "#/definitions/ecf:CourtEventAugmentationType","description": "An entry in the docket or register of actions for a case."
+}
+,
+"ecf:CourtEventAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:ChildDocket": {
+"description": "An entry on the docket or register of actions that is a child of the current docket entry.","oneOf": [{
+"$ref": "#/definitions/ecf:ChildDocket"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:ChildDocket"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:ConnectedDocument": {
+"description": "The pleading, motion or order that is the subject of this docket entry.","oneOf": [{
+"$ref": "#/definitions/ecf:ConnectedDocument"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:ConnectedDocument"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:CourtEventActor": {
+"description": "The actor who performed the action as set forth in the docket entry.","oneOf": [{
+"$ref": "#/definitions/ecf:CourtEventActor"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:CourtEventActor"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:CourtEventEnteredOnDocketDate": {
+"description": "Date and time of entry into the court record.","$ref": "#/definitions/ecf:CourtEventEnteredOnDocketDate"
+},"ecf:CourtEventLocationText": {
+"description": "A textual description of the location in a court of the calendar event.","$ref": "#/definitions/ecf:CourtEventLocationText"
+},"ecf:CourtEventOnBehalfOfActor": {
+"description": "The actor on whose behalf the filing was submitted to the court as set forth in the docket entry.","$ref": "#/definitions/ecf:CourtEventOnBehalfOfActor"
+},"ecf:CourtEventTypeCode": {
+"description": "Filter criterion indicating that only calendar entries of a specified type are being requested.","$ref": "#/definitions/ecf:CourtEventTypeCode"
+},"ecf:CourtLocationCode": {
+"description": "A court location","$ref": "#/definitions/ecf:CourtLocationCode"
+},"nc:CaseDocketID": {
+"description": "An identifier used to reference a case docket.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:CaseDocketID"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:CaseDocketID"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"required" : ["ecf:CourtEventTypeCode"],"type": "object"
+}
+,
+"ecf:CourtEventEnteredOnDocketDate": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DateType","description": "Date and time of entry into the court record."
+}
+,
+"ecf:CourtEventLocationText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "A textual description of the location in a court of the calendar event."
+}
+,
+"ecf:CourtEventOnBehalfOfActor": {
+"$ref": "#/definitions/ecf:CourtEventActorType","description": "The actor on whose behalf the filing was submitted to the court as set forth in the docket entry."
+}
+,
+"ecf:CourtEventOnBehalfOfActorType": {
+"additionalProperties" : false,"description": "The actor on whose behalf the filing was submitted to the court as set forth in the docket entry.","properties": {
+"nc:RoleOfItem": {
+"description": "An entity of whom the role object is a function.","$ref": "./niem/nc.schema.json#/definitions/nc:RoleOfItem"
+},"nc:RoleOfOrganization": {
+"description": "An organization of whom the role object is a function.","$ref": "./niem/nc.schema.json#/definitions/nc:RoleOfOrganization"
+},"nc:RoleOfPerson": {
+"description": "A person of whom the role object is a function.","$ref": "./niem/nc.schema.json#/definitions/nc:RoleOfPerson"
+}
+},"type": "object"
+}
+,
+"ecf:CourtEventTypeCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "Filter criterion indicating that only calendar entries of a specified type are being requested."
+}
+,
+"ecf:CourtLocationCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "A court location"
+}
+,
+"ecf:Document": {
+"$ref": "#/definitions/ecf:DocumentType","description": "This association will be present for each document that the clerk review process approves for sending to the court record system (where it may be rejected or recorded.)"
+}
+,
+"ecf:DocumentAddedInReviewIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicator that a document was added curing clerk review"
+}
+,
+"ecf:DocumentAssociationAugmentation": {
+"$ref": "#/definitions/ecf:DocumentAssociationAugmentationType","description": "A related document that was previously filed in this case.  For instance, the document to which this document is a response."
+}
+,
+"ecf:DocumentAssociationAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:DocumentRelatedCode": {
+"description": "A type of related document that was previously filed in this case.  For instance, the document to which this document is a response.","$ref": "#/definitions/ecf:DocumentRelatedCode"
+}
+},"required" : ["ecf:DocumentRelatedCode"],"type": "object"
+}
+,
+"ecf:DocumentAugmentation": {
+"$ref": "#/definitions/ecf:DocumentAugmentationType","description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document."
+}
+,
+"ecf:DocumentAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:AffectedParticipant": {
+"description": "Identifier recognized by the court as being unique within this case,and used to identify a party other than the filer who is affected by the document.","$ref": "#/definitions/ecf:AffectedParticipant"
+},"ecf:DocumentFiler": {
+"description": "An attorney, judicial official or a pro se (self-represented) litigant who electronically provides  filings (combinations of data and documents) for acceptance and filing by a court, or who has successfully filed filings with a court.","oneOf": [{
+"$ref": "#/definitions/ecf:DocumentFiler"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:DocumentFiler"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:DocumentRendition": {
+"description": "Descriptors for a rendition of a Document. This is meant to include all the information about the document that is needed to  enter it into the Document Management System.","oneOf": [{
+"$ref": "#/definitions/ecf:DocumentRendition"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:DocumentRendition"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:DocumentStatus": {
+"description": "A status of a document.","$ref": "#/definitions/ecf:DocumentStatus"
+},"ecf:DocumentTypeCode": {
+"description": "A type of document","$ref": "#/definitions/ecf:DocumentTypeCode"
+},"ecf:RedactionRequiredIndicator": {
+"description": "Indicator by the filer that the document must be redacted by the court.","$ref": "#/definitions/ecf:RedactionRequiredIndicator"
+},"ecf:RegisterActionDescriptionCode": {
+"description": "The docket code used by the court for the type of document submitted. Allowable values set forth in Court Policy.","$ref": "#/definitions/ecf:RegisterActionDescriptionCode"
+},"ecf:SpecialHandlingInstructionsText": {
+"description": "Any additional instructions for printing of a document (such as printing on front and back of the same page or printing on a particular color paper).","$ref": "#/definitions/ecf:SpecialHandlingInstructionsText"
+},"nc:DocumentAssociation": {
+"description": "An association between documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentAssociation"
+},"nc:Metadata": {
+"description": "Information that further qualifies primary data; data about data.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:Metadata"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:Metadata"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"type": "object"
+}
+,
+"ecf:DocumentDocketingStatusCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "Code to describe the disposition of the document: accepted or rejected.  Allowable values defined in the specification (schema)."
+}
+,
+"ecf:DocumentFiler": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:EntityType","description": "An attorney, judicial official or a pro se (self-represented) litigant who electronically provides  filings (combinations of data and documents) for acceptance and filing by a court, or who has successfully filed filings with a court."
+}
+,
+"ecf:DocumentRelatedCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "A type of related document that was previously filed in this case.  For instance, the document to which this document is a response."
+}
+,
+"ecf:DocumentRendition": {
+"$ref": "#/definitions/ecf:DocumentRenditionType","description": "Descriptors for a rendition of a Document. This is meant to include all the information about the document that is needed to  enter it into the Document Management System."
+}
+,
+"ecf:DocumentRenditionHash": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "A hash of the document as it appears in the court record.  This attribute will be populated by either the clerk review process or the court record system.  If the latter, then it will be absent in the RecordDocketingMessage.  It will also be absent in callbacks for rejected documents."
+}
+,
+"ecf:DocumentRenditionType": {
+"additionalProperties" : false,"description": "Descriptors for a rendition of a Document. This is meant to include all the information about the document that is needed to  enter it into the Document Management System.","properties": {
+"cbrn:MultimediaDataMIMEKindText": {
+"description": "A media type listed in http://www.iana.org/assignments/media-types/index.html.  If the media type is not listed, then describe the media type using free-form text.","$ref": "./niem/cbrn.schema.json#/definitions/cbrn:MultimediaDataMIMEKindText"
+},"ecf:ColorRelevantIndicator": {
+"description": "Indicates whether color is or is not relevant for the presentation of the document.","$ref": "#/definitions/ecf:ColorRelevantIndicator"
+},"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:DocumentRenditionHash": {
+"description": "A hash of the document as it appears in the court record.  This attribute will be populated by either the clerk review process or the court record system.  If the latter, then it will be absent in the RecordDocketingMessage.  It will also be absent in callbacks for rejected documents.","$ref": "#/definitions/ecf:DocumentRenditionHash"
+},"ecf:DocumentSignature": {
+"description": "Information describing or constituting the signature on a document submitted to a court for filing","$ref": "#/definitions/ecf:DocumentSignature"
+},"ecf:RedactedIndicator": {
+"description": "An indicator that sensitive information has been removed from this rendition of the document.","$ref": "#/definitions/ecf:RedactedIndicator"
+},"nc:Attachment": {
+"description": "A binary attachment to a report or document.","$ref": "./niem/nc.schema.json#/definitions/nc:Attachment"
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["nc:Attachment", "nc:DocumentIdentification"],"type": "object"
+}
+,
+"ecf:DocumentReviewDisposition": {
+"$ref": "#/definitions/ecf:DocumentReviewDispositionType","description": "The disposition of a document after review."
+}
+,
+"ecf:DocumentReviewDispositionType": {
+"additionalProperties" : false,"description": "The disposition of a document after review.","properties": {
+"ecf:DocumentAddedInReviewIndicator": {
+"description": "Indicator that a document was added curing clerk review","$ref": "#/definitions/ecf:DocumentAddedInReviewIndicator"
+},"ecf:DocumentReviewStatus": {
+"description": "The status of a document in the filing review process.","$ref": "#/definitions/ecf:DocumentReviewStatus"
+},"ecf:DocumentReviewer": {
+"description": "The entity that reviews and accepts or rejects a filing.","$ref": "#/definitions/ecf:DocumentReviewer"
+}
+},"type": "object"
+}
+,
+"ecf:DocumentReviewStatus": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:StatusType","description": "The status of a document in the filing review process."
+}
+,
+"ecf:DocumentReviewStatusCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "Code to describe the disposition of the document: accepted or rejected.  Allowable values defined in the specification (schema)."
+}
+,
+"ecf:DocumentReviewType": {
+"additionalProperties" : false,"properties": {
+"ecf:Document": {
+"description": "This association will be present for each document that the clerk review process approves for sending to the court record system (where it may be rejected or recorded.)","$ref": "#/definitions/ecf:Document"
+},"ecf:DocumentReviewDisposition": {
+"description": "The disposition of a document after review.","$ref": "#/definitions/ecf:DocumentReviewDisposition"
+},"ecf:ReviewedDocument": {
+"description": "This association will be present for each document that the clerk review process approves for sending to the court record system (where it may be rejected or recorded.)","$ref": "#/definitions/ecf:ReviewedDocument"
+}
+},"required" : ["ecf:DocumentReviewDisposition", "ecf:ReviewedDocument"],"type": "object"
+}
+,
+"ecf:DocumentReviewer": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:EntityType","description": "The entity that reviews and accepts or rejects a filing."
+}
+,
+"ecf:DocumentSignature": {
+"$ref": "#/definitions/ecf:DocumentSignatureType","description": "Information describing or constituting the signature on a document submitted to a court for filing"
+}
+,
+"ecf:DocumentSignatureType": {
+"additionalProperties" : false,"description": "Information describing or constituting the signature on a document submitted to a court for filing.","properties": {
+"ecf:SignatureAugmentation": {
+"description": "The data or information representing this signature.  It must be valid according to the profile identified by the associated signatureProfileIdentifier.","$ref": "#/definitions/ecf:SignatureAugmentation"
+},"ecf:SignatureProfileCode": {
+"description": "An identifier from the Court Filing specification that indicates the Signature Profile governing the structure of this signature.","$ref": "#/definitions/ecf:SignatureProfileCode"
+}
+},"required" : ["ecf:SignatureProfileCode"],"type": "object"
+}
+,
+"ecf:DocumentStatus": {
+"$ref": "#/definitions/ecf:DocumentStatusType","description": "A status of a document."
+}
+,
+"ecf:DocumentStatusType": {
+"additionalProperties" : false,"description": "The docketing status of a document","properties": {
+"ecf:DocumentDocketingStatusCode": {
+"description": "Code to describe the disposition of the document: accepted or rejected.  Allowable values defined in the specification (schema).","$ref": "#/definitions/ecf:DocumentDocketingStatusCode"
+},"ecf:DocumentReviewStatusCode": {
+"description": "Code to describe the disposition of the document: accepted or rejected.  Allowable values defined in the specification (schema).","$ref": "#/definitions/ecf:DocumentReviewStatusCode"
+},"nc:StatusDate": {
+"description": "A date a status was set, effected, or reported.","$ref": "./niem/nc.schema.json#/definitions/nc:StatusDate"
+},"nc:StatusDescriptionText": {
+"description": "A description of a status or condition of something or someone.","$ref": "./niem/nc.schema.json#/definitions/nc:StatusDescriptionText"
+},"nc:StatusText": {
+"description": "A status or condition of something or someone.","$ref": "./niem/nc.schema.json#/definitions/nc:StatusText"
+}
+},"type": "object"
+}
+,
+"ecf:DocumentType": {
+"additionalProperties" : false,"properties": {
+
+},"type": "object"
+}
+,
+"ecf:DocumentTypeCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "A type of document"
+}
+,
+"ecf:ElectronicServiceInformation": {
+"$ref": "#/definitions/ecf:ElectronicServiceInformationType","description": "Information provided by the filing assembly MDE to the court identifying the persons being served electronically with a copy of this document."
+}
+,
+"ecf:ElectronicServiceInformationType": {
+"additionalProperties" : false,"description": "Information provided by the filing assembly MDE to the court identifying the persons being served electronically with a copy of this filing. This information can constitute the certificate of service for service performed electronically. This information is also provided by the filing assembly MDE to service MDEs to identify persons to whom the service MDEs are required to deliver the filing.","properties": {
+"ecf:ReceivingMDELocationID": {
+"description": "The location of the service MDE associated with the person receiving service.","$ref": "#/definitions/ecf:ReceivingMDELocationID"
+},"ecf:ReceivingMDEProfileCode": {
+"description": "Code identifying the service interaction profile being used by the receiving MDE.  This list should be extensible to accommodate future service interaction profiles. Each code value is specified within the service interaction profile approved for use with ECF.","$ref": "#/definitions/ecf:ReceivingMDEProfileCode"
+},"ecf:ServiceRecipientID": {
+"description": "A value assigned to a person, organization or item entity for the purpose of uniquely specifying the entity within a legal service context with respect to e-filing. The service recipient identifier value must be known and understood by both the service provider and the service requester.","$ref": "#/definitions/ecf:ServiceRecipientID"
+}
+},"required" : ["ecf:ReceivingMDELocationID", "ecf:ReceivingMDEProfileCode", "ecf:ServiceRecipientID"],"type": "object"
+}
+,
+"ecf:EntityAssociationTypeCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "A code for the type of relationship between two persons, between two organizations, or between a person and an organization in a case.  Allowable values are set forth in Court Policy.  Examples include parent/child, subsidiary corporation, and chief executive officer."
+}
+,
+"ecf:FeeExceptionReasonCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "A code for the reason why a filer does not have to pay an otherwise applicable payment.  Allowable values set forth in Court Policy. Examples are in forma pauperis status granted or a fee waiver application submitted with the filing.."
+}
+,
+"ecf:FeeExceptionSupportingText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "Any text needed to support the exemption assertion (reference to a court order, etc.)"
+}
+,
+"ecf:FilingCompletionDate": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DateType","description": "the date and time at which the Court Record MDE filing process was completed following the acceptance by the Filing Review MDE"
+}
+,
+"ecf:FilingDocketingStatusCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "The docketing status of the filing or document"
+}
+,
+"ecf:FilingReviewStatusCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "Status of the filing as determined by the system sending the callback. Values: accepted, partially accepted (e.g., some documents but not others), rejected."
+}
+,
+"ecf:FilingStatus": {
+"$ref": "#/definitions/ecf:FilingStatusType","description": "The status of a filing"
+}
+,
+"ecf:FilingStatusType": {
+"additionalProperties" : false,"description": "A textual description of the reason for the setting of the status in the filingStatusCode.","properties": {
+"ecf:FilingDocketingStatusCode": {
+"description": "The docketing status of the filing or document","$ref": "#/definitions/ecf:FilingDocketingStatusCode"
+},"ecf:FilingReviewStatusCode": {
+"description": "Status of the filing as determined by the system sending the callback. Values: accepted, partially accepted (e.g., some documents but not others), rejected.","$ref": "#/definitions/ecf:FilingReviewStatusCode"
+},"nc:StatusDate": {
+"description": "A date a status was set, effected, or reported.","$ref": "./niem/nc.schema.json#/definitions/nc:StatusDate"
+},"nc:StatusDescriptionText": {
+"description": "A description of a status or condition of something or someone.","$ref": "./niem/nc.schema.json#/definitions/nc:StatusDescriptionText"
+},"nc:StatusText": {
+"description": "A status or condition of something or someone.","$ref": "./niem/nc.schema.json#/definitions/nc:StatusText"
+}
+},"required" : ["ecf:FilingReviewStatusCode"],"type": "object"
+}
+,
+"ecf:InsuranceType": {
+"additionalProperties" : false,"description": "Insurance coverage for an individual.","properties": {
+
+},"type": "object"
+}
+,
+"ecf:ItemAugmentation": {
+"$ref": "#/definitions/ecf:ItemAugmentationType","description": "An augmentation to a property entity"
+}
+,
+"ecf:ItemAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:CaseParticipantRoleCode": {
+"description": "A type of participant in a court case","oneOf": [{
+"$ref": "#/definitions/ecf:CaseParticipantRoleCode"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:CaseParticipantRoleCode"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"ecf:CasePartySelfRepresentationIndicator": {
+"description": "Person or organization representing themselves, with (e.g. advisory counsel) or  without an attorney","$ref": "#/definitions/ecf:CasePartySelfRepresentationIndicator"
+},"ecf:ParticipantID": {
+"description": "A unique identifier for an entity participating in a case.","$ref": "#/definitions/ecf:ParticipantID"
+}
+},"required" : ["ecf:CaseParticipantRoleCode"],"type": "object"
+}
+,
+"ecf:LeadDocumentReview": {
+"$ref": "#/definitions/ecf:DocumentReviewType","description": "A review process for a lead document."
+}
+,
+"ecf:MatchingFiling": {
+"$ref": "#/definitions/ecf:MatchingFilingType","description": "The document that is the subject of this query."
+}
+,
+"ecf:MatchingFilingType": {
+"additionalProperties" : false,"description": "A filing matching the parameters submitted with a FilingListQueryMessage.","properties": {
+"ecf:ConnectedDocumentReview": {
+"description": "The review process for a connected document","oneOf": [{
+"$ref": "#/definitions/ecf:ConnectedDocumentReview"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:ConnectedDocumentReview"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:FilingCompletionDate": {
+"description": "the date and time at which the Court Record MDE filing process was completed following the acceptance by the Filing Review MDE","$ref": "#/definitions/ecf:FilingCompletionDate"
+},"ecf:FilingStatus": {
+"description": "The status of a filing","$ref": "#/definitions/ecf:FilingStatus"
+},"ecf:LeadDocumentReview": {
+"description": "A review process for a lead document.","oneOf": [{
+"$ref": "#/definitions/ecf:LeadDocumentReview"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:LeadDocumentReview"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"ecf:SendingMDELocationID": {
+"description": "Location for the MDE to which asynchronous and service messages can be sent. This unique location is self-assigned by the MDE.","$ref": "#/definitions/ecf:SendingMDELocationID"
+},"ecf:ServiceInteractionProfileCode": {
+"description": "An identifier, from a list of allowed values defined in the Court Filing specification, of a message profile supported by this court.","$ref": "#/definitions/ecf:ServiceInteractionProfileCode"
+},"j:CaseCourt": {
+"description": "A court of law in which the case is being tried.","$ref": "./niem/j.schema.json#/definitions/j:CaseCourt"
+},"nc:Case": {
+"description": "An aggregation of information about a set of related activities and events.","$ref": "./niem/nc.schema.json#/definitions/nc:Case"
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentInformationCutOffDate": {
+"description": "A date after which contributions to the content of a document will no longer be accepted.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentInformationCutOffDate"
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentPostDate": {
+"description": "A date a document is entered or posted to an information system or network; used when the date of posting is different from the date on which a document was officially filed.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentPostDate"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["ecf:FilingStatus", "ecf:LeadDocumentReview", "ecf:SendingMDELocationID", "ecf:ServiceInteractionProfileCode", "j:CaseCourt", "nc:Case", "nc:DocumentIdentification", "nc:DocumentPostDate"],"type": "object"
+}
+,
+"ecf:MessageStatusAugmentation": {
+"$ref": "#/definitions/ecf:MessageStatusAugmentationType","description": "A value describing the status of electronic service on a particular recipient."
+}
+,
+"ecf:MessageStatusAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:ServiceRecipientID": {
+"description": "A value assigned to a person, organization or item entity for the purpose of uniquely specifying the entity within a legal service context with respect to e-filing. The service recipient identifier value must be known and understood by both the service provider and the service requester.","$ref": "#/definitions/ecf:ServiceRecipientID"
+},"ecf:ServiceStatusCode": {
+"description": "Enumerated values: unrecognized - filerID is not recognized, received - filing received by MDE, sent - filing sent by MDE to service recipient  Future versions may add additional values, such as: delivered - filing delivered to service recipient. (i.e. under the control of the recipient) opened - filing opened by service recipient","$ref": "#/definitions/ecf:ServiceStatusCode"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+}
+},"required" : ["nc:DocumentIdentification"],"type": "object"
+}
+,
+"ecf:OrganizationAssociationAugmentation": {
+"$ref": "#/definitions/ecf:OrganizationAssociationAugmentationType","description": "The relationship between two organizations.  Example: subsidiary corporation."
+}
+,
+"ecf:OrganizationAssociationAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:EntityAssociationTypeCode": {
+"description": "A code for the type of relationship between two persons, between two organizations, or between a person and an organization in a case.  Allowable values are set forth in Court Policy.  Examples include parent/child, subsidiary corporation, and chief executive officer.","$ref": "#/definitions/ecf:EntityAssociationTypeCode"
+}
+},"type": "object"
+}
+,
+"ecf:OrganizationAugmentation": {
+"$ref": "#/definitions/ecf:OrganizationAugmentationType","description": "A structure that describes a unit which conducts some sort of business or operations."
+}
+,
+"ecf:OrganizationAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:CaseParticipantRoleCode": {
+"description": "A type of participant in a court case","oneOf": [{
+"$ref": "#/definitions/ecf:CaseParticipantRoleCode"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:CaseParticipantRoleCode"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"ecf:CasePartySelfRepresentationIndicator": {
+"description": "Person or organization representing themselves, with (e.g. advisory counsel) or  without an attorney","$ref": "#/definitions/ecf:CasePartySelfRepresentationIndicator"
+},"ecf:ElectronicServiceInformation": {
+"description": "Information provided by the filing assembly MDE to the court identifying the persons being served electronically with a copy of this document.","$ref": "#/definitions/ecf:ElectronicServiceInformation"
+},"ecf:ParticipantID": {
+"description": "A unique identifier for an entity participating in a case.","$ref": "#/definitions/ecf:ParticipantID"
+},"nc:ContactInformation": {
+"description": "A set of details about how to contact a person or an organization.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:ContactInformation"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:ContactInformation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"required" : ["ecf:CaseParticipantRoleCode"],"type": "object"
+}
+,
+"ecf:ParticipantID": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:IdentificationType","description": "A unique identifier for an entity participating in a case."
+}
+,
+"ecf:PersonAssociationAugmentation": {
+"$ref": "#/definitions/ecf:PersonAssociationAugmentationType","description": "The relationship of a person to another person in a case.  Allowable values set forth in Court Policy."
+}
+,
+"ecf:PersonAssociationAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:EntityAssociationTypeCode": {
+"description": "A code for the type of relationship between two persons, between two organizations, or between a person and an organization in a case.  Allowable values are set forth in Court Policy.  Examples include parent/child, subsidiary corporation, and chief executive officer.","$ref": "#/definitions/ecf:EntityAssociationTypeCode"
+}
+},"type": "object"
+}
+,
+"ecf:PersonAugmentation": {
+"$ref": "#/definitions/ecf:PersonAugmentationType","description": "The person playing a role in a case."
+}
+,
+"ecf:PersonAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:CaseParticipantRoleCode": {
+"description": "A type of participant in a court case","oneOf": [{
+"$ref": "#/definitions/ecf:CaseParticipantRoleCode"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:CaseParticipantRoleCode"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:CasePartySelfRepresentationIndicator": {
+"description": "Person or organization representing themselves, with (e.g. advisory counsel) or  without an attorney","$ref": "#/definitions/ecf:CasePartySelfRepresentationIndicator"
+},"ecf:ElectronicServiceInformation": {
+"description": "Information provided by the filing assembly MDE to the court identifying the persons being served electronically with a copy of this document.","$ref": "#/definitions/ecf:ElectronicServiceInformation"
+},"ecf:ParticipantID": {
+"description": "A unique identifier for an entity participating in a case.","$ref": "#/definitions/ecf:ParticipantID"
+},"nc:ContactInformation": {
+"description": "A set of details about how to contact a person or an organization.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:ContactInformation"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:ContactInformation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:Insurance": {
+"description": "A coverage by a contract whereby one party agrees to indemnify or guarantee another against loss by a specified contingent event or peril.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:Insurance"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:Insurance"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:PersonEmploymentAssociation": {
+"description": "An association between a person and employment information.","$ref": "./niem/nc.schema.json#/definitions/nc:PersonEmploymentAssociation"
+}
+},"type": "object"
+}
+,
+"ecf:PersonIdentificationCategoryCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "A type of person identifier."
+}
+,
+"ecf:PersonOrganizationAssociationAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:EntityAssociationTypeCode": {
+"description": "A code for the type of relationship between two persons, between two organizations, or between a person and an organization in a case.  Allowable values are set forth in Court Policy.  Examples include parent/child, subsidiary corporation, and chief executive officer.","$ref": "#/definitions/ecf:EntityAssociationTypeCode"
+}
+},"type": "object"
+}
+,
+"ecf:PersonOrganizationAugmentation": {
+"$ref": "#/definitions/ecf:PersonOrganizationAssociationAugmentationType","description": "The relationship of a person to an organization in a case.  Allowable values set forth in Court Policy.  An example is the relationship between an attorney and the law firm."
+}
+,
+"ecf:ReceivingMDELocationID": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:IdentificationType","description": "The location of the service MDE associated with the person receiving service."
+}
+,
+"ecf:ReceivingMDEProfileCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "Code identifying the service interaction profile being used by the receiving MDE.  This list should be extensible to accommodate future service interaction profiles. Each code value is specified within the service interaction profile approved for use with ECF."
+}
+,
+"ecf:RedactedIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "An indicator that sensitive information has been removed from this rendition of the document."
+}
+,
+"ecf:RedactionRequiredIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicator by the filer that the document must be redacted by the court."
+}
+,
+"ecf:RegisterActionDescriptionCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "The docket code used by the court for the type of document submitted. Allowable values set forth in Court Policy."
+}
+,
+"ecf:RelatedActivityAssociationAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:RelatedCaseAssociationTypeCode": {
+"description": "Nature of the relationship between the current case and the related case.  Allowable values to be set forth in Court Policy. Examples: associated, consolidated, related.","$ref": "#/definitions/ecf:RelatedCaseAssociationTypeCode"
+}
+},"type": "object"
+}
+,
+"ecf:RelatedCaseAssociationTypeCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "Nature of the relationship between the current case and the related case.  Allowable values to be set forth in Court Policy. Examples: associated, consolidated, related."
+}
+,
+"ecf:RelationActivityAssociationAugmentation": {
+"$ref": "#/definitions/ecf:RelatedActivityAssociationAugmentationType","description": "Case or cases sharing characteristics, such as common parties or events, with this case."
+}
+,
+"ecf:RequestMessageType": {
+"additionalProperties" : false,"description": "The base message for a synchronous request/query.","properties": {
+"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:SendingMDELocationID": {
+"description": "Location for the MDE to which asynchronous and service messages can be sent. This unique location is self-assigned by the MDE.","$ref": "#/definitions/ecf:SendingMDELocationID"
+},"ecf:ServiceInteractionProfileCode": {
+"description": "An identifier, from a list of allowed values defined in the Court Filing specification, of a message profile supported by this court.","$ref": "#/definitions/ecf:ServiceInteractionProfileCode"
+},"j:CaseCourt": {
+"description": "A court of law in which the case is being tried.","$ref": "./niem/j.schema.json#/definitions/j:CaseCourt"
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentInformationCutOffDate": {
+"description": "A date after which contributions to the content of a document will no longer be accepted.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentInformationCutOffDate"
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentPostDate": {
+"description": "A date a document is entered or posted to an information system or network; used when the date of posting is different from the date on which a document was officially filed.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentPostDate"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["ecf:SendingMDELocationID", "ecf:ServiceInteractionProfileCode", "j:CaseCourt", "nc:DocumentIdentification", "nc:DocumentPostDate"],"type": "object"
+}
+,
+"ecf:ResponseMessageType": {
+"additionalProperties" : false,"description": "The base message for a synchronous response to a request.","properties": {
+"cbrn:MessageStatus": {
+"description": "A status of the message.","$ref": "./niem/cbrn.schema.json#/definitions/cbrn:MessageStatus"
+},"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:SendingMDELocationID": {
+"description": "Location for the MDE to which asynchronous and service messages can be sent. This unique location is self-assigned by the MDE.","$ref": "#/definitions/ecf:SendingMDELocationID"
+},"ecf:ServiceInteractionProfileCode": {
+"description": "An identifier, from a list of allowed values defined in the Court Filing specification, of a message profile supported by this court.","$ref": "#/definitions/ecf:ServiceInteractionProfileCode"
+},"j:CaseCourt": {
+"description": "A court of law in which the case is being tried.","$ref": "./niem/j.schema.json#/definitions/j:CaseCourt"
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentInformationCutOffDate": {
+"description": "A date after which contributions to the content of a document will no longer be accepted.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentInformationCutOffDate"
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentPostDate": {
+"description": "A date a document is entered or posted to an information system or network; used when the date of posting is different from the date on which a document was officially filed.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentPostDate"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["ecf:SendingMDELocationID", "ecf:ServiceInteractionProfileCode", "j:CaseCourt", "nc:DocumentIdentification", "nc:DocumentPostDate"],"type": "object"
+}
+,
+"ecf:ReviewedDocument": {
+"$ref": "#/definitions/ecf:ReviewedDocumentType","description": "This association will be present for each document that the clerk review process approves for sending to the court record system (where it may be rejected or recorded.)"
+}
+,
+"ecf:ReviewedDocumentAugmentation": {
+"$ref": "#/definitions/ecf:ReviewedDocumentAugmentationType","description": "Additional document information resulting from clerk review."
+}
+,
+"ecf:ReviewedDocumentAugmentationType": {
+"additionalProperties" : false,"properties": {
+"ecf:SealDocumentIndicator": {
+"description": "Clerk instruction to court record system to seal this document.","$ref": "#/definitions/ecf:SealDocumentIndicator"
+},"nc:CaseDocketID": {
+"description": "An identifier used to reference a case docket.","$ref": "./niem/nc.schema.json#/definitions/nc:CaseDocketID"
+},"nc:DocumentAssociation": {
+"description": "An association between documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentAssociation"
+}
+},"type": "object"
+}
+,
+"ecf:ReviewedDocumentType": {
+"additionalProperties" : false,"description": "A document that has been reviewed through the clerk review process, and that potentially has been or will be reocrded in the court record system.","properties": {
+"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:ReviewedDocumentAugmentation": {
+"description": "Additional document information resulting from clerk review.","oneOf": [{
+"$ref": "#/definitions/ecf:ReviewedDocumentAugmentation"
+},
+{
+"items": {
+"$ref": "#/definitions/ecf:ReviewedDocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["nc:DocumentIdentification"],"type": "object"
+}
+,
+"ecf:SealDocumentIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Clerk instruction to court record system to seal this document."
+}
+,
+"ecf:SendingMDELocationID": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:IdentificationType","description": "Location for the MDE to which asynchronous and service messages can be sent. This unique location is self-assigned by the MDE."
+}
+,
+"ecf:ServiceInteractionProfileCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "An identifier, from a list of allowed values defined in the Court Filing specification, of a message profile supported by this court."
+}
+,
+"ecf:ServiceRecipientID": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:IdentificationType","description": "A value assigned to a person, organization or item entity for the purpose of uniquely specifying the entity within a legal service context with respect to e-filing. The service recipient identifier value must be known and understood by both the service provider and the service requester."
+}
+,
+"ecf:ServiceStatusCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "Enumerated values: unrecognized - filerID is not recognized, received - filing received by MDE, sent - filing sent by MDE to service recipient  Future versions may add additional values, such as: delivered - filing delivered to service recipient. (i.e. under the control of the recipient) opened - filing opened by service recipient"
+}
+,
+"ecf:SignatureAugmentation": {
+"$ref": "#/definitions/ecf:SignatureAugmentationType","description": "The data or information representing this signature.  It must be valid according to the profile identified by the associated signatureProfileIdentifier."
+}
+,
+"ecf:SignatureAugmentationType": {
+"additionalProperties" : true,"description": "An augmentation type","properties": {
+
+},"type": "object"
+}
+,
+"ecf:SignatureProfileCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "An identifier from the Court Filing specification that indicates the Signature Profile governing the structure of this signature."
+}
+,
+"ecf:SpecialHandlingInstructionsText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "Any additional instructions for printing of a document (such as printing on front and back of the same page or printing on a particular color paper)."
+}
+,
+"ecf:SubjectAugmentation": {
+"$ref": "#/definitions/ecf:SubjectAugmentationType","description": "A person or organization alleged or found to have committed a crime or violation."
+}
+,
+"ecf:SubjectAugmentationType": {
+"additionalProperties" : false,"properties": {
+"biom:Biometric": {
+"description": "A Root Element for Biometric data","$ref": "./niem/biom.schema.json#/definitions/biom:Biometric"
+},"ecf:SubjectWarrantIssuedIndicator": {
+"description": "Indicates whether an arrest warrant has been issued against the defendant.","$ref": "#/definitions/ecf:SubjectWarrantIssuedIndicator"
+},"j:RapSheetTransactionControlIdentification": {
+"description": "A Transaction Control Number (TCN) is the identification for a fingerprint event, submitted from the Livescan device to AFIS when transmitting fingerprints.  The TCN links the offender to the fingerprint event.","$ref": "./niem/j.schema.json#/definitions/j:RapSheetTransactionControlIdentification"
+}
+},"type": "object"
+}
+,
+"ecf:SubjectWarrantIssuedIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicates whether an arrest warrant has been issued against the defendant."
+}
+,
+"ecf:VehicleOperatorInsuranceCoverage": {
+"$ref": "#/definitions/ecf:InsuranceType","description": "Information concerning whether a driver of a motor vehicle possesses proof of insurance coverage required by law."
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

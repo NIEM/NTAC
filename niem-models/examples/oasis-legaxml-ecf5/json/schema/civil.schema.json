@@ -1,0 +1,161 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/civil"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"civil" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/civil#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"ecf" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/ecf#"
+,
+
+"hs" : "http://release.niem.gov/niem/domains/humanServices/4.1/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"civil:AmountInControversy": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:AmountType","description": "The amount set forth in an ad damnum clause in a complaint, counter claim, or cross complaint."
+}
+,
+"civil:CaseAugmentation": {
+"$ref": "#/definitions/civil:CaseAugmentationType","description": "Information required to initiate a new civil case in a court.  Civil includes conservatorships, guardianships, mental health and probate."
+}
+,
+"civil:CaseAugmentationType": {
+"additionalProperties" : false,"properties": {
+"civil:AmountInControversy": {
+"description": "The amount set forth in an ad damnum clause in a complaint, counter claim, or cross complaint.","$ref": "#/definitions/civil:AmountInControversy"
+},"civil:CivilClassActionIndicator": {
+"description": "Whether the filer is requesting that this case proceed as a class action.","$ref": "#/definitions/civil:CivilClassActionIndicator"
+},"civil:DecedentEstateCase": {
+"description": "Information about a case administering and distributing the assets of a testate or intestate decedent.","$ref": "#/definitions/civil:DecedentEstateCase"
+},"civil:FiduciaryCaseAssociation": {
+"description": "InfInformation about a guardianship, conservatorship, trust, or mental health case.","$ref": "#/definitions/civil:FiduciaryCaseAssociation"
+},"civil:JurisdictionalGroundsCode": {
+"description": "The grounds for invoking the jurisdiction of a limited jurisdiction court.  Allowed values set forth in Court policy. Not used in general jurisdiction courts.","$ref": "#/definitions/civil:JurisdictionalGroundsCode"
+},"civil:JuryDemandIndicator": {
+"description": "Whether filer invokes the right to trial by jury.","$ref": "#/definitions/civil:JuryDemandIndicator"
+},"civil:ReliefTypeCode": {
+"description": "Indicator of the type of relief requested in the case, e.g., damages, equitable relief (injunction).  Allowable values defined in Court Policy.","oneOf": [{
+"$ref": "#/definitions/civil:ReliefTypeCode"
+},
+{
+"items": {
+"$ref": "#/definitions/civil:ReliefTypeCode"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"ecf:CauseOfActionCode": {
+"description": "The legal ground on which the request for relief is based.  Allowed values set forth in court policy. Example: the basis(es) for relief in a civil case; the grounds for divorce in a state that does not recognize no-fault divorce; grounds for entry of an order of protection in a domestic violence case.","$ref": "./ecf.schema.json#/definitions/ecf:CauseOfActionCode"
+}
+},"required" : ["civil:ReliefTypeCode", "ecf:CauseOfActionCode"],"type": "object"
+}
+,
+"civil:CivilClassActionIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Whether the filer is requesting that this case proceed as a class action."
+}
+,
+"civil:Decedent": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:PersonType","description": "The deceased person who estate is the subject of a court case."
+}
+,
+"civil:DecedentEstateCase": {
+"$ref": "#/definitions/civil:DecedentEstateCaseType","description": "Information about a case administering and distributing the assets of a testate or intestate decedent."
+}
+,
+"civil:DecedentEstateCaseType": {
+"additionalProperties" : false,"description": "Information about a case administering and distributing the assets of a testate or intestate decedent.","properties": {
+"civil:Decedent": {
+"description": "The deceased person who estate is the subject of a court case.","$ref": "#/definitions/civil:Decedent"
+},"civil:WillFilingDate": {
+"description": "Date on which the will of the decesaed person was filed in the court.","$ref": "#/definitions/civil:WillFilingDate"
+},"nc:PersonDeathDate": {
+"description": "A date a person died or was declared legally dead.","$ref": "./niem/nc.schema.json#/definitions/nc:PersonDeathDate"
+}
+},"required" : ["civil:Decedent", "nc:PersonDeathDate"],"type": "object"
+}
+,
+"civil:FiduciaryCaseAssociation": {
+"$ref": "#/definitions/civil:FiduciaryCaseAssociationType","description": "InfInformation about a guardianship, conservatorship, trust, or mental health case."
+}
+,
+"civil:FiduciaryCaseAssociationType": {
+"additionalProperties" : false,"description": "Information about a guardianship, conservatorship, trust, or mental health case.","properties": {
+"civil:FiduciaryTypeCode": {
+"description": "Legal description of the role of a fiduciary. Examples: guardian, trustee, conservator of the person, conservator of the estate.","$ref": "#/definitions/civil:FiduciaryTypeCode"
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "./niem/nc.schema.json#/definitions/nc:AssociationDescriptionText"
+},"nc:Case": {
+"description": "An aggregation of information about a set of related activities and events.","$ref": "./niem/nc.schema.json#/definitions/nc:Case"
+},"nc:Person": {
+"description": "A human being.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:Person"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:Person"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"required" : ["civil:FiduciaryTypeCode"],"type": "object"
+}
+,
+"civil:FiduciaryTypeCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "Legal description of the role of a fiduciary. Examples: guardian, trustee, conservator of the person, conservator of the estate."
+}
+,
+"civil:JurisdictionalGroundsCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "The grounds for invoking the jurisdiction of a limited jurisdiction court.  Allowed values set forth in Court policy. Not used in general jurisdiction courts."
+}
+,
+"civil:JuryDemandIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Whether filer invokes the right to trial by jury."
+}
+,
+"civil:ReliefTypeCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "Indicator of the type of relief requested in the case, e.g., damages, equitable relief (injunction).  Allowable values defined in Court Policy."
+}
+,
+"civil:WillFilingDate": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DateType","description": "Date on which the will of the decesaed person was filed in the court."
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

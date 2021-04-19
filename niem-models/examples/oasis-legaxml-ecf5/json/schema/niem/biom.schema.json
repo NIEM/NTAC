@@ -1,0 +1,307 @@
+{
+"$id" : "http://release.niem.gov/niem/domains/biometrics/4.1/"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"biom" : "http://release.niem.gov/niem/domains/biometrics/4.1/#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"biom:Biometric": {
+"$ref": "#/definitions/biom:BiometricDataType","description": "A Root Element for Biometric data"
+}
+,
+"biom:BiometricCapturer": {
+"$ref": "./nc.schema.json#/definitions/nc:EntityType","description": "An entity that collected a biometric sample."
+}
+,
+"biom:BiometricCategoryCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type describing the kinds of biometrics used","properties": {
+
+},"type": "object"
+}
+,
+"biom:BiometricCategoryCodeType": {
+"additionalProperties" : false,"description": "A data type for a kind of biometric technology","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"biom:BiometricClassification": {
+"$ref": "#/definitions/biom:BiometricClassificationType","description": "A classification of the kind of person Biometric."
+}
+,
+"biom:BiometricClassificationCategoryCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A kind of biometric."
+}
+,
+"biom:BiometricClassificationType": {
+"additionalProperties" : false,"description": "A data type for the classification of the kind of the Biometric information in the message.","properties": {
+"biom:BiometricClassificationCategoryCode": {
+"description": "A kind of biometric.","$ref": "#/definitions/biom:BiometricClassificationCategoryCode"
+}
+},"required" : ["biom:BiometricClassificationCategoryCode"],"type": "object"
+}
+,
+"biom:BiometricDataType": {
+"additionalProperties" : false,"description": "A data type for a representation of the identifying Biometric in.","properties": {
+"biom:BiometricCapturer": {
+"description": "An entity that collected a biometric sample.","$ref": "#/definitions/biom:BiometricCapturer"
+},"biom:BiometricClassification": {
+"description": "A classification of the kind of person Biometric.","$ref": "#/definitions/biom:BiometricClassification"
+},"biom:DNAElectropherogramScreenshotImage": {
+"description": "An image of screenshot of a DNA electropherogram","oneOf": [{
+"$ref": "#/definitions/biom:DNAElectropherogramScreenshotImage"
+},
+{
+"items": {
+"$ref": "#/definitions/biom:DNAElectropherogramScreenshotImage"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"biom:DNASample": {
+"description": "A representation or an encoding of the DNA data of a biological sample. This may be the biological sample from a person (e.g. sample from an insurgent), or a mixed biological sample that may contain biological material from the person of interest (e","oneOf": [{
+"$ref": "#/definitions/biom:DNASample"
+},
+{
+"items": {
+"$ref": "#/definitions/biom:DNASample"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"biom:FingerprintImage": {
+"description": "An image of a fingerprint","oneOf": [{
+"$ref": "#/definitions/biom:FingerprintImage"
+},
+{
+"items": {
+"$ref": "#/definitions/biom:FingerprintImage"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"biom:PhysicalFeatureImage": {
+"description": "An image of a physical feature","oneOf": [{
+"$ref": "#/definitions/biom:PhysicalFeatureImage"
+},
+{
+"items": {
+"$ref": "#/definitions/biom:PhysicalFeatureImage"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"required" : ["biom:BiometricClassification"],"type": "object"
+}
+,
+"biom:DNAAlleleCall1Text": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A kind of a DNA allele call (first of three possible) for the referenced locus in an STR profile"
+}
+,
+"biom:DNAElectropherogramScreenshotImage": {
+"$ref": "#/definitions/biom:ImageType","description": "An image of screenshot of a DNA electropherogram"
+}
+,
+"biom:DNALocusReferenceID": {
+"$ref": "./xs.schema.json#/definitions/xs:positiveInteger","description": "An identifier for a reference number of a DNA locus"
+}
+,
+"biom:DNASTRProfile": {
+"$ref": "#/definitions/biom:DNASTRProfileType","description": "An autosomal STR, X-STR, and Y-STR DNA profile"
+}
+,
+"biom:DNASTRProfileType": {
+"additionalProperties" : false,"description": "A data type for an autosomal STR, X-STR, and Y-STR DNA profile","properties": {
+"biom:DNAAlleleCall1Text": {
+"description": "A kind of a DNA allele call (first of three possible) for the referenced locus in an STR profile","oneOf": [{
+"$ref": "#/definitions/biom:DNAAlleleCall1Text"
+},
+{
+"items": {
+"$ref": "#/definitions/biom:DNAAlleleCall1Text"
+},
+
+"minItems": 1,
+
+"maxItems": 2,
+"type": "array"
+}
+]
+},"biom:DNALocusReferenceID": {
+"description": "An identifier for a reference number of a DNA locus","oneOf": [{
+"$ref": "#/definitions/biom:DNALocusReferenceID"
+},
+{
+"items": {
+"$ref": "#/definitions/biom:DNALocusReferenceID"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"required" : ["biom:DNAAlleleCall1Text"],"type": "object"
+}
+,
+"biom:DNASample": {
+"$ref": "#/definitions/biom:DNASampleType","description": "A representation or an encoding of the DNA data of a biological sample. This may be the biological sample from a person (e.g. sample from an insurgent), or a mixed biological sample that may contain biological material from the person of interest (e"
+}
+,
+"biom:DNASampleType": {
+"additionalProperties" : false,"description": "A data type for a DNA sample","properties": {
+"biom:DNASTRProfile": {
+"description": "An autosomal STR, X-STR, and Y-STR DNA profile","oneOf": [{
+"$ref": "#/definitions/biom:DNASTRProfile"
+},
+{
+"items": {
+"$ref": "#/definitions/biom:DNASTRProfile"
+},
+
+"minItems": 0,
+
+"maxItems": 14,
+"type": "array"
+}
+]
+}
+},"type": "object"
+}
+,
+"biom:FingerprintImage": {
+"$ref": "#/definitions/biom:FingerprintImageType","description": "An image of a fingerprint"
+}
+,
+"biom:FingerprintImageType": {
+"additionalProperties" : false,"description": "A data type for a fingerprint image","properties": {
+"nc:Base64BinaryObject": {
+"description": "A base64 binary encoding of data.","$ref": "./nc.schema.json#/definitions/nc:Base64BinaryObject"
+},"nc:BinaryCapturer": {
+"description": "An entity which captured or created a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryCapturer"
+},"nc:BinaryDescriptionText": {
+"description": "A description of a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryDescriptionText"
+},"nc:BinaryFormatText": {
+"description": "A file format or content type of a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryFormatText"
+},"nc:BinaryID": {
+"description": "An identifier that references a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryID"
+},"nc:BinarySizeValue": {
+"description": "A size of a binary object in kilobytes.","$ref": "./nc.schema.json#/definitions/nc:BinarySizeValue"
+},"nc:BinaryURI": {
+"description": "A URL or file reference of a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryURI"
+}
+},"type": "object"
+}
+,
+"biom:ImageType": {
+"additionalProperties" : false,"description": "A data type for a biometric image","properties": {
+"nc:Base64BinaryObject": {
+"description": "A base64 binary encoding of data.","$ref": "./nc.schema.json#/definitions/nc:Base64BinaryObject"
+},"nc:BinaryCapturer": {
+"description": "An entity which captured or created a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryCapturer"
+},"nc:BinaryDescriptionText": {
+"description": "A description of a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryDescriptionText"
+},"nc:BinaryFormatText": {
+"description": "A file format or content type of a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryFormatText"
+},"nc:BinaryID": {
+"description": "An identifier that references a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryID"
+},"nc:BinarySizeValue": {
+"description": "A size of a binary object in kilobytes.","$ref": "./nc.schema.json#/definitions/nc:BinarySizeValue"
+},"nc:BinaryURI": {
+"description": "A URL or file reference of a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryURI"
+}
+},"type": "object"
+}
+,
+"biom:Integer1to999SimpleType": {
+"additionalProperties" : false,"description": "A data type of integer that has a value range of 1 to 999","properties": {
+
+},"type": "object"
+}
+,
+"biom:Integer1to999Type": {
+"additionalProperties" : false,"description": "A data type of integer that has a value range of 1 to 999","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"biom:PhysicalFeatureImage": {
+"$ref": "#/definitions/biom:PhysicalFeatureImageType","description": "An image of a physical feature"
+}
+,
+"biom:PhysicalFeatureImageType": {
+"additionalProperties" : false,"description": "A data type for an image of a physical feature","properties": {
+"nc:Base64BinaryObject": {
+"description": "A base64 binary encoding of data.","$ref": "./nc.schema.json#/definitions/nc:Base64BinaryObject"
+},"nc:BinaryCapturer": {
+"description": "An entity which captured or created a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryCapturer"
+},"nc:BinaryDescriptionText": {
+"description": "A description of a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryDescriptionText"
+},"nc:BinaryFormatText": {
+"description": "A file format or content type of a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryFormatText"
+},"nc:BinaryID": {
+"description": "An identifier that references a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryID"
+},"nc:BinarySizeValue": {
+"description": "A size of a binary object in kilobytes.","$ref": "./nc.schema.json#/definitions/nc:BinarySizeValue"
+},"nc:BinaryURI": {
+"description": "A URL or file reference of a binary object.","$ref": "./nc.schema.json#/definitions/nc:BinaryURI"
+}
+},"type": "object"
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

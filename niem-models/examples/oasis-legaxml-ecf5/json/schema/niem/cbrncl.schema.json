@@ -1,0 +1,95 @@
+{
+"$id" : "http://release.niem.gov/niem/codes/cbrncl/4.0/"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"cbrncl" : "http://release.niem.gov/niem/codes/cbrncl/4.0/#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"cbrncl:CredentialsAuthenticatedCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for the states of authentication of  credentials.","properties": {
+
+},"type": "object"
+}
+,
+"cbrncl:CredentialsAuthenticatedCodeType": {
+"additionalProperties" : false,"description": "A data type for the states of authentication of  credentials.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"cbrncl:MessageStatusCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type that defines the various code values for  data types that defines the status of a message","properties": {
+
+},"type": "object"
+}
+,
+"cbrncl:MessageStatusCodeType": {
+"additionalProperties" : false,"description": "A data type that defines the status of a message.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"cbrncl:SystemOperatingModeCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for the operating modes of a system.","properties": {
+
+},"type": "object"
+}
+,
+"cbrncl:SystemOperatingModeCodeType": {
+"additionalProperties" : false,"description": "A data type for the operating modes of a system.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

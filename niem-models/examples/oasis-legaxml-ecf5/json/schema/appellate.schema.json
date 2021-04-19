@@ -1,0 +1,180 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/appellate"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"appellate" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/appellate#"
+,
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"ecf" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/ecf#"
+,
+
+"j" : "http://release.niem.gov/niem/domains/jxdm/6.1/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"appellate:AppellantInCustodyIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicator that the appellant is currently in custody."
+}
+,
+"appellate:AppellateCaseAddedParty": {
+"$ref": "#/definitions/appellate:AppellateCaseAddedPartyType","description": "Party added to the appeal that was not  a party in the original case.  For instance, the attorney in the original case may appeal sanctions against the attorney by the court."
+}
+,
+"appellate:AppellateCaseAddedPartyType": {
+"additionalProperties" : false,"description": "Party added to the appeal that was not  a party in the original case.  For instance, the attorney in the original case may appeal sanctions against the attorney by the court.","properties": {
+"appellate:AppellateCasePartyAddedReasonText": {
+"description": "The reason a party is being added to the appeal.","$ref": "#/definitions/appellate:AppellateCasePartyAddedReasonText"
+},"ecf:CaseParty": {
+"description": "A person alleged or found to have committed a crime or violation.","$ref": "./ecf.schema.json#/definitions/ecf:CaseParty"
+}
+},"required" : ["ecf:CaseParty"],"type": "object"
+}
+,
+"appellate:AppellateCaseJurisdictionBasisText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "The basis for the jurisdiction of the appellate court in the case."
+}
+,
+"appellate:AppellateCasePartyAddedReasonText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "The reason a party is being added to the appeal."
+}
+,
+"appellate:AppellateCasePartyRemovedReasonText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "The reason a party is being removed from the appeal."
+}
+,
+"appellate:AppellateCaseRemovedParty": {
+"$ref": "#/definitions/appellate:AppellateCaseRemovedPartyType","description": "Party to the original case that is not party to the appeal."
+}
+,
+"appellate:AppellateCaseRemovedPartyType": {
+"additionalProperties" : false,"description": "Party to the original case that is not party to the appeal.","properties": {
+"appellate:AppellateCasePartyRemovedReasonText": {
+"description": "The reason a party is being removed from the appeal.","$ref": "#/definitions/appellate:AppellateCasePartyRemovedReasonText"
+},"ecf:CaseParty": {
+"description": "A person alleged or found to have committed a crime or violation.","$ref": "./ecf.schema.json#/definitions/ecf:CaseParty"
+}
+},"required" : ["ecf:CaseParty"],"type": "object"
+}
+,
+"appellate:AppellateCaseSettlementRequestText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "A request for diversion to a settlement program in the appellate court."
+}
+,
+"appellate:AppellateCourtRuleCase": {
+"$ref": "#/definitions/appellate:AppellateCourtRuleCaseType","description": "Additional information specific to court rule appellate cases."
+}
+,
+"appellate:AppellateCourtRuleCaseType": {
+"additionalProperties" : false,"description": "Additional information specific to court rule appellate cases.","properties": {
+"appellate:RuleCollectionNumber": {
+"description": "An organized set or book of rules of the court that include the rule(s) in question.","oneOf": [{
+"$ref": "#/definitions/appellate:RuleCollectionNumber"
+},
+{
+"items": {
+"$ref": "#/definitions/appellate:RuleCollectionNumber"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"appellate:RuleCollectionText": {
+"description": "A rule number (including rule subsection) in question.  Each rule number must refer to a specific rule within the rule collection.","$ref": "#/definitions/appellate:RuleCollectionText"
+}
+},"type": "object"
+}
+,
+"appellate:CaseAugmentation": {
+"$ref": "#/definitions/appellate:CaseAugmentationType","description": "Additional information specific to appellate cases."
+}
+,
+"appellate:CaseAugmentationType": {
+"additionalProperties" : false,"description": "An augmentation type","properties": {
+"appellate:AppellantInCustodyIndicator": {
+"description": "Indicator that the appellant is currently in custody.","$ref": "#/definitions/appellate:AppellantInCustodyIndicator"
+},"appellate:AppellateCaseAddedParty": {
+"description": "Party added to the appeal that was not  a party in the original case.  For instance, the attorney in the original case may appeal sanctions against the attorney by the court.","oneOf": [{
+"$ref": "#/definitions/appellate:AppellateCaseAddedParty"
+},
+{
+"items": {
+"$ref": "#/definitions/appellate:AppellateCaseAddedParty"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"appellate:AppellateCaseJurisdictionBasisText": {
+"description": "The basis for the jurisdiction of the appellate court in the case.","$ref": "#/definitions/appellate:AppellateCaseJurisdictionBasisText"
+},"appellate:AppellateCaseRemovedParty": {
+"description": "Party to the original case that is not party to the appeal.","oneOf": [{
+"$ref": "#/definitions/appellate:AppellateCaseRemovedParty"
+},
+{
+"items": {
+"$ref": "#/definitions/appellate:AppellateCaseRemovedParty"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"appellate:AppellateCaseSettlementRequestText": {
+"description": "A request for diversion to a settlement program in the appellate court.","$ref": "#/definitions/appellate:AppellateCaseSettlementRequestText"
+},"appellate:AppellateCourtRuleCase": {
+"description": "Additional information specific to court rule appellate cases.","$ref": "#/definitions/appellate:AppellateCourtRuleCase"
+},"appellate:FeesWaivedIndicator": {
+"description": "Indicator that filing fees were waived or deferred in the case in the lower court.","$ref": "#/definitions/appellate:FeesWaivedIndicator"
+},"j:AppellateCase": {
+"description": "A single case heard by the Court of Appeals (Intermediate Court of Appeal) or Supreme Court (The Court of Last Resort). This case does not retry the original case but determines whether the original case was tried properly and the defendant","$ref": "./niem/j.schema.json#/definitions/j:AppellateCase"
+}
+},"required" : ["j:AppellateCase"],"type": "object"
+}
+,
+"appellate:FeesWaivedIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicator that filing fees were waived or deferred in the case in the lower court."
+}
+,
+"appellate:RuleCollectionNumber": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:decimal","description": "An organized set or book of rules of the court that include the rule(s) in question."
+}
+,
+"appellate:RuleCollectionText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "A rule number (including rule subsection) in question.  Each rule number must refer to a specific rule within the rule collection."
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

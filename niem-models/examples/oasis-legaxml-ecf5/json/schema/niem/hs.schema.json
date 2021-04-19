@@ -1,0 +1,731 @@
+{
+"$id" : "http://release.niem.gov/niem/domains/humanServices/4.1/"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"hs" : "http://release.niem.gov/niem/domains/humanServices/4.1/#"
+,
+
+"j" : "http://release.niem.gov/niem/domains/jxdm/6.1/#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"hs:AbuseNeglectAllegationCategoryText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A kind of allegation of abuse, sexual abuse, or neglect, provided by the referral or by the reporter at the time of investigation."
+}
+,
+"hs:BiologicalParentDeterminationDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "An additional description of the details about the determination of a biological relationship between a putative parent and a child (for example, findings regarding the location and date of conception, or the results of DNA tests)."
+}
+,
+"hs:Child": {
+"$ref": "#/definitions/hs:ChildType","description": "A person who was an unmarried minor at the time of his or her involvement in a judicial proceeding or non-judicial program."
+}
+,
+"hs:ChildSupportEnforcementCase": {
+"$ref": "#/definitions/hs:ChildSupportEnforcementCaseType","description": "A child support enforcement case."
+}
+,
+"hs:ChildSupportEnforcementCaseType": {
+"additionalProperties" : false,"description": "A data type for a child support enforcement case.","properties": {
+"appellate:CaseAugmentation": {
+"description": "Additional information specific to appellate cases.","oneOf": [{
+"$ref": "../appellate.schema.json#/definitions/appellate:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../appellate.schema.json#/definitions/appellate:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"bankruptcy:CaseAugmentation": {
+"description": "Additional information specific to bankruptcy cases.","oneOf": [{
+"$ref": "../bankruptcy.schema.json#/definitions/bankruptcy:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../bankruptcy.schema.json#/definitions/bankruptcy:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"citation:CaseAugmentation": {
+"description": "A charge issued by a law enforcement officer for a violation requiring the person charged to plead guilty to the charge or to appear in court to contest the charge.  A citation is issued in lieu of an arrest and booking.  Violations are a subset of charges for which a law enforcement officer is authorized to issue a citation in lieu of arrest and booking.  Examples:  traffic ticket, parking ticket or ticket issued for some other ordinance violation such as barking dog or illegal dumping.","oneOf": [{
+"$ref": "../citation.schema.json#/definitions/citation:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../citation.schema.json#/definitions/citation:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"civil:CaseAugmentation": {
+"description": "Information required to initiate a new civil case in a court.  Civil includes conservatorships, guardianships, mental health and probate.","oneOf": [{
+"$ref": "../civil.schema.json#/definitions/civil:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../civil.schema.json#/definitions/civil:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"criminal:CaseAugmentation": {
+"description": "Information required to initiate a new criminal case in a court.  Criminal includes felonies and misdemeanors.","oneOf": [{
+"$ref": "../criminal.schema.json#/definitions/criminal:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../criminal.schema.json#/definitions/criminal:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"domestic:CaseAugmentation": {
+"description": "Information required to initiate a new domestic case in a court.  Domestic includes divorces, legal separations, annulment, child custody and visitation, paternity, child support, and domestic violence cases.","oneOf": [{
+"$ref": "../domestic.schema.json#/definitions/domestic:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../domestic.schema.json#/definitions/domestic:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:CaseAugmentation": {
+"description": "Information about a court case.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"hs:SupportingGroundsDescriptionText": {
+"description": "A description of the legal basis for the child-support remedies sought in the petition (e.g., respondent is non-custodial parent and is failing to provide support, a change in the parties' circumstances justifies a modification, etc.).","$ref": "#/definitions/hs:SupportingGroundsDescriptionText"
+},"j:CaseAugmentation": {
+"description": "Additional information about a case.","oneOf": [{
+"$ref": "./j.schema.json#/definitions/j:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "./j.schema.json#/definitions/j:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"juvenile:CaseAugmentation": {
+"description": "A delinquency or dependency case.","oneOf": [{
+"$ref": "../juvenile.schema.json#/definitions/juvenile:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../juvenile.schema.json#/definitions/juvenile:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+},"nc:CaseTitleText": {
+"description": "An official name of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseTitleText"
+}
+},"type": "object"
+}
+,
+"hs:ChildType": {
+"additionalProperties" : false,"description": "A data type for information about a person who has not yet reached the age of legal majority (i.e., adulthood).","properties": {
+"nc:RoleOfPerson": {
+"description": "A person of whom the role object is a function.","$ref": "./nc.schema.json#/definitions/nc:RoleOfPerson"
+}
+},"required" : ["nc:RoleOfPerson"],"type": "object"
+}
+,
+"hs:DelinquentAct": {
+"$ref": "./nc.schema.json#/definitions/nc:IncidentType","description": "A delinquent act."
+}
+,
+"hs:DependencyPetition": {
+"$ref": "#/definitions/hs:DependencyPetitionType","description": "A document that is filed with the Court, typically by an attorney representing the Child Welfare Agency, that formally files allegations of abuse and/or neglect against one or more alleged perpetrators."
+}
+,
+"hs:DependencyPetitionType": {
+"additionalProperties" : false,"description": "A data type for a document that is filed with the Court, typically by an attorney representing the Child Welfare Agency, that formally files allegations of abuse and/or neglect against one or more alleged perpetrators.","properties": {
+"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./nc.schema.json#/definitions/nc:DocumentTitleText"
+}
+},"required" : ["nc:DocumentIdentification"],"type": "object"
+}
+,
+"hs:GangOrganization": {
+"$ref": "./nc.schema.json#/definitions/nc:OrganizationType","description": "A criminal gang organization that is alleged to have a juvenile as a member."
+}
+,
+"hs:Juvenile": {
+"$ref": "#/definitions/hs:JuvenileType","description": "A role of a juvenile, played by a person defined as a juvenile rather than an adult under the law."
+}
+,
+"hs:JuvenileAbuseNeglectAllegation": {
+"$ref": "#/definitions/hs:JuvenileAbuseNeglectAllegationType","description": "A set of specifics of the referred incident of abuse or neglect as it relates to the victim. Information recorded includes the Abuse/Neglect Category and Type as well as narrative descriptions of the abuse and/or injuries"
+}
+,
+"hs:JuvenileAbuseNeglectAllegationType": {
+"additionalProperties" : false,"description": "A data type for allegations of juvenile abuse or neglect.","properties": {
+"criminal:ChargeAugmentation": {
+"description": "The crime or violation a defendant is alleged or found to have committed.","oneOf": [{
+"$ref": "../criminal.schema.json#/definitions/criminal:ChargeAugmentation"
+},
+{
+"items": {
+"$ref": "../criminal.schema.json#/definitions/criminal:ChargeAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"hs:AbuseNeglectAllegationCategoryText": {
+"description": "A kind of allegation of abuse, sexual abuse, or neglect, provided by the referral or by the reporter at the time of investigation.","$ref": "#/definitions/hs:AbuseNeglectAllegationCategoryText"
+},"j:ChargeDegreeText": {
+"description": "A degree of a charge.","$ref": "./j.schema.json#/definitions/j:ChargeDegreeText"
+},"j:ChargeDescriptionText": {
+"description": "A plain language description of a charge.","$ref": "./j.schema.json#/definitions/j:ChargeDescriptionText"
+},"j:ChargeDisposition": {
+"description": "A result or processing of a charge.","$ref": "./j.schema.json#/definitions/j:ChargeDisposition"
+},"j:ChargeEnhancingAllegationCharge": {
+"description": "A formal allegation, contained in at least one charging instrument, that a defendant has violated a statute and/or ordinance in association with an incident.","$ref": "./j.schema.json#/definitions/j:ChargeEnhancingAllegationCharge"
+},"j:ChargeEnhancingFactor": {
+"description": "A factor or reason that makes a charge more serious.","$ref": "./j.schema.json#/definitions/j:ChargeEnhancingFactor"
+},"j:ChargeQualifierText": {
+"description": "An additional piece of information that clarifies a charge.","$ref": "./j.schema.json#/definitions/j:ChargeQualifierText"
+},"j:ChargeSequenceID": {
+"description": "A sequentially assigned identifier for charge tracking purposes.","$ref": "./j.schema.json#/definitions/j:ChargeSequenceID"
+},"j:ChargeSeverityLevel": {
+"description": "A severity level of a charge.","$ref": "./j.schema.json#/definitions/j:ChargeSeverityLevel"
+},"j:ChargeSpecialAllegationText": {
+"description": "A factor that has enhanced a charge, making it a more serious offense.","$ref": "./j.schema.json#/definitions/j:ChargeSpecialAllegationText"
+},"j:ChargeStatute": {
+"description": "A unique identifier of a law, rule, or ordinance within a jurisdiction that a person is accused of violating.","$ref": "./j.schema.json#/definitions/j:ChargeStatute"
+}
+},"type": "object"
+}
+,
+"hs:JuvenileCase": {
+"$ref": "#/definitions/hs:JuvenileCaseType","description": "An aggregation of information about a set of related activities and events pertaining to a juvenile. This can be, but is not necessarily, a court case."
+}
+,
+"hs:JuvenileCaseType": {
+"additionalProperties" : false,"description": "A data type for a juvenile case.","properties": {
+"appellate:CaseAugmentation": {
+"description": "Additional information specific to appellate cases.","oneOf": [{
+"$ref": "../appellate.schema.json#/definitions/appellate:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../appellate.schema.json#/definitions/appellate:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"bankruptcy:CaseAugmentation": {
+"description": "Additional information specific to bankruptcy cases.","oneOf": [{
+"$ref": "../bankruptcy.schema.json#/definitions/bankruptcy:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../bankruptcy.schema.json#/definitions/bankruptcy:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"citation:CaseAugmentation": {
+"description": "A charge issued by a law enforcement officer for a violation requiring the person charged to plead guilty to the charge or to appear in court to contest the charge.  A citation is issued in lieu of an arrest and booking.  Violations are a subset of charges for which a law enforcement officer is authorized to issue a citation in lieu of arrest and booking.  Examples:  traffic ticket, parking ticket or ticket issued for some other ordinance violation such as barking dog or illegal dumping.","oneOf": [{
+"$ref": "../citation.schema.json#/definitions/citation:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../citation.schema.json#/definitions/citation:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"civil:CaseAugmentation": {
+"description": "Information required to initiate a new civil case in a court.  Civil includes conservatorships, guardianships, mental health and probate.","oneOf": [{
+"$ref": "../civil.schema.json#/definitions/civil:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../civil.schema.json#/definitions/civil:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"criminal:CaseAugmentation": {
+"description": "Information required to initiate a new criminal case in a court.  Criminal includes felonies and misdemeanors.","oneOf": [{
+"$ref": "../criminal.schema.json#/definitions/criminal:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../criminal.schema.json#/definitions/criminal:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"domestic:CaseAugmentation": {
+"description": "Information required to initiate a new domestic case in a court.  Domestic includes divorces, legal separations, annulment, child custody and visitation, paternity, child support, and domestic violence cases.","oneOf": [{
+"$ref": "../domestic.schema.json#/definitions/domestic:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../domestic.schema.json#/definitions/domestic:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:CaseAugmentation": {
+"description": "Information about a court case.","oneOf": [{
+"$ref": "../ecf.schema.json#/definitions/ecf:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../ecf.schema.json#/definitions/ecf:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"hs:Juvenile": {
+"description": "A role of a juvenile, played by a person defined as a juvenile rather than an adult under the law.","$ref": "#/definitions/hs:Juvenile"
+},"j:CaseAugmentation": {
+"description": "Additional information about a case.","oneOf": [{
+"$ref": "./j.schema.json#/definitions/j:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "./j.schema.json#/definitions/j:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"juvenile:CaseAugmentation": {
+"description": "A delinquency or dependency case.","oneOf": [{
+"$ref": "../juvenile.schema.json#/definitions/juvenile:CaseAugmentation"
+},
+{
+"items": {
+"$ref": "../juvenile.schema.json#/definitions/juvenile:CaseAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+},"nc:CaseTitleText": {
+"description": "An official name of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseTitleText"
+}
+},"required" : ["hs:Juvenile"],"type": "object"
+}
+,
+"hs:JuvenileGangAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association between a juvenile and a criminal gang organization.","properties": {
+"hs:GangOrganization": {
+"description": "A criminal gang organization that is alleged to have a juvenile as a member.","oneOf": [{
+"$ref": "#/definitions/hs:GangOrganization"
+},
+{
+"items": {
+"$ref": "#/definitions/hs:GangOrganization"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "./nc.schema.json#/definitions/nc:AssociationDescriptionText"
+}
+},"required" : ["hs:GangOrganization"],"type": "object"
+}
+,
+"hs:JuvenilePlacement": {
+"$ref": "#/definitions/hs:JuvenilePlacementType","description": "A description of the placement where a juvenile is directed to reside during the pendency of the delinquency proceeding."
+}
+,
+"hs:JuvenilePlacementFacilityAssociation": {
+"$ref": "#/definitions/hs:JuvenilePlacementFacilityAssociationType","description": "An association between a juvenile and a facility where the juvenile is directed to reside (e.g., orphanage, teen shelter, detention center, etc.)."
+}
+,
+"hs:JuvenilePlacementFacilityAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association between a juvenile and a facility where the juvenile is directed to reside (e.g., orphanage, detention center, etc.).","properties": {
+"hs:PlacementFacility": {
+"description": "A facility where a juvenile is directed to reside.","$ref": "#/definitions/hs:PlacementFacility"
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "./nc.schema.json#/definitions/nc:AssociationDescriptionText"
+}
+},"required" : ["hs:PlacementFacility"],"type": "object"
+}
+,
+"hs:JuvenilePlacementPersonAssociation": {
+"$ref": "#/definitions/hs:JuvenilePlacementPersonAssociationType","description": "An association between a juvenile and a person with whom the juvenile is directed to reside (e.g., foster parent, grandparent, etc.)."
+}
+,
+"hs:JuvenilePlacementPersonAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association between a juvenile and a person with whom the juvenile is directed to reside (e.g., foster parent, grandparent, etc.).","properties": {
+"hs:PlacementPerson": {
+"description": "A person with whom a juvenile is directed to reside.","$ref": "#/definitions/hs:PlacementPerson"
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "./nc.schema.json#/definitions/nc:AssociationDescriptionText"
+}
+},"required" : ["hs:PlacementPerson"],"type": "object"
+}
+,
+"hs:JuvenilePlacementType": {
+"additionalProperties" : false,"description": "A data type for information about where a juvenile is directed to reside during the pendency of a delinquency proceeding.","properties": {
+"hs:PlacementCategoryCode": {
+"description": "A list that describes the type of placement (e.g., adoption, relative, etc.)","$ref": "#/definitions/hs:PlacementCategoryCode"
+},"juvenile:PlacementAugmentation": {
+"description": "Information about the person or organization orther than parent or guardian with whom the juvenile lives. Examples: Foster home, foster parents, state institution, hospital, shelter.","oneOf": [{
+"$ref": "../juvenile.schema.json#/definitions/juvenile:PlacementAugmentation"
+},
+{
+"items": {
+"$ref": "../juvenile.schema.json#/definitions/juvenile:PlacementAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"hs:JuvenileType": {
+"additionalProperties" : false,"description": "A data type for a juvenile.","properties": {
+"juvenile:JuvenileAugmentation": {
+"description": "A minor who is the subject of a delinquency or dependency case.","$ref": "../juvenile.schema.json#/definitions/juvenile:JuvenileAugmentation"
+},"nc:RoleOfPerson": {
+"description": "A person of whom the role object is a function.","$ref": "./nc.schema.json#/definitions/nc:RoleOfPerson"
+}
+},"required" : ["nc:RoleOfPerson"],"type": "object"
+}
+,
+"hs:Parent": {
+"$ref": "./nc.schema.json#/definitions/nc:PersonType","description": "A father or mother of a person."
+}
+,
+"hs:ParentChildAssociation": {
+"$ref": "#/definitions/hs:ParentChildAssociationType","description": "An association between a child and a person who is in a parent role toward that child."
+}
+,
+"hs:ParentChildAssociationType": {
+"additionalProperties" : false,"description": "A data type for an association between a child and a person who is in a parent role toward that child.","properties": {
+"hs:BiologicalParentDeterminationDescriptionText": {
+"description": "An additional description of the details about the determination of a biological relationship between a putative parent and a child (for example, findings regarding the location and date of conception, or the results of DNA tests).","$ref": "#/definitions/hs:BiologicalParentDeterminationDescriptionText"
+},"hs:Child": {
+"description": "A person who was an unmarried minor at the time of his or her involvement in a judicial proceeding or non-judicial program.","$ref": "#/definitions/hs:Child"
+},"hs:Parent": {
+"description": "A father or mother of a person.","oneOf": [{
+"$ref": "#/definitions/hs:Parent"
+},
+{
+"items": {
+"$ref": "#/definitions/hs:Parent"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"hs:ParentChildKinshipCategoryCode": {
+"description": "A code list that describes the nature of the relationship from a parent to a child.","$ref": "#/definitions/hs:ParentChildKinshipCategoryCode"
+},"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "./nc.schema.json#/definitions/nc:AssociationDescriptionText"
+}
+},"required" : ["hs:Child", "hs:Parent"],"type": "object"
+}
+,
+"hs:ParentChildKinshipCategoryCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A code list that describes the nature of the relationship from a parent to a child."
+}
+,
+"hs:ParentChildKinshipCategoryCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for describing the nature of the relationship from a parent to a child","properties": {
+
+},"type": "object"
+}
+,
+"hs:ParentChildKinshipCategoryCodeType": {
+"additionalProperties" : false,"description": "A data type for describing the nature of the relationship from a parent to a child","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"hs:PersonCaseAssociation": {
+"$ref": "#/definitions/hs:PersonCaseAssociationType","description": "A relationship between a person and a case."
+}
+,
+"hs:PersonCaseAssociationType": {
+"additionalProperties" : false,"description": "A data type for a relationship between a person and a case.","properties": {
+"nc:AssociationDescriptionText": {
+"description": "A description of an association.","$ref": "./nc.schema.json#/definitions/nc:AssociationDescriptionText"
+},"nc:Case": {
+"description": "An aggregation of information about a set of related activities and events.","$ref": "./nc.schema.json#/definitions/nc:Case"
+},"nc:Person": {
+"description": "A human being.","oneOf": [{
+"$ref": "./nc.schema.json#/definitions/nc:Person"
+},
+{
+"items": {
+"$ref": "./nc.schema.json#/definitions/nc:Person"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"type": "object"
+}
+,
+"hs:PlacementCategoryCode": {
+"$ref": "./xs.schema.json#/definitions/xs:token","description": "A list that describes the type of placement (e.g., adoption, relative, etc.)"
+}
+,
+"hs:PlacementFacility": {
+"$ref": "./nc.schema.json#/definitions/nc:FacilityType","description": "A facility where a juvenile is directed to reside."
+}
+,
+"hs:PlacementLocationCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for a list that describes the location of a child or youth's placement.","properties": {
+
+},"type": "object"
+}
+,
+"hs:PlacementLocationCodeType": {
+"additionalProperties" : false,"description": "A data type for a list that describes the location of a child or youth's placement.","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"hs:PlacementPerson": {
+"$ref": "./nc.schema.json#/definitions/nc:PersonType","description": "A person with whom a juvenile is directed to reside."
+}
+,
+"hs:PlacementType": {
+"additionalProperties" : false,"description": "A data type for the placement history of a child or youth.","properties": {
+"hs:PlacementCategoryCode": {
+"description": "A list that describes the type of placement (e.g., adoption, relative, etc.)","$ref": "#/definitions/hs:PlacementCategoryCode"
+},"juvenile:PlacementAugmentation": {
+"description": "Information about the person or organization orther than parent or guardian with whom the juvenile lives. Examples: Foster home, foster parents, state institution, hospital, shelter.","oneOf": [{
+"$ref": "../juvenile.schema.json#/definitions/juvenile:PlacementAugmentation"
+},
+{
+"items": {
+"$ref": "../juvenile.schema.json#/definitions/juvenile:PlacementAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:ActivityDate": {
+"description": "A date of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDate"
+},"nc:ActivityDescriptionText": {
+"description": "A description of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDescriptionText"
+},"nc:ActivityDisposition": {
+"description": "A result or outcome of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityDisposition"
+},"nc:ActivityIdentification": {
+"description": "An identification that references an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityIdentification"
+},"nc:ActivityStatus": {
+"description": "A status of an activity.","$ref": "./nc.schema.json#/definitions/nc:ActivityStatus"
+},"nc:CaseDisposition": {
+"description": "An outcome or processing of a case.","$ref": "./nc.schema.json#/definitions/nc:CaseDisposition"
+}
+},"type": "object"
+}
+,
+"hs:StateDisbursementIndicator": {
+"$ref": "./xs.schema.json#/definitions/xs:boolean","description": "True if the child-support order directs the obligor to make payments to a state agency for disbursement to the custodial parent; false otherwise."
+}
+,
+"hs:SupportingGroundsDescriptionText": {
+"$ref": "./xs.schema.json#/definitions/xs:string","description": "A description of the legal basis for the child-support remedies sought in the petition (e.g., respondent is non-custodial parent and is failing to provide support, a change in the parties' circumstances justifies a modification, etc.)."
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

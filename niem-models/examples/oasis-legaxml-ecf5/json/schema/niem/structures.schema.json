@@ -1,0 +1,90 @@
+{
+"$id" : "http://release.niem.gov/niem/structures/4.0/"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"structures:@SimpleObjectAttributeGroup": {
+"additionalProperties" : false,"properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"structures:AssociationType": {
+"additionalProperties" : false,"properties": {
+
+},"type": "object"
+}
+,
+"structures:AugmentationType": {
+"additionalProperties" : false,"properties": {
+
+},"type": "object"
+}
+,
+"structures:MetadataType": {
+"additionalProperties" : false,"properties": {
+
+},"type": "object"
+}
+,
+"structures:ObjectType": {
+"additionalProperties" : false,"properties": {
+
+},"type": "object"
+}
+,
+"structures:id": {
+"$ref": "./xs.schema.json#/definitions/xs:ID"
+}
+,
+"structures:metadata": {
+"$ref": "./xs.schema.json#/definitions/xs:IDREFS"
+}
+,
+"structures:ref": {
+"$ref": "./xs.schema.json#/definitions/xs:IDREF"
+}
+,
+"structures:relationshipMetadata": {
+"$ref": "./xs.schema.json#/definitions/xs:IDREFS"
+}
+,
+"structures:uri": {
+"$ref": "./xs.schema.json#/definitions/xs:anyURI"
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

@@ -1,0 +1,275 @@
+{
+"$id" : "http://release.niem.gov/niem/codes/fbi_ncic/4.0/"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"ncic" : "http://release.niem.gov/niem/codes/fbi_ncic/4.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"ncic:CountryCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 2.2: Country Codes","properties": {
+
+},"type": "object"
+}
+,
+"ncic:CountryCodeType": {
+"additionalProperties" : false,"description": "A data type for 2.2: Country Codes","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"ncic:EXLCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 20 - Warrants Extradition Limitation (EXL) Field Codes","properties": {
+
+},"type": "object"
+}
+,
+"ncic:EXLCodeType": {
+"additionalProperties" : false,"description": "A data type for 20 - Warrants Extradition Limitation (EXL) Field Codes","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"ncic:EYECodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 4 - Eye Color (EYE) and Person with Information Eye Color (PEY) Field Codes","properties": {
+
+},"type": "object"
+}
+,
+"ncic:EYECodeType": {
+"additionalProperties" : false,"description": "A data type for 4 - Eye Color (EYE) and Person with Information Eye Color (PEY) Field Codes","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"ncic:HAIRCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 5 - Hair Color (HAI) and Person with Information Hair Color (PHA) Field Codes","properties": {
+
+},"type": "object"
+}
+,
+"ncic:HAIRCodeType": {
+"additionalProperties" : false,"description": "A data type for 5 - Hair Color (HAI) and Person with Information Hair Color (PHA) Field Codes","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"ncic:PCOCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 19 - Protection Order Conditions (PCO) Field Codes","properties": {
+
+},"type": "object"
+}
+,
+"ncic:PCOCodeType": {
+"additionalProperties" : false,"description": "A data type for 19 - Protection Order Conditions (PCO) Field Codes","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"ncic:RACECodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 3 - Race (RAC), Protected Person Race (PPR), and Person with Information Race (PIR) Field Codes","properties": {
+
+},"type": "object"
+}
+,
+"ncic:RACECodeType": {
+"additionalProperties" : false,"description": "A data type for 3 - Race (RAC), Protected Person Race (PPR), and Person with Information Race (PIR) Field Codes","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"ncic:SEXCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 2 - Sex, Sex of Victim (SOV), and Protected Person Sex (PSX) Field Codes","properties": {
+
+},"type": "object"
+}
+,
+"ncic:SEXCodeType": {
+"additionalProperties" : false,"description": "A data type for 2 - Sex, Sex of Victim (SOV), and Protected Person Sex (PSX) Field Codes","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"ncic:SMTCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 7 - Scars, Marks, Tattoos, and Other Characteristics (SMT) and Person with Information SMT (PSM) Field Codes","properties": {
+
+},"type": "object"
+}
+,
+"ncic:SMTCodeType": {
+"additionalProperties" : false,"description": "A data type for 7 - Scars, Marks, Tattoos, and Other Characteristics (SMT) and Person with Information SMT (PSM) Field Codes","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"ncic:VCOCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 5 - Vehicle Color (VCO) Field Codes","properties": {
+
+},"type": "object"
+}
+,
+"ncic:VCOCodeType": {
+"additionalProperties" : false,"description": "A data type for 5 - Vehicle Color (VCO) Field Codes","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"ncic:VMACodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 2.1: Vehicle Make (VMA) and Brand Name (BRA) Field Codes by Manufacturer","properties": {
+
+},"type": "object"
+}
+,
+"ncic:VMACodeType": {
+"additionalProperties" : false,"description": "A data type for 2.1: Vehicle Make (VMA) and Brand Name (BRA) Field Codes by Manufacturer","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"ncic:VMOCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 2.2: Vehicle Make/Brand (VMA) and Model (VMO) for Automobiles, Light-Duty Vans, Light-Duty Trucks, and Parts","properties": {
+
+},"type": "object"
+}
+,
+"ncic:VMOCodeType": {
+"additionalProperties" : false,"description": "A data type for 2.2: Vehicle Make/Brand (VMA) and Model (VMO) for Automobiles, Light-Duty Vans, Light-Duty Trucks, and Parts","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+,
+"ncic:VSTCodeSimpleType": {
+"additionalProperties" : false,"description": "A data type for 4 - Vehicle Style (VST) Field Codes","properties": {
+
+},"type": "object"
+}
+,
+"ncic:VSTCodeType": {
+"additionalProperties" : false,"description": "A data type for 4 - Vehicle Style (VST) Field Codes","properties": {
+"@id": {
+"$ref": "./xs.schema.json#/definitions/xs:NCName"
+},"structures:metadata": {
+"$ref": "./structures.schema.json#/definitions/structures:metadata"
+},"structures:relationshipMetadata": {
+"$ref": "./structures.schema.json#/definitions/structures:relationshipMetadata"
+},"structures:uri": {
+"$ref": "./structures.schema.json#/definitions/structures:uri"
+}
+},"type": "object"
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

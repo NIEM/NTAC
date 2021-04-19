@@ -1,0 +1,522 @@
+{
+"$id" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/policyresponse"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"ds" : "http://www.w3.org/2000/09/xmldsig##"
+,
+
+"ecf" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/ecf#"
+,
+
+"nc" : "http://release.niem.gov/niem/niem-core/4.0/#"
+,
+
+"niem-xs" : "http://release.niem.gov/niem/proxy/xsd/4.0/#"
+,
+
+"policyresponse" : "https://docs.oasis-open.org/legalxml-courtfiling/ns/v5.0/policyresponse#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"policyresponse:AcceptConfidentialFilingsIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Whether the court will accept electronic filing of documents for which the filer requests confidential or sealed treatment by the court."
+}
+,
+"policyresponse:AcceptDocumentsRequiringFeesIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Whether the court will accept electronic filing of documents requiring filing fees."
+}
+,
+"policyresponse:AcceptMultipleLeadDocumentsIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Does court accept placing multiple lead documents in a single message"
+}
+,
+"policyresponse:CodeListExtension": {
+"$ref": "#/definitions/policyresponse:CodeListExtensionType","description": "A value allowed for the parent identified element, and associated information."
+}
+,
+"policyresponse:CodeListExtensionType": {
+"additionalProperties" : false,"description": "A value allowed for the parent identified element, and associated information","properties": {
+"policyresponse:ECFElementNameText": {
+"description": "The data element for which an allowable set of values is enumerated.","$ref": "#/definitions/policyresponse:ECFElementNameText"
+},"policyresponse:ExtensionCanonicalURI": {
+"description": "A court extension to ECF.","$ref": "#/definitions/policyresponse:ExtensionCanonicalURI"
+},"policyresponse:ExtensionCanonicalVersionURI": {
+"description": "A structure representing the specific court extension.","$ref": "#/definitions/policyresponse:ExtensionCanonicalVersionURI"
+},"policyresponse:ExtensionLocationURI": {
+"description": "An XML Schema document that defines the allowable structure of the court-specific argument to this MDE operation.","$ref": "#/definitions/policyresponse:ExtensionLocationURI"
+}
+},"required" : ["policyresponse:ExtensionCanonicalURI", "policyresponse:ExtensionCanonicalVersionURI", "policyresponse:ExtensionLocationURI"],"type": "object"
+}
+,
+"policyresponse:DevelopmentPolicy": {
+"$ref": "#/definitions/policyresponse:DevelopmentPolicyType","description": "The response to a request for a court Court Policy."
+}
+,
+"policyresponse:DevelopmentPolicyType": {
+"additionalProperties" : false,"description": "Within Court Policy, the policies that are accessed by a person or organization developing an applications or configuring an application to interact with a court for the purpose of structuring the interactions with that court.  This information is needed once and is not accessed dynamically while interacting with the court.","properties": {
+"policyresponse:AcceptConfidentialFilingsIndicator": {
+"description": "Whether the court will accept electronic filing of documents for which the filer requests confidential or sealed treatment by the court.","$ref": "#/definitions/policyresponse:AcceptConfidentialFilingsIndicator"
+},"policyresponse:AcceptDocumentsRequiringFeesIndicator": {
+"description": "Whether the court will accept electronic filing of documents requiring filing fees.","$ref": "#/definitions/policyresponse:AcceptDocumentsRequiringFeesIndicator"
+},"policyresponse:AcceptMultipleLeadDocumentsIndicator": {
+"description": "Does court accept placing multiple lead documents in a single message","$ref": "#/definitions/policyresponse:AcceptMultipleLeadDocumentsIndicator"
+},"policyresponse:FilerRequiredToServeIndicator": {
+"description": "Indicator whether the filer is required to serve","$ref": "#/definitions/policyresponse:FilerRequiredToServeIndicator"
+},"policyresponse:FilingFeesMayBeApplicableIndicator": {
+"description": "Indicates whether fees may be required for some filings.","$ref": "#/definitions/policyresponse:FilingFeesMayBeApplicableIndicator"
+},"policyresponse:MajorDesignElement": {
+"description": "An ECF major design element (MDE)","oneOf": [{
+"$ref": "#/definitions/policyresponse:MajorDesignElement"
+},
+{
+"items": {
+"$ref": "#/definitions/policyresponse:MajorDesignElement"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"policyresponse:MaximumAllowedAttachmentPageQuantity": {
+"description": "The maximum allowed number of pages in an attachment.","$ref": "#/definitions/policyresponse:MaximumAllowedAttachmentPageQuantity"
+},"policyresponse:MaximumAllowedAttachmentSize": {
+"description": "The maximum allowed attachment size, in bytes.  Does not appear if there is no maximum.","$ref": "#/definitions/policyresponse:MaximumAllowedAttachmentSize"
+},"policyresponse:MaximumAllowedMessageSize": {
+"description": "Maximum allowed size of the Court Filing Message Stream, in bytes.  Does not appear if there is no maximum.","$ref": "#/definitions/policyresponse:MaximumAllowedMessageSize"
+},"policyresponse:SchemaExtension": {
+"description": "A structure representing the court-specific extensions for this court","oneOf": [{
+"$ref": "#/definitions/policyresponse:SchemaExtension"
+},
+{
+"items": {
+"$ref": "#/definitions/policyresponse:SchemaExtension"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"policyresponse:SupportedCaseCategories": {
+"description": "A list of ECF case types.","oneOf": [{
+"$ref": "#/definitions/policyresponse:SupportedCaseCategories"
+},
+{
+"items": {
+"$ref": "#/definitions/policyresponse:SupportedCaseCategories"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"policyresponse:SupportedSignaturesProfiles": {
+"description": "A signature profile approved for use with ECF by the OASIS LegalXML Member Section Electronic Court Filing Technical Committee that is supported by this court.","oneOf": [{
+"$ref": "#/definitions/policyresponse:SupportedSignaturesProfiles"
+},
+{
+"items": {
+"$ref": "#/definitions/policyresponse:SupportedSignaturesProfiles"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"policyresponse:URLAttachmentSupportedIndicator": {
+"description": "Whether court allows attachments via remote URLs.","$ref": "#/definitions/policyresponse:URLAttachmentSupportedIndicator"
+}
+},"required" : ["policyresponse:AcceptConfidentialFilingsIndicator", "policyresponse:AcceptDocumentsRequiringFeesIndicator", "policyresponse:AcceptMultipleLeadDocumentsIndicator", "policyresponse:FilingFeesMayBeApplicableIndicator", "policyresponse:MajorDesignElement", "policyresponse:SupportedCaseCategories", "policyresponse:SupportedSignaturesProfiles", "policyresponse:URLAttachmentSupportedIndicator"],"type": "object"
+}
+,
+"policyresponse:ECFElementNameText": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:string","description": "The data element for which an allowable set of values is enumerated."
+}
+,
+"policyresponse:ExtensionCanonicalURI": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:anyURI","description": "A court extension to ECF."
+}
+,
+"policyresponse:ExtensionCanonicalVersionURI": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:anyURI","description": "A structure representing the specific court extension."
+}
+,
+"policyresponse:ExtensionElementName": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:anyURI","description": "The element(s) in the extension schema that are are the root of the extension and substitute for an extension (augmentation) point."
+}
+,
+"policyresponse:ExtensionLocationURI": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:anyURI","description": "An XML Schema document that defines the allowable structure of the court-specific argument to this MDE operation."
+}
+,
+"policyresponse:ExtensionType": {
+"additionalProperties" : false,"description": "A structure representing a court-specific data structure passed to a particular operation on a particular MDE.","properties": {
+"policyresponse:ExtensionCanonicalURI": {
+"description": "A court extension to ECF.","$ref": "#/definitions/policyresponse:ExtensionCanonicalURI"
+},"policyresponse:ExtensionCanonicalVersionURI": {
+"description": "A structure representing the specific court extension.","$ref": "#/definitions/policyresponse:ExtensionCanonicalVersionURI"
+},"policyresponse:ExtensionLocationURI": {
+"description": "An XML Schema document that defines the allowable structure of the court-specific argument to this MDE operation.","$ref": "#/definitions/policyresponse:ExtensionLocationURI"
+}
+},"required" : ["policyresponse:ExtensionCanonicalURI", "policyresponse:ExtensionCanonicalVersionURI", "policyresponse:ExtensionLocationURI"],"type": "object"
+}
+,
+"policyresponse:FilerRequiredToServeIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicator whether the filer is required to serve"
+}
+,
+"policyresponse:FilingFeesMayBeApplicableIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Indicates whether fees may be required for some filings."
+}
+,
+"policyresponse:GetPolicyResponseMessage": {
+"$ref": "#/definitions/policyresponse:GetPolicyResponseMessageType","description": "The response to a request for a court Court Policy."
+}
+,
+"policyresponse:GetPolicyResponseMessageType": {
+"additionalProperties" : false,"description": "The response to a request for a court Court Policy.","properties": {
+"cbrn:MessageStatus": {
+"description": "A status of the message.","$ref": "./niem/cbrn.schema.json#/definitions/cbrn:MessageStatus"
+},"ecf:DocumentAugmentation": {
+"description": "The pleading, motion or order that is the main document in a Filing. A Document may have Connected Documents, which are appendices or exhibits that are intended for filing only in the context of the Lead Document.","oneOf": [{
+"$ref": "./ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+{
+"items": {
+"$ref": "./ecf.schema.json#/definitions/ecf:DocumentAugmentation"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"ecf:SendingMDELocationID": {
+"description": "Location for the MDE to which asynchronous and service messages can be sent. This unique location is self-assigned by the MDE.","$ref": "./ecf.schema.json#/definitions/ecf:SendingMDELocationID"
+},"ecf:ServiceInteractionProfileCode": {
+"description": "An identifier, from a list of allowed values defined in the Court Filing specification, of a message profile supported by this court.","$ref": "./ecf.schema.json#/definitions/ecf:ServiceInteractionProfileCode"
+},"j:CaseCourt": {
+"description": "A court of law in which the case is being tried.","$ref": "./niem/j.schema.json#/definitions/j:CaseCourt"
+},"nc:DocumentCategoryText": {
+"description": "A kind of document; a nature or genre of the content.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentCategoryText"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+},"nc:DocumentDescriptionText": {
+"description": "A description of the content of a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentDescriptionText"
+},"nc:DocumentEffectiveDate": {
+"description": "A date in which the content or action becomes enforceable, active, or effective.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentEffectiveDate"
+},"nc:DocumentFileControlID": {
+"description": "An identifier assigned to a document to locate it within a file control system.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFileControlID"
+},"nc:DocumentFiledDate": {
+"description": "A date a document was officially filed with an organization or agency.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentFiledDate"
+},"nc:DocumentIdentification": {
+"description": "An identification that references a document.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:DocumentIdentification"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"nc:DocumentInformationCutOffDate": {
+"description": "A date after which contributions to the content of a document will no longer be accepted.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentInformationCutOffDate"
+},"nc:DocumentLanguageCode": {
+"description": "A language of the content of the resource.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentLanguageCode"
+},"nc:DocumentPostDate": {
+"description": "A date a document is entered or posted to an information system or network; used when the date of posting is different from the date on which a document was officially filed.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentPostDate"
+},"nc:DocumentReceivedDate": {
+"description": "A date a transmitted document was received.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentReceivedDate"
+},"nc:DocumentSequenceID": {
+"description": "An identifier that determines the document order in a set of related documents.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSequenceID"
+},"nc:DocumentSoftwareName": {
+"description": "A name of a computer application used to process a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSoftwareName"
+},"nc:DocumentSubmitter": {
+"description": "An entity responsible for making the resource available.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentSubmitter"
+},"nc:DocumentTitleText": {
+"description": "A name given to a document.","$ref": "./niem/nc.schema.json#/definitions/nc:DocumentTitleText"
+},"nc:Metadata": {
+"description": "Information that further qualifies primary data; data about data.","oneOf": [{
+"$ref": "./niem/nc.schema.json#/definitions/nc:Metadata"
+},
+{
+"items": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:Metadata"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"policyresponse:DevelopmentPolicy": {
+"description": "The response to a request for a court Court Policy.","$ref": "#/definitions/policyresponse:DevelopmentPolicy"
+},"policyresponse:PolicyVersionID": {
+"description": "The version of court policy reported by this message.  Up to the court to define the format of this, and describe in human-readable court policy.","$ref": "#/definitions/policyresponse:PolicyVersionID"
+},"policyresponse:RuntimePolicy": {
+"description": "Within Court Policy, the policies that are accessed dynamically by applications interacting with a court.","$ref": "#/definitions/policyresponse:RuntimePolicy"
+}
+},"required" : ["ecf:SendingMDELocationID", "ecf:ServiceInteractionProfileCode", "j:CaseCourt", "nc:DocumentIdentification", "nc:DocumentPostDate", "nc:Metadata", "policyresponse:DevelopmentPolicy", "policyresponse:PolicyVersionID", "policyresponse:RuntimePolicy"],"type": "object"
+}
+,
+"policyresponse:MajorDesignElement": {
+"$ref": "#/definitions/policyresponse:MajorDesignElementType","description": "An ECF major design element (MDE)"
+}
+,
+"policyresponse:MajorDesignElementLocationID": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:IdentificationType","description": "The unique URL location of a major design element."
+}
+,
+"policyresponse:MajorDesignElementType": {
+"additionalProperties" : false,"description": "An ECF Major Design Element (MDE)","properties": {
+"policyresponse:MajorDesignElementLocationID": {
+"description": "The unique URL location of a major design element.","$ref": "#/definitions/policyresponse:MajorDesignElementLocationID"
+},"policyresponse:MajorDesignElementTypeCode": {
+"description": "Name of a major design element.","$ref": "#/definitions/policyresponse:MajorDesignElementTypeCode"
+},"policyresponse:SupportedOperations": {
+"description": "A structure containing indicators that signal support by the e-filing system for optional ECF operations. E.g. particular queries","$ref": "#/definitions/policyresponse:SupportedOperations"
+},"policyresponse:SupportedServiceInteractionProfiles": {
+"description": "A signature profile approved for use with ECF by the OASIS LegalXML Member Section Electronic Court Filing Technical Committee that is supported by this court.","$ref": "#/definitions/policyresponse:SupportedServiceInteractionProfiles"
+}
+},"required" : ["policyresponse:MajorDesignElementLocationID", "policyresponse:MajorDesignElementTypeCode", "policyresponse:SupportedOperations", "policyresponse:SupportedServiceInteractionProfiles"],"type": "object"
+}
+,
+"policyresponse:MajorDesignElementTypeCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "Name of a major design element."
+}
+,
+"policyresponse:MaximumAllowedAttachmentPageQuantity": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:decimal","description": "The maximum allowed number of pages in an attachment."
+}
+,
+"policyresponse:MaximumAllowedAttachmentSize": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:MeasureType","description": "The maximum allowed attachment size, in bytes.  Does not appear if there is no maximum."
+}
+,
+"policyresponse:MaximumAllowedMessageSize": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:MeasureType","description": "Maximum allowed size of the Court Filing Message Stream, in bytes.  Does not appear if there is no maximum."
+}
+,
+"policyresponse:OperationNameCode": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:normalizedString","description": "Indicates whether the e-filing system supports a certain operation."
+}
+,
+"policyresponse:PolicyVersionID": {
+"$ref": "./niem/nc.schema.json#/definitions/nc:IdentificationType","description": "The version of court policy reported by this message.  Up to the court to define the format of this, and describe in human-readable court policy."
+}
+,
+"policyresponse:RuntimePolicy": {
+"$ref": "#/definitions/policyresponse:RuntimePolicyType","description": "Within Court Policy, the policies that are accessed dynamically by applications interacting with a court."
+}
+,
+"policyresponse:RuntimePolicyType": {
+"additionalProperties" : false,"description": "Within Court Policy, the policies that are accessed dynamically by applications interacting with a court.","properties": {
+"ds:KeyInfo": {
+"description": "Symmetric or asymmetric keys used to encrypt and decrypt, or verify signed messages or documents exchanged with the court.","$ref": ""
+},"policyresponse:CodeListExtension": {
+"description": "A value allowed for the parent identified element, and associated information.","oneOf": [{
+"$ref": "#/definitions/policyresponse:CodeListExtension"
+},
+{
+"items": {
+"$ref": "#/definitions/policyresponse:CodeListExtension"
+},
+
+"minItems": 0,
+"type": "array"
+}
+]
+}
+},"type": "object"
+}
+,
+"policyresponse:SchemaExtension": {
+"$ref": "#/definitions/policyresponse:SchemaExtensionType","description": "A structure representing the court-specific extensions for this court"
+}
+,
+"policyresponse:SchemaExtensionType": {
+"additionalProperties" : false,"description": "A structure representing the court-specific extensions for the court associated with this Court Policy.","properties": {
+"policyresponse:ExtensionCanonicalURI": {
+"description": "A court extension to ECF.","$ref": "#/definitions/policyresponse:ExtensionCanonicalURI"
+},"policyresponse:ExtensionCanonicalVersionURI": {
+"description": "A structure representing the specific court extension.","$ref": "#/definitions/policyresponse:ExtensionCanonicalVersionURI"
+},"policyresponse:ExtensionElementName": {
+"description": "The element(s) in the extension schema that are are the root of the extension and substitute for an extension (augmentation) point.","oneOf": [{
+"$ref": "#/definitions/policyresponse:ExtensionElementName"
+},
+{
+"items": {
+"$ref": "#/definitions/policyresponse:ExtensionElementName"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"policyresponse:ExtensionLocationURI": {
+"description": "An XML Schema document that defines the allowable structure of the court-specific argument to this MDE operation.","$ref": "#/definitions/policyresponse:ExtensionLocationURI"
+},"policyresponse:MajorDesignElementTypeCode": {
+"description": "Name of a major design element.","oneOf": [{
+"$ref": "#/definitions/policyresponse:MajorDesignElementTypeCode"
+},
+{
+"items": {
+"$ref": "#/definitions/policyresponse:MajorDesignElementTypeCode"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+},"policyresponse:OperationNameCode": {
+"description": "Indicates whether the e-filing system supports a certain operation.","oneOf": [{
+"$ref": "#/definitions/policyresponse:OperationNameCode"
+},
+{
+"items": {
+"$ref": "#/definitions/policyresponse:OperationNameCode"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+}
+},"required" : ["policyresponse:ExtensionCanonicalURI", "policyresponse:ExtensionCanonicalVersionURI", "policyresponse:ExtensionElementName", "policyresponse:ExtensionLocationURI", "policyresponse:MajorDesignElementTypeCode", "policyresponse:OperationNameCode"],"type": "object"
+}
+,
+"policyresponse:SupportedCaseCategories": {
+"$ref": "#/definitions/policyresponse:SupportedCaseCategoriesType","description": "A list of ECF case types."
+}
+,
+"policyresponse:SupportedCaseCategoriesType": {
+"additionalProperties" : false,"description": "A structure containing indicators that signal support by the e-filing system for each ECF case type.","properties": {
+"ecf:CaseTypeCode": {
+"description": "Indicates whether the e-filing system supports electronic filing of a certain case type.","oneOf": [{
+"$ref": "./ecf.schema.json#/definitions/ecf:CaseTypeCode"
+},
+{
+"items": {
+"$ref": "./ecf.schema.json#/definitions/ecf:CaseTypeCode"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+}
+},"required" : ["ecf:CaseTypeCode"],"type": "object"
+}
+,
+"policyresponse:SupportedOperations": {
+"$ref": "#/definitions/policyresponse:SupportedOperationsType","description": "A structure containing indicators that signal support by the e-filing system for optional ECF operations. E.g. particular queries"
+}
+,
+"policyresponse:SupportedOperationsType": {
+"additionalProperties" : false,"description": "A structure containing indicators that signal support by the e-filing system for optional ECF operations. E.g. particular queries.","properties": {
+"policyresponse:OperationNameCode": {
+"description": "Indicates whether the e-filing system supports a certain operation.","oneOf": [{
+"$ref": "#/definitions/policyresponse:OperationNameCode"
+},
+{
+"items": {
+"$ref": "#/definitions/policyresponse:OperationNameCode"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+}
+},"required" : ["policyresponse:OperationNameCode"],"type": "object"
+}
+,
+"policyresponse:SupportedServiceInteractionProfiles": {
+"$ref": "#/definitions/policyresponse:SupportedServiceInteractionProfilesType","description": "A signature profile approved for use with ECF by the OASIS LegalXML Member Section Electronic Court Filing Technical Committee that is supported by this court."
+}
+,
+"policyresponse:SupportedServiceInteractionProfilesType": {
+"additionalProperties" : false,"description": "A message profile approved for use with ECF by the OASIS LegalXML Member Section Electronic Court Filing Technical Committee that are supported in a particualr court.  Identifiers for supported profiles are set forth in Court Policy.","properties": {
+"ecf:ServiceInteractionProfileCode": {
+"description": "An identifier, from a list of allowed values defined in the Court Filing specification, of a message profile supported by this court.","oneOf": [{
+"$ref": "./ecf.schema.json#/definitions/ecf:ServiceInteractionProfileCode"
+},
+{
+"items": {
+"$ref": "./ecf.schema.json#/definitions/ecf:ServiceInteractionProfileCode"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+}
+},"required" : ["ecf:ServiceInteractionProfileCode"],"type": "object"
+}
+,
+"policyresponse:SupportedSignatureProfilesType": {
+"additionalProperties" : false,"description": "A signature profile approved for use with ECF 3.0 by the OASIS LegalXML Member Section Electronic Court Filing Technical Committee that are supported in a particualr court.  Identifiers for supported profiles are set forth in Court Policy.","properties": {
+"ecf:SignatureProfileCode": {
+"description": "An identifier from the Court Filing specification that indicates the Signature Profile governing the structure of this signature.","oneOf": [{
+"$ref": "./ecf.schema.json#/definitions/ecf:SignatureProfileCode"
+},
+{
+"items": {
+"$ref": "./ecf.schema.json#/definitions/ecf:SignatureProfileCode"
+},
+
+"minItems": 1,
+"type": "array"
+}
+]
+}
+},"required" : ["ecf:SignatureProfileCode"],"type": "object"
+}
+,
+"policyresponse:SupportedSignaturesProfiles": {
+"$ref": "#/definitions/policyresponse:SupportedSignatureProfilesType","description": "A signature profile approved for use with ECF by the OASIS LegalXML Member Section Electronic Court Filing Technical Committee that is supported by this court."
+}
+,
+"policyresponse:URLAttachmentSupportedIndicator": {
+"$ref": "./niem/xs.schema.json#/definitions/xs:boolean","description": "Whether court allows attachments via remote URLs."
+}
+
+},
+"properties" : {
+"policyresponse:GetPolicyResponseMessage": {
+"$ref": "#/definitions/policyresponse:GetPolicyResponseMessageType","description": "The response to a request for a court Court Policy."
+}
+
+},
+"required" : [
+]
+}

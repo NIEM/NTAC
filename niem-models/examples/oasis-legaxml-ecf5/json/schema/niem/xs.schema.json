@@ -1,0 +1,114 @@
+{
+"$id" : "http://www.w3.org/2001/XMLSchema"
+,
+"$schema" : "https://json-schema.org/draft/2019-09/schema"
+,
+"type" : "object"
+,
+"additionalProperties" : false,
+"@context" : {
+
+"clsa" : "http://reference.niem.gov/niem/specification/code-lists/1.0/code-lists-schema-appinfo/#"
+,
+
+"ct" : "http://release.niem.gov/niem/conformanceTargets/3.0/#"
+,
+
+"structures" : "http://release.niem.gov/niem/structures/4.0/#"
+,
+
+"term" : "http://release.niem.gov/niem/localTerminology/3.0/#"
+,
+
+"xs" : "http://www.w3.org/2001/XMLSchema#"
+},
+"definitions": {
+"xs:ID": {
+"type": "string",
+"pattern": "^[_A-Za-z][-._A-Za-z0-9]*$"
+}
+,
+"xs:IDREF": {
+"type": "string",
+"pattern": "^[_A-Za-z][-._A-Za-z0-9]*$"
+}
+,
+"xs:IDREFS": {
+"type": "string",
+"pattern": "^([_A-Za-z][-._A-Za-z0-9]*\\s)*$"
+}
+,
+"xs:NCName": {
+"type": "string"
+}
+,
+"xs:anyURI": {
+"type": "string",
+"format": "uri"
+}
+,
+"xs:base64Binary": {
+"type": "string",
+"pattern": "^[A-Za-z0-9+/=\\s]*$"
+}
+,
+"xs:boolean": {
+"type": "boolean"
+}
+,
+"xs:date": {
+"type": "string",
+"format": "date-time"
+}
+,
+"xs:dateTime": {
+"type": "string",
+"format": "date-time"
+}
+,
+"xs:decimal": {
+"type": "number"
+}
+,
+"xs:duration": {
+"type": "string",
+"pattern": "^[-+]?P(([0-9]d+Y)|([0-9]+M)|([0-9]+D)|(T([0-9]+H)|([0-9]+M)|([0-9]+([.][0-9]{1,6})?S)))$"
+}
+,
+"xs:gYear": {
+"type": "string",
+"pattern": "^[0-9]{4}$"
+}
+,
+"xs:normalizedString": {
+"type": "string",
+"pattern": "^\\s?(\\S+\\s?)+\\s?$"
+}
+,
+"xs:positiveInteger": {
+"type": "number",
+"multipleOf": 1.0,
+"minimum": 1
+}
+,
+"xs:string": {
+"type": "string"
+}
+,
+"xs:time": {
+"type": "string",
+"pattern": "^([0-9]{2}):([0-9]{2}):([0-9]{2}([.][0-9]{1,6})?)([+-]([0-9]{2}):([0-9]{2}))?$"
+}
+,
+"xs:token": {
+"type": "string",
+"pattern": "^\\S*$"
+}
+
+},
+"properties" : {
+
+},
+"required" : [
+]
+}

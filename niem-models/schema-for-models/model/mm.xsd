@@ -161,7 +161,7 @@
                substitutionGroup="mm:ModelItemAbstract"
                nillable="true">
       <xs:annotation>
-         <xs:documentation>A datatype.</xs:documentation>
+         <xs:documentation>A data type.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="DatatypeType">
@@ -236,19 +236,19 @@
                substitutionGroup="mm:FacetAbstract"
                nillable="true">
       <xs:annotation>
-         <xs:documentation>A restriction on the precision and of a decimal data type, via a restriction on the number of digits allowed to the right of the decimal point of its decimal representation.</xs:documentation>
+         <xs:documentation>A restriction on the precision of a decimal data type, via a restriction on the number of digits allowed to the right of the decimal point of its decimal representation.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:element name="HasDataProperty"
                type="mm:HasDataPropertyType"
                nillable="true">
       <xs:annotation>
-         <xs:documentation>An occurrence of a data property within a class.</xs:documentation>
+         <xs:documentation>An occurrence of a data property as content of a class.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="HasDataPropertyType">
       <xs:annotation>
-         <xs:documentation>A data type for an occurrence of a data property within a class.</xs:documentation>
+         <xs:documentation>A data type for an occurrence of a data property as content of a class.</xs:documentation>
       </xs:annotation>
       <xs:complexContent>
          <xs:extension base="structures:ObjectType">
@@ -272,12 +272,12 @@
                type="mm:HasObjectPropertyType"
                nillable="true">
       <xs:annotation>
-         <xs:documentation>An occurrence of an object property within a class.</xs:documentation>
+         <xs:documentation>An occurrence of an object property as content of a class.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="HasObjectPropertyType">
       <xs:annotation>
-         <xs:documentation>A data type for an occurrence of an object property within a class.</xs:documentation>
+         <xs:documentation>A data type for an occurrence of an object property as content of a class.</xs:documentation>
       </xs:annotation>
       <xs:complexContent>
          <xs:extension base="structures:ObjectType">
@@ -305,7 +305,7 @@
    </xs:element>
    <xs:complexType name="HasValueType">
       <xs:annotation>
-         <xs:documentation>A data type for an occurrence of a value as content of a class.</xs:documentation>
+         <xs:documentation>A data type for an occurrence of a data value as content of a class.</xs:documentation>
       </xs:annotation>
       <xs:complexContent>
          <xs:extension base="structures:ObjectType">
@@ -450,7 +450,7 @@
    </xs:element>
    <xs:element name="NamespacePrefixName" type="mm:NCName" nillable="true">
       <xs:annotation>
-         <xs:documentation>A namespace name URI for a namespace.</xs:documentation>
+         <xs:documentation>A namespace prefix name for a namespace.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="NamespaceType">
@@ -500,7 +500,7 @@
    </xs:element>
    <xs:complexType name="NonNegativeValueFacetType">
       <xs:annotation>
-         <xs:documentation>A data type for a restriction of the length of a data type.</xs:documentation>
+         <xs:documentation>A data type for a facet that carries a value that is either zero or a positive integer.</xs:documentation>
       </xs:annotation>
       <xs:complexContent>
          <xs:extension base="structures:ObjectType">
@@ -653,7 +653,7 @@
    </xs:element>
    <xs:complexType name="SubPropertyOfType">
       <xs:annotation>
-         <xs:documentation>A data type for a description of a subproperty.</xs:documentation>
+         <xs:documentation>A data type for a subproperty.</xs:documentation>
       </xs:annotation>
       <xs:complexContent>
          <xs:extension base="structures:ObjectType">
@@ -676,7 +676,7 @@
                substitutionGroup="mm:FacetAbstract"
                nillable="true">
       <xs:annotation>
-         <xs:documentation>A restriction on the precision and of a decimal data type, via a restriction on the number of digits required to represent its value.</xs:documentation>
+         <xs:documentation>A restriction on the size and precision of a decimal data type, via a restriction on the number of digits required to represent its value.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:element name="UnionOf" type="mm:UnionOfType" nillable="true">
@@ -714,7 +714,7 @@
    </xs:element>
    <xs:simpleType name="WhiteSpaceFacetCodeSimpleType">
       <xs:annotation>
-         <xs:documentation>A data type for a data type for a specification of white space for a data type.</xs:documentation>
+         <xs:documentation>A data type for a specification of white space for a data type.</xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:string">
          <xs:enumeration value="collapse">

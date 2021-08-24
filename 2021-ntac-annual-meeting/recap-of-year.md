@@ -1,6 +1,6 @@
 # Recap of Year
 
-- internationalization `xml:lang`
+- Internationalization `xml:lang`
 - `relationshipMetadata`
 - Specifications for NIEM 5.0
 	- NDR

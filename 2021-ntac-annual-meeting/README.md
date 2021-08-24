@@ -2,7 +2,7 @@
 
 ## Tuesday 2021-08-10 (1300-1600)
 
-- 1300-1400: Logistics and Recap of Year: Tom Carlson, Chuck Chipman
+- 1300-1400: Logistics and [Recap of Year](recap-of-year.md): Tom Carlson, Chuck Chipman
 - 1400-1600: NIEM 6 Architecture Changes: Dr. Scott
 - By EOD: OASIS Qs
 

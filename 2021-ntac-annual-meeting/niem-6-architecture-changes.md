@@ -1,6 +1,6 @@
 # NIEM 6 Architecture Changes
 
-**Text attributed to individuals is paraphrased.**
+**All text attributed to individuals is paraphrased.**
 
 ## So many attributes!
 - Everything in NIEM is a complex object with `simpleObjectAttributeGroup`

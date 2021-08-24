@@ -12,7 +12,7 @@
 - 1030-1130: NBAC: Kamran Atri, Thomas Krul
 - 1130-1200: NTAC's role in NIEM as a Standard: Jim Cabral may have insights
 - 1200-0100: Lunch
-- 1300-1700: Metamodel: Tom Carlson, Dr. Scott
+- 1300-1700: [Metamodel](metamodel.md): Tom Carlson, Dr. Scott
 
 ## Thursday 2021-08-12 (0900-1200)
 

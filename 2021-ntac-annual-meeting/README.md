@@ -16,5 +16,5 @@
 
 ## Thursday 2021-08-12 (0900-1200)
 
-- 0900-1100: Message Spec Rules and Conventions: Mike Hulme
+- 0900-1100: [Message Spec Rules and Conventions](message-spec-rules-and-conventions.md): Mike Hulme
 - 1100-1200: Planning for the next year

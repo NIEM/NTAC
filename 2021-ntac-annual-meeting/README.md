@@ -8,7 +8,7 @@
 
 ## Wednesday 2021-08-11 (0900-1600)
 
-- 0900-1030: NIEM as a Standard (OASIS), Q&A: Katherine Escobar
+- 0900-1030: [NIEM as a Standard (OASIS), Q&A](oasis-questions.md): Katherine Escobar
 - 1030-1130: NBAC: Kamran Atri, Thomas Krul
 - 1130-1200: NTAC's role in NIEM as a Standard: Jim Cabral may have insights
 - 1200-0100: Lunch

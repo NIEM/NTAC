@@ -10,7 +10,7 @@
 
 **These will link to individual issues for each.**
 
-- Make adapter types consistent with the rest of the model 
+- Make adapter types consistent with the rest of the model (Issue #30)
 - Add Adapter Representation term for consistency 
 - Make Representation vs Abstracts consistent 
 	- Representations for things that are actual different representations, not just code and text versions
